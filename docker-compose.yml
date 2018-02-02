@@ -1,0 +1,75 @@
+version: '2'
+services:
+  app:
+    container_name: app.icex
+    user: www-data
+    working_dir: /app
+    build:
+      context: ./
+      dockerfile: ./.docker/build/php-fpm.dockerfile
+    links:
+      - db
+    volumes:
+      - .:/app
+      - ./.docker/configs/php-fpm/www.conf:/etc/php/7.1/fpm/pool.d/www.conf
+    restart: always
+
+  cli:
+    container_name: cli.icex
+    user: application
+    working_dir: /app
+    build:
+      context: ./
+      dockerfile: ./.docker/build/php-cli.dockerfile
+    links:
+      - db
+    volumes:
+      - .:/app
+
+  composer:
+    container_name: composer.icex
+    user: application
+    working_dir: /app
+    build:
+      context: ./
+      dockerfile: ./.docker/build/php-composer.dockerfile
+    links:
+      - db
+    volumes:
+      - .:/app
+      - $HOME/.composer:/home/application/.composer
+
+  node:
+    container_name: nodejs.icex
+    image: "node:latest"
+    working_dir: /app
+    volumes:
+      - .:/app
+
+  nginx:
+    container_name: nginx.icex
+    image: "nginx:alpine"
+    ports:
+      - "80:80"
+    volumes:
+      - ./.docker/configs/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/app
+    restart: always
+    links:
+      - app
+
+  selenium:
+    image: "selenium/standalone-chrome:3.0.1-fermium"
+
+  db:
+    container_name: mysql.icex
+    image: "mysql:latest"
+    environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+          - MYSQL_DATABASE=icex
+          - MYSQL_USER=root
+          - MYSQL_PASSWORD=
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.docker/data/mysql:/var/lib/mysql
