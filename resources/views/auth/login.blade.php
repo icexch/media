@@ -1,69 +1,67 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+    <div class="guest-login" style="background-image: url(img/contact-us-bg.jpg)">
+        <div class="guest-login__container container">
+            <p class="guest-login__title guest-login__title_response">Login</p>
+            <div class="guest-login__content">
+                <div class="guest-form">
+                    <form method="post" action="{{ action('Auth\LoginController@login') }}">
+                        {{ method_field('POST') }}
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
+                        <div class="guest-form__wrap">
+                            <div class="guest-form__line">
+                                <div class="guest-form__line-title-wrap">
+                                    <label for="g-log-user" class="guest-form__line-title">Username</label>
+                                </div>
+                                <div class="guest-form__input-holder">
+                                    <input id="email" type="email" class="guest-form__input" name="email"
+                                           value="{{ old('email') }}" required autofocus>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+                            <div class="guest-form__line">
+                                <div class="guest-form__line-title-wrap">
+                                    <label for="g-log-pass" class="guest-form__line-title">Password</label>
+                                </div>
+                                <div class="guest-form__input-holder">
+                                    <input id="password" type="password" class="guest-form__input" name="password"
+                                           required>
+                                </div>
                             </div>
+
+
+                            <div class="guest-login__choose-type">
+                                <div class="guest-login__choose-type-item-wrap">
+                                    <a href="#"
+                                       class="guest-login__choose-type-item guest-login__choose-type-item_active js-login-type"
+                                       data-type="publisher">Publisher</a>
+                                </div>
+                                <div class="guest-login__choose-type-item-wrap">
+                                    <a href="#" class="guest-login__choose-type-item js-login-type"
+                                       data-type="advertiser">Advertiser</a>
+                                </div>
+                                <input type="hidden" id="login-type" value="publisher">
+                            </div>
+
+
+                            <div class="guest-form__line guest-form__line_checkbox">
+                                <label class="guest-form__checkbox-holder">
+                                    <input type="checkbox" class="checkbox-styled js-checkbox">
+                                    <span class="guest-form__checkbox-text">Remember me</span>
+                                </label>
+                            </div>
+
+
+                            <div class="guest-form__line guest-form__line_submit">
+                                <div class="guest-form__submit-holder">
+                                    <button class="guest-form__submit" type="submit">submit</button>
+                                </div>
+                            </div>
+
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+@stop

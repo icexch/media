@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UserProfile;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -29,6 +31,14 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    const ADVERTISER_ROLE = 'advertiser';
+    const PUBLISHER_ROLE = 'publisher';
+
+    protected $rolesMap = [
+        self::ADVERTISER_ROLE => User::ADVERTISER_ROLE,
+        self::PUBLISHER_ROLE  => User::PUBLISHER_ROLE
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -39,33 +49,56 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm(Request $request)
+    {
+        $type = in_array($request->query('type'),
+            $this->rolesMap) ? $request->query('type') : self::PUBLISHER_ROLE;
+
+        return view('auth.register', compact('type'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name'                 => 'required|string|max:255',
+            'email'                => 'required|string|email|max:255|unique:users',
+            'password'             => 'required|string|min:6|confirmed',
+            'type'                 => 'required|string|in:' . implode(',', array_keys($this->rolesMap)),
+            'agreements'           => 'required',
+            'profile'              => 'array',
+            'profile.name'         => 'required|string',
+            'profile.company_name' => 'string',
+            'profile.city'         => 'string',
+            'profile.country'      => 'string',
+            'profile.phone'        => 'numeric'
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param  array $data
+     *
+     * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+        $user = User::create([
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => bcrypt($data['password']),
+            'role'     => $this->rolesMap[$data['type']]
         ]);
+
+        UserProfile::create(array_merge(['user_id' => $user->id], $data['profile']));
+
+        return $user;
     }
 }
