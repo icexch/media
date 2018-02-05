@@ -82,9 +82,16 @@
                     Laravel
                 </div>
 
+                <button onclick="clicked()">Click</button>
+
+                <ins class="area-ads"
+                     data-area-ad-client="df-pub-12312312"></ins>
+                <ins class="area-ads"
+                     data-area-ad-client="df-pub-123322312"></ins>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laracasts.com"><L></L>aracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
@@ -93,3 +100,14 @@
         </div>
     </body>
 </html>
+<script type="text/javascript" src="{{asset("/js/area.js")}}"></script>
+
+{{--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--<!-- фывафыв -->--}}
+{{--<ins class="adsbygoogle"--}}
+     {{--style="display:inline-block;width:728px;height:90px"--}}
+     {{--data-ad-client="ca-pub-6009428429667360"--}}
+     {{--data-ad-slot="6636187001"></ins>--}}
+{{--<script>--}}
+    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--</script>--}}

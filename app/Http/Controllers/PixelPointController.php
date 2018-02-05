@@ -24,7 +24,3 @@ class PixelPointController extends Controller
         return response()->json(['message' => 'saved - '.$time, 'error' => false]);
     }
 }
-
-/**
-    Уникальность браузера это сгенерированный id и где-то на сервере хранится или как? ( это и есть ims )
- */

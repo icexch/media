@@ -39,7 +39,6 @@ function init() {
         };
 
         xhr.send(xhr.mybody);
-
     }
 }
 
@@ -49,7 +48,7 @@ function initAd(parameters) {
         placeId = parameters.placeId || "",
         data = parameters.data || "";
 
-    var ad = document.querySelector("ins[data-area-ad-client='"+ placeId +"']")
+    var ad = document.querySelector("ins[data-area-ad-client='"+ placeId +"']");
     console.log("init ad", ad)
 
 
@@ -63,7 +62,6 @@ function showed(adsIds) {
     var data = [
         ["ids", adsIds.join(",")]
     ];
-    var type = "POST";
 
     createRequest({url: url, data: data});
 }
