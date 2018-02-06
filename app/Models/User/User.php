@@ -1,7 +1,8 @@
-<?php
+<?php namespace App\Models\User;
 
-namespace App\Models;
-
+use App\Models\BaseModel;
+use App\Models\UserProfile;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -14,9 +15,11 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 {
     use Notifiable, Authenticatable, Authorizable, CanResetPassword;
 
-    const MODERATOR_ROLE = 1;
-    const ADVERTISER_ROLE = 2;
-    const PUBLISHER_ROLE = 3;
+    protected $table = 'users';
+
+    const MODERATOR_SLUG = 'moderator';
+    const ADVERTISER_SLUG = 'advertiser';
+    const PUBLISHER_SLUG = 'publisher';
 
     /**
      * The attributes that are mass assignable.
@@ -62,11 +65,49 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     }
 
     /**
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopeModerators(Builder $query)
+    {
+        return $query->where('role', Moderator::ROLE);
+    }
+
+    /**
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopeAdvertisers(Builder $query)
+    {
+        return $query->where('role', Advertiser::ROLE);
+    }
+
+    /**
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopePublishers(Builder $query)
+    {
+        return $query->where('role', Publisher::ROLE);
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
      * @return bool
      */
     public function isModerator()
     {
-        return $this->role === self::MODERATOR_ROLE;
+        return $this->role === Moderator::ROLE;
     }
 
     /**
@@ -74,7 +115,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
      */
     public function isAdvertiser()
     {
-        return $this->role === self::ADVERTISER_ROLE;
+        return $this->role === Advertiser::ROLE;
     }
 
     /**
@@ -82,6 +123,6 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
      */
     public function isPublisher()
     {
-        return $this->role === self::PUBLISHER_ROLE;
+        return $this->role === Publisher::ROLE;
     }
 }

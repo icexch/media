@@ -46,7 +46,7 @@
 
                             <div class="guest-form__line guest-form__line_checkbox">
                                 <label class="guest-form__checkbox-holder">
-                                    <input type="checkbox" class="checkbox-styled js-checkbox">
+                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} class="checkbox-styled js-checkbox">
                                     <span class="guest-form__checkbox-text">Remember me</span>
                                 </label>
                             </div>

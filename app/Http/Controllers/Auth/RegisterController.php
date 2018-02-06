@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\User\Advertiser;
+use App\Models\User\Publisher;
+use App\Models\User\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -35,8 +37,8 @@ class RegisterController extends Controller
     const PUBLISHER_ROLE = 'publisher';
 
     protected $rolesMap = [
-        self::ADVERTISER_ROLE => User::ADVERTISER_ROLE,
-        self::PUBLISHER_ROLE  => User::PUBLISHER_ROLE
+        self::ADVERTISER_ROLE => Advertiser::ROLE,
+        self::PUBLISHER_ROLE  => Publisher::ROLE
     ];
 
     /**
@@ -73,7 +75,6 @@ class RegisterController extends Controller
             'type'                 => 'required|string|in:' . implode(',', array_keys($this->rolesMap)),
             'agreements'           => 'required',
             'profile'              => 'array',
-            'profile.name'         => 'required|string',
             'profile.company_name' => 'string',
             'profile.city'         => 'string',
             'profile.country'      => 'string',

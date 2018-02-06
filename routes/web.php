@@ -20,6 +20,9 @@ $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('login', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
+Route::get('login/admin','Auth\LoginController@showAdminLoginForm');
+Route::post('login/admin', 'Auth\LoginController@loginAdmin');
+
 // Registration Routes...
 $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 $this->post('register', 'Auth\RegisterController@register');
