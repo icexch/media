@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @var \SleepingOwl\Admin\Contracts\Navigation\NavigationInterface $navigation
- */
-
 use SleepingOwl\Admin\Navigation\Page;
 
 AdminNavigation::setFromArray([
@@ -15,5 +11,6 @@ AdminNavigation::setFromArray([
             (new Page(\App\Models\User\Advertiser::class)),
             (new Page(\App\Models\User\Publisher::class))
         ]
-    ]
+    ],
+    (new Page(\App\Models\AdMaterial::class))->setIcon('fa fa-edit')
 ]);

@@ -1,5 +1,6 @@
 <?php namespace App\Admin\Providers;
 
+use App\Models\AdMaterial;
 use App\Models\User\Advertiser;
 use App\Models\User\Moderator;
 use App\Models\User\Publisher;
@@ -11,7 +12,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
     protected $sections = [
         Moderator::class  => 'App\Admin\Http\Sections\Users\Moderator',
         Advertiser::class => 'App\Admin\Http\Sections\Users\Advertiser',
-        Publisher::class  => 'App\Admin\Http\Sections\Users\Publisher'
+        Publisher::class  => 'App\Admin\Http\Sections\Users\Publisher',
+        AdMaterial::class => 'App\Admin\Http\Sections\AdMaterial'
     ];
 
     /**

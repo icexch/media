@@ -61,4 +61,9 @@ class User extends Section
     {
         return $this->onEdit(null);
     }
+
+    public function onDelete()
+    {
+
+    }
 }
