@@ -1,11 +1,10 @@
 (function() {
     init();
-    console.log("init")
 }).call(this);
 
 
 function init() {
-    var url = "/api/ads";
+    var url = "/api/pixel-point/show";
     var data = [
         ["ids", ""]
     ];
@@ -30,10 +29,11 @@ function init() {
                         createRequest({url: url, data: data, isResponse: true});
                     }, 5000);
                 } else if(this.status === 200) {
-                    for (var i=0;i<data.ads;i++) {
-                        initAd(data.ads[i]);
+                    var adsIds = [];
+                    for (var i=0;i<data.ads.length;i++) {
+                        initAd(data.ads[i]) ? adsIds.push(initAd(data.ads[i])) : false;
                     }
-                    showed(data.adsIds)
+                    showed(adsIds)
                 }
             }
         };
@@ -49,9 +49,17 @@ function initAd(parameters) {
         data = parameters.data || "";
 
     var ad = document.querySelector("ins[data-area-ad-client='"+ placeId +"']");
-    console.log("init ad", ad)
+    if(!ad) {
+        return null;
+    }
+    ad.addEventListener('click', clicked, false);
+    ad.setAttribute("data-area-ad-id", id);
+    var a = document.createElement("a");
+    a.href = href;
+    a.innerHTML = data;
+    ad.innerHTML = a.outerHTML;
 
-
+    return id;
 }
 
 /**
@@ -75,11 +83,12 @@ function getAdInfo(ad) {
     };
 }
 
-function clicked() {
+function clicked(event) {
+    event.preventDefault();
+
     var url = "/api/pixel-point/clicked";
     var data = [
-        ["clicked", "test"],
-        ["surname", "test"]
+        ["id", this.getAttribute("data-area-ad-id")]
     ];
     createRequest({url: url, data: data});
 }

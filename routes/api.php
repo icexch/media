@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post("ads", "AdsController@show");
 
 Route::group(["prefix" => "pixel-point"], function() {
+    Route::post("show", 'PixelPointController@show');
     Route::post("showed", 'PixelPointController@showed');
     Route::post("clicked", 'PixelPointController@clicked');
 });
