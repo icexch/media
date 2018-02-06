@@ -31,7 +31,7 @@ function init() {
                 } else if(this.status === 200) {
                     var adsIds = [];
                     for (var i=0;i<data.ads.length;i++) {
-                        initAd(data.ads[i]) ? adsIds.push(initAd(data.ads[i])) : false;
+                        initAd(data.ads[i]) ? adsIds.push(data.ads[i].placeId) : false;
                     }
                     showed(adsIds)
                 }
@@ -87,8 +87,10 @@ function clicked(event) {
     event.preventDefault();
 
     var url = "/api/pixel-point/clicked";
+    // TODO sended adId or placeId ???
     var data = [
-        ["id", this.getAttribute("data-area-ad-id")]
+        ["id", this.getAttribute("data-area-ad-client")],
+        // ["id", this.getAttribute("data-area-ad-id")],
     ];
     createRequest({url: url, data: data});
 }
