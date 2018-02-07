@@ -8,6 +8,7 @@ class PixelPointPlaceService
 {
     private $placeKey = "place";
 
+    // TODO add logs
     public function getAdsWithPlaceIds(array $placeIds)
     {
         $ads = [];
@@ -15,18 +16,18 @@ class PixelPointPlaceService
             "id" => 123,
             "data" => "<img src=\"https://pipec.online/minecraft-server-221/widget/468\">",
             "href" => "https://pipec.online/minecraft-server-221/vote",
-            "placeId" => "df-pub-12312312"
+            "placeId" => 112
         ]);
         array_push($ads, [
             "id" => 1237635289,
             "data" => "<img src=\"http://imgcollege.com/IMGCollege/media/Design-Files/images/cfb.jpg\">",
             "href" => "https://pipec.online/minecraft-server-221/vote",
-            "placeId" => "df-pub-123322312"
+            "placeId" => 113
         ]);
         return $ads;
     }
 
-    public function addClick($id, array $data = [], int $time = null)
+    public function addClick(int $id, array $data = [], int $time = null)
     {
         if (!$id) {
             return false;
@@ -57,7 +58,7 @@ class PixelPointPlaceService
         return [];
     }
 
-    public function addShow($id, array $data = [], int $time = null)
+    public function addShow(int $id, array $data = [], int $time = null)
     {
         if (!$id) {
             return false;

@@ -29,7 +29,7 @@ class PixelPointController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Request $request) {
-        $ids = explode(',', $request->get("ids"));
+        $ids = array_map('intval', explode(',', $request->get("ids")));
 
         if (!count($ids))
             return response()->json(["message" => "don't objects for showed"]);
@@ -44,7 +44,7 @@ class PixelPointController extends Controller
     public function clicked(Request $request) {
         $placeID = $request->get("placeID");
         $adsID = $request->get("adsID");
-        if(!$placeID || !$adsID) {
+        if((!$placeID || !$adsID) && !is_int($placeID)) {
             return response()->json(['message' => "don't objects for saved", 'error' => false]);
         }
 
@@ -55,8 +55,9 @@ class PixelPointController extends Controller
     }
 
     public function showed(Request $request) {
-        $adsIDs = explode(',', $request->get('adsIDs'));
-        $placeIDs = explode(',', $request->get('placeIDs'));
+        $adsIDs = array_map('intval', explode(',', $request->get('adsIDs')));
+        $placeIDs = array_map('intval', explode(',', $request->get('placeIDs')));
+
         if(!count($adsIDs) || !count($placeIDs)) {
             return response()->json(["message" => "don't objects for saved", 'error' => false]);
         }

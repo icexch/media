@@ -8,27 +8,9 @@ class PixelPointAdsService
 {
     private $adsKey = "ads";
 
-    public function getAdsWithPlaceIds(array $placeIds)
+    public function addClick(int $id, array $data = [], int $time = null)
     {
-        $ads = [];
-        array_push($ads, [
-            "id" => 123,
-            "data" => "<img src=\"https://pipec.online/minecraft-server-221/widget/468\">",
-            "href" => "https://pipec.online/minecraft-server-221/vote",
-            "placeId" => "df-pub-12312312"
-        ]);
-        array_push($ads, [
-            "id" => 1237635289,
-            "data" => "<img src=\"http://imgcollege.com/IMGCollege/media/Design-Files/images/cfb.jpg\">",
-            "href" => "https://pipec.online/minecraft-server-221/vote",
-            "placeId" => "df-pub-123322312"
-        ]);
-        return $ads;
-    }
-
-    public function addClick($id, array $data = [], int $time = null)
-    {
-        if (!$id) {
+        if (!$id && !is_int($id)) {
             return false;
         }
 
@@ -51,15 +33,15 @@ class PixelPointAdsService
                 array_push($data, Redis::zRange($this->adsKey.":clicks:".$id, 0, -1));
             }
             return $data;
-        } else if($ids) {
+        } else if($ids && !is_int($ids)) {
             return Redis::zRange($this->adsKey.":clicks:".$ids, 0, -1);
         }
         return [];
     }
 
-    public function addShow($placeID, array $data = [], int $time = null)
+    public function addShow(int $id, array $data = [], int $time = null)
     {
-        if (!$placeID) {
+        if (!$id && !is_int($id)) {
             return false;
         }
 
@@ -71,7 +53,7 @@ class PixelPointAdsService
             ]);
 
         $str = json_encode($data);
-        Redis::zAdd($this->adsKey.":impression:$placeID", $time, $str);
+        Redis::zAdd($this->adsKey.":impression:$id", $time, $str);
 
         return true;
     }
