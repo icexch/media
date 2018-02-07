@@ -32,7 +32,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
      */
     public function registerNavigation(NavigationInterface $navigation)
     {
-        require app_path('admin/navigation.php');
+        require app_path('Admin/navigation.php');
     }
 
 }
