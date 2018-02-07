@@ -85,9 +85,9 @@
                 <button onclick="clicked()">Click</button>
 
                 <ins class="area-ads"
-                     data-area-ad-client="df-pub-12312312"></ins>
+                     data-area-ads-client="df-pub-12312312"></ins>
                 <ins class="area-ads"
-                     data-area-ad-client="df-pub-123322312"></ins>
+                     data-area-ads-client="df-pub-123322312"></ins>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>

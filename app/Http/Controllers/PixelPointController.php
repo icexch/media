@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PixelPointService;
+use App\Services\PixelPointAdsService;
+use App\Services\PixelPointPlaceService;
 use Illuminate\Http\Request;
 
 class PixelPointController extends Controller
 {
-    protected $pixelPoint;
+    protected $pixelPointPlace;
+    protected $pixelPointAds;
 
     /**
      * PixelPointController constructor.
-     * @param PixelPointService $pixelPointService
+     * @param PixelPointPlaceService $pixelPointPlaceService
+     * @param PixelPointAdsService $pixelPointAdsService
      */
     public function __construct(
-        PixelPointService $pixelPointService
+        PixelPointPlaceService $pixelPointPlaceService,
+        PixelPointAdsService $pixelPointAdsService
     ) {
-        $this->pixelPoint = $pixelPointService;
+        $this->pixelPointPlace = $pixelPointPlaceService;
+        $this->pixelPointAds = $pixelPointAdsService;
     }
 
     /**
@@ -30,31 +35,35 @@ class PixelPointController extends Controller
             return response()->json(["message" => "don't objects for showed"]);
 
         $data = [
-            'ads' => $this->pixelPoint->getAdsWithPlaceIds($ids),
+            'ads' => $this->pixelPointPlace->getAdsWithPlaceIds($ids),
         ];
 
         return response()->json($data);
     }
 
     public function clicked(Request $request) {
-        $id = $request->get("id");
-        if(!$id) {
+        $placeID = $request->get("placeID");
+        $adsID = $request->get("adsID");
+        if(!$placeID || !$adsID) {
             return response()->json(['message' => "don't objects for saved", 'error' => false]);
         }
 
-        $this->pixelPoint->addClick($id);
+        $this->pixelPointPlace->addClick($placeID, ["adsID" => $adsID]);
+        $this->pixelPointAds->addClick($adsID, ["placeID" => $placeID]);
 
         return response()->json(['message' => 'saved -', 'error' => false]);
     }
 
     public function showed(Request $request) {
-        $ids = explode(',', $request->get('ids'));
-        if(!count($ids)) {
+        $adsIDs = explode(',', $request->get('adsIDs'));
+        $placeIDs = explode(',', $request->get('placeIDs'));
+        if(!count($adsIDs) || !count($placeIDs)) {
             return response()->json(["message" => "don't objects for saved", 'error' => false]);
         }
         $time = time();
-        foreach($ids as $id) {
-            $this->pixelPoint->addShow($id, [], $time);
+        for($i=0;$i < count($adsIDs);$i++) {
+            $this->pixelPointPlace->addShow($adsIDs[$i], ["placeID" => $placeIDs[$i]], $time);
+            $this->pixelPointAds->addShow($placeIDs[$i], ["adsID" => $adsIDs[$i]], $time);
         }
 
         return response()->json(['message' => 'saved - ', 'error' => false]);

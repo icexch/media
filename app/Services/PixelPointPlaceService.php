@@ -4,8 +4,10 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Redis;
 
-class PixelPointService
+class PixelPointPlaceService
 {
+    private $placeKey = "place";
+
     public function getAdsWithPlaceIds(array $placeIds)
     {
         $ads = [];
@@ -24,9 +26,9 @@ class PixelPointService
         return $ads;
     }
 
-    public function addClick($placeId, array $data = [], int $time = null)
+    public function addClick($id, array $data = [], int $time = null)
     {
-        if (!$placeId) {
+        if (!$id) {
             return false;
         }
 
@@ -38,7 +40,7 @@ class PixelPointService
             ]);
 
         $str = json_encode($data);
-        Redis::zAdd("clicks:$placeId", $time, $str);
+        Redis::zAdd($this->placeKey.":clicks:$id", $time, $str);
 
         return true;
     }
@@ -46,18 +48,18 @@ class PixelPointService
         if($ids && is_array($ids)) {
             $data = [];
             foreach ($ids as $id) {
-                array_push($data, Redis::zRange("clicks:".$id, 0, -1));
+                array_push($data, Redis::zRange($this->placeKey.":clicks:".$id, 0, -1));
             }
             return $data;
         } else if($ids) {
-            return Redis::zRange("clicks:".$ids, 0, -1);
+            return Redis::zRange($this->placeKey.":clicks:".$ids, 0, -1);
         }
         return [];
     }
 
-    public function addShow($placeId, array $data = [], int $time = null)
+    public function addShow($id, array $data = [], int $time = null)
     {
-        if (!$placeId) {
+        if (!$id) {
             return false;
         }
 
@@ -69,7 +71,7 @@ class PixelPointService
             ]);
 
         $str = json_encode($data);
-        Redis::zAdd("impression:$placeId", $time, $str);
+        Redis::zAdd($this->placeKey.":impression:$id", $time, $str);
 
         return true;
     }
@@ -77,11 +79,11 @@ class PixelPointService
         if($ids && is_array($ids)) {
             $data = [];
             foreach ($ids as $id) {
-                array_push($data, Redis::zRange("impression:".$id, 0, -1));
+                array_push($data, Redis::zRange($this->placeKey.":impression:".$id, 0, -1));
             }
             return $data;
         } else if($ids) {
-            return Redis::zRange("impression:".$ids, 0, -1);
+            return Redis::zRange($this->placeKey.":impression:".$ids, 0, -1);
         }
         return [];
     }
