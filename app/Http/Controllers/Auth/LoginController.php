@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User\User;
-use App\Services\Gateways\VKGateway;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -43,11 +42,8 @@ class LoginController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showAdminLoginForm(VKGateway $gateway)
+    public function showAdminLoginForm()
     {
-        $data = $gateway->getCountries();
-        dd($data);
-
         return view('admin.auth.login');
     }
 
