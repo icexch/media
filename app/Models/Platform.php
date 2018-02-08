@@ -1,9 +1,12 @@
 <?php namespace App\Models;
 
+use \App\Models\User\Publisher;
+
 class Platform extends BaseModel
 {
     protected $casts = [
         'user_id'     => 'int',
+        'ad_type_id'  => 'int',
         'region_id'   => 'int',
         'category_id' => 'int',
         'is_active'   => 'bool',
@@ -15,7 +18,15 @@ class Platform extends BaseModel
      */
     public function publisher()
     {
-        return $this->belongsTo(\App\Models\User\Publisher::class, 'user_id');
+        return $this->belongsTo(Publisher::class, 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function adType()
+    {
+        return $this->belongsTo(AdType::class);
     }
 
     /**

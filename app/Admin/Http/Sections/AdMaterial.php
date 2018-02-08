@@ -1,6 +1,7 @@
 <?php namespace App\Admin\Http\Sections;
 
 use App\Models\AdType;
+use App\Models\User\Advertiser;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
@@ -33,6 +34,7 @@ class AdMaterial extends Section
             ->setHtmlAttribute('class', 'table-primary table-bordered')
             ->setColumns([
                 AdminColumn::link('name', 'Name'),
+                AdminColumn::relatedLink('advertiser.name', 'Advertiser'),
                 AdminColumn::text('adType.name', 'Type'),
                 AdminColumn::text('cpc', 'CPC'),
                 AdminColumn::text('cpc', 'Value of cpc'),
@@ -52,6 +54,7 @@ class AdMaterial extends Section
         return AdminForm::panel()
             ->addBody([
                 AdminFormElement::text('name', 'Name')->required(),
+                AdminFormElement::select('user_id', 'Advertiser', Advertiser::class)->required(),
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name'),
                 AdminFormElement::text('cpc', 'CPC')->addValidationRule('numeric')->required(),
                 AdminFormElement::text('cpc_value', 'Value of cpc')->addValidationRule('integer')->required(),

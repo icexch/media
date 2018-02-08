@@ -16,6 +16,7 @@ class CreatePlatformsTable extends Migration
         Schema::create('platforms', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('ad_type_id');
             $table->unsignedInteger('region_id');
             $table->unsignedInteger('category_id');
             $table->boolean('is_active');

@@ -1,5 +1,7 @@
 <?php namespace App\Admin\Http\Sections;
 
+use App\Admin\Http\Sections\Users\Publisher;
+use App\Models\AdType;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
@@ -32,6 +34,7 @@ class Platform extends Section
             ->setHtmlAttribute('class', 'table-primary table-bordered')
             ->setColumns([
                 AdminColumn::relatedLink('publisher.name', 'Publisher'),
+                AdminColumn::text('adType.name', 'Type'),
                 AdminColumn::relatedLink('region.name', 'Region'),
                 AdminColumn::relatedLink('category.name', 'Category'),
                 AdminColumnEditable::checkbox('is_active', 'Active'),
@@ -48,7 +51,8 @@ class Platform extends Section
     {
         return AdminForm::panel()
             ->addBody([
-                AdminFormElement::select('publisher.name', 'Publisher')->required(),
+                AdminFormElement::select('user_id', 'Publisher', Publisher::class)->required(),
+                AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name'),
                 AdminFormElement::select('region.name', 'Region')->required(),
                 AdminFormElement::select('category.name', 'Category')->required(),
                 AdminFormElement::checkbox('is_active', 'Activity')->required(),
