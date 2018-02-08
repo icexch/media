@@ -8,6 +8,7 @@ use AdminDisplay;
 use AdminColumn;
 use AdminForm;
 use AdminFormElement;
+use AdminColumnEditable;
 
 class AdMaterial extends Section
 {
@@ -36,7 +37,8 @@ class AdMaterial extends Section
                 AdminColumn::text('cpc', 'CPC'),
                 AdminColumn::text('cpc', 'Value of cpc'),
                 AdminColumn::text('cpv', 'CPV'),
-                AdminColumn::text('cpv', 'Value of cpv')
+                AdminColumn::text('cpv', 'Value of cpv'),
+                AdminColumnEditable::checkbox('is_active', 'Active')
             ]);
     }
 
@@ -55,6 +57,7 @@ class AdMaterial extends Section
                 AdminFormElement::text('cpc_value', 'Value of cpc')->addValidationRule('integer')->required(),
                 AdminFormElement::text('cpv', 'CPV')->addValidationRule('numeric')->required(),
                 AdminFormElement::text('cpv_value', 'Value of cpv')->addValidationRule('numeric')->required(),
+                AdminFormElement::checkbox('is_active', 'Active')
             ]);
     }
 

@@ -1,6 +1,5 @@
 <?php namespace App\Models;
 
-
 class AdMaterial extends BaseModel
 {
     protected $casts = [
@@ -9,7 +8,8 @@ class AdMaterial extends BaseModel
         'cpc'        => 'double',
         'cpc_value'  => 'int',
         'cpv'        => 'double',
-        'cpv_value'  => 'int'
+        'cpv_value'  => 'int',
+        'is_active'  => 'bool'
     ];
 
     /**
