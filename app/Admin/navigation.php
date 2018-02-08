@@ -15,4 +15,5 @@ AdminNavigation::setFromArray([
     (new Page(\App\Models\AdMaterial::class))->setIcon('fa fa-edit'),
     (new Page(\App\Models\Category::class))->setIcon('fa fa-book'),
     (new Page(\App\Models\Region::class))->setIcon('fa fa-map-pin'),
+    (new Page(\App\Models\Platform::class))->setIcon('fa fa-map-pin')
 ]);
