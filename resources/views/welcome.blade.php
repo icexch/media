@@ -84,10 +84,10 @@
 
                 <button onclick="clicked()">Click</button>
 
-                <ins class="area-ads"
-                     data-area-ads-client="112"></ins>
-                <ins class="area-ads"
-                     data-area-ads-client="113"></ins>
+                <ins class="area-ad"
+                     data-area-ad-client="112"></ins>
+                <ins class="area-ad"
+                     data-area-ad-client="113"></ins>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
@@ -101,13 +101,3 @@
     </body>
 </html>
 <script type="text/javascript" src="{{asset("/js/area.js")}}"></script>
-
-{{--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
-{{--<!-- фывафыв -->--}}
-{{--<ins class="adsbygoogle"--}}
-     {{--style="display:inline-block;width:728px;height:90px"--}}
-     {{--data-ad-client="ca-pub-6009428429667360"--}}
-     {{--data-ad-slot="6636187001"></ins>--}}
-{{--<script>--}}
-    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
-{{--</script>--}}

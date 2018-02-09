@@ -6,7 +6,7 @@
             ["ids", ""]
         ];
 
-        var ads = document.getElementsByClassName("area-ads");
+        var ads = document.getElementsByClassName("area-ad");
 
         for (var i = 0; i < ads.length; i++) {
             data[0][1] === "" ? data[0][1] += getAdInfo(ads[i]).id : data[0][1] += "," + getAdInfo(ads[i]).id;
@@ -19,8 +19,7 @@
                     var data = {message: '', error: true, adsIds: [], ads: []};
                     try {
                         data = JSON.parse(this.response);
-                    } catch (e) {
-                    }
+                    } catch (e) {}
 
                     if (this.status >= 500) {
                         setTimeout(function () {
@@ -46,12 +45,12 @@
             placeId = parameters.placeId || "",
             data = parameters.data || "";
 
-        var ads = document.querySelector("ins[data-area-ads-client='" + placeId + "']");
+        var ads = document.querySelector("ins[data-area-ad-client='" + placeId + "']");
         if (!ads) {
             return null;
         }
         ads.addEventListener('click', clicked, false);
-        ads.setAttribute("data-area-ads-id", id);
+        ads.setAttribute("data-area-ad-id", id);
         var a = document.createElement("a");
         a.href = href;
         a.innerHTML = data;
@@ -61,7 +60,7 @@
     };
     getAdInfo = function (ads) {
         return {
-            'id': ads.getAttribute("data-area-ads-client")
+            'id': ads.getAttribute("data-area-ad-client")
         };
     };
     createRequest = function (parameters) {
@@ -106,7 +105,7 @@
         var url = "/api/pixel-point/showed";
         var data = [
             ["adsIDs", adsIDs.join(",")],
-            ["placeIDs", placeIDs.join(",")]
+            ["placesIDs", placeIDs.join(",")]
         ];
 
         createRequest({url: url, data: data});
@@ -116,8 +115,8 @@
 
         var url = "/api/pixel-point/clicked";
         var data = [
-            ["placeID", this.getAttribute("data-area-ads-client")],
-            ["adsID", this.getAttribute("data-area-ads-id")]
+            ["placeID", this.getAttribute("data-area-ad-client")],
+            ["adID", this.getAttribute("data-area-ad-id")]
         ];
         createRequest({url: url, data: data});
     };
