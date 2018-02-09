@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Services\PixelPointAdsService;
-use App\Services\PixelPointPlaceService;
+use App\Services\PixelPoint\PixelPointAdsService;
+use App\Services\PixelPoint\PixelPointPlaceService;
 use Illuminate\Support\Facades\Redis;
 
 class HomeController extends Controller

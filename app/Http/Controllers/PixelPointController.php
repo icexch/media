@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PixelPointAdsService;
-use App\Services\PixelPointPlaceService;
+use App\Services\PixelPoint\PixelPointAdsService;
+use App\Services\PixelPoint\PixelPointPlaceService;
 use Illuminate\Http\Request;
 
 class PixelPointController extends Controller
