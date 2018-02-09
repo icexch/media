@@ -54,7 +54,7 @@ class AdMaterial extends Section
         return AdminForm::panel()
             ->addBody([
                 AdminFormElement::text('name', 'Name')->required(),
-                AdminFormElement::select('user_id', 'Advertiser', Advertiser::class)->required(),
+                AdminFormElement::select('user_id', 'Advertiser', Advertiser::class)->setDisplay('name')->required(),
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name'),
                 AdminFormElement::text('cpc', 'CPC')->addValidationRule('numeric')->required(),
                 AdminFormElement::text('cpc_value', 'Value of cpc')->addValidationRule('integer')->required(),
