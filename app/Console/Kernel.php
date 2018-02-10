@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CreateModerator;
 use App\Console\Commands\GatherCategories;
 use App\Console\Commands\GatherRegions;
 use Illuminate\Console\Scheduling\Schedule;
@@ -16,7 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         GatherRegions::class,
-        GatherCategories::class
+        GatherCategories::class,
+        CreateModerator::class
     ];
 
     /**

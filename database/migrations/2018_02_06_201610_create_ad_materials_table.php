@@ -16,11 +16,13 @@ class CreateAdMaterialsTable extends Migration
         Schema::create('ad_materials', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('ad_type_id');
             $table->double('cpc', 8, 2);
             $table->integer('cpc_value');
             $table->double('cpv', 8, 2);
             $table->integer('cpv_value');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
