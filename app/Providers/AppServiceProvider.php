@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\PixelPointAdsService;
+use App\Services\PixelPointPlaceService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +28,11 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
+
+        $this->app->singleton(PixelPointPlaceService::class);
+        $this->app->singleton(PixelPointAdsService::class);
     }
 }

@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(["prefix" => "pixel-point"], function() {
+    Route::post("show", 'PixelPointController@show');
+    Route::post("showed", 'PixelPointController@showed');
+    Route::post("clicked", 'PixelPointController@clicked');
 });

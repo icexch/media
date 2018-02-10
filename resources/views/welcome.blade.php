@@ -82,9 +82,16 @@
                     Laravel
                 </div>
 
+                <button onclick="clicked()">Click</button>
+
+                <ins class="area-ad"
+                     data-area-ad-client="112"></ins>
+                <ins class="area-ad"
+                     data-area-ad-client="113"></ins>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laracasts.com"><L></L>aracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
@@ -93,3 +100,4 @@
         </div>
     </body>
 </html>
+<script type="text/javascript" src="{{asset("/js/area.js")}}"></script>
