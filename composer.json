@@ -6,13 +6,14 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "barryvdh/laravel-cors": "^0.11.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
-        "laravelrus/sleepingowl": "4.*@dev",
-        "guzzlehttp/guzzle": "^6.3"
+        "laravelrus/sleepingowl": "4.*@dev"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

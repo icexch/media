@@ -34,3 +34,5 @@ $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+$this->get('advertiser/payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
+$this->get('publisher/payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
