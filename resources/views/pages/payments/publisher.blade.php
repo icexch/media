@@ -1,13 +1,10 @@
+@extends('layouts.publishers')
 
-{{ extends 'parts/layout-publishers.twig' }}
+@section('title', 'Publishers Payments')
 
-<title>Publishers Payments</title>
-
-{{--{{ block content }}--}}
-
-{{--PAYMENTS--}}
+@section('content')
 <div class="publishers js-page">
-    <div class="publishers__bg" style="background-image: url(img/publish_bg.jpg)">
+    <div class="publishers__bg" style="background-image: url(/img/publish_bg.jpg)">
         <div class="publishers__bg-darken">
             <div class="publishers__inner container-publishers">
 
@@ -167,4 +164,4 @@
         </div>
     </div>
 </div>
-{{--/PAYMENTS--}}
+@endsection

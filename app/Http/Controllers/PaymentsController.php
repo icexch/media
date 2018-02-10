@@ -12,10 +12,11 @@ class PaymentsController extends Controller
     }
 
     public function indexAdvertiser() {
+        return view('pages.payments.advertiser');
 
     }
 
     public function indexPublisher() {
-
+        return view('pages.payments.publisher');
     }
 }

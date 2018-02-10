@@ -23,4 +23,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function indexAdvertiser() {
+        return view('pages.home.advertiser');
+
+    }
+
+    public function indexPublisher() {
+        return view('pages.home.publisher');
+    }
 }

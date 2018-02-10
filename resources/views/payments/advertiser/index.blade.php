@@ -1,1 +1,0 @@
-<div>advertiser</div>

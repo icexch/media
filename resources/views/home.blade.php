@@ -13,7 +13,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                        <a href="/publisher/export">publisher EXport/</a><br>
+                        <a href="/advertiser/export">advertiser/ EXport</a><br>
+                        <a href="/publisher">publisher/</a><br>
+                        <a href="/advertiser">advertiser/</a><br>
+                        <a href="/publisher/payments">publisher/payments</a><br>
+                        <a href="/advertiser/payments">advertiser/payments</a><br>
                     You are logged in!
                 </div>
             </div>

@@ -34,5 +34,15 @@ $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
-$this->get('advertiser/payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
-$this->get('publisher/payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
+
+Route::get('advertiser', 'HomeController@indexAdvertiser');
+Route::group(['prefix' => 'advertiser'], function() {
+    $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
+    $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
+});
+
+Route::get('publisher', 'HomeController@indexPublisher');
+Route::group(['prefix' => 'publisher'], function() {
+    $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
+    $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
+});
