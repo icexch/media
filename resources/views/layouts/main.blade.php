@@ -19,7 +19,7 @@
     @include('layouts.parts.footer')
     <div class="up-arrow" id="up-arrow"></div>
 </div>
-<link rel="stylesheet" href="/css/main.css?1516859167">
-<script src="/scripts/app.min.js?1516859167"></script>
+<link rel="stylesheet" href="{{ mix('/css/vendor.css') }}">
+<script src="{{ mix('/js/vendor.min.js') }}"></script>
 </body>
 </html>

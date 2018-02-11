@@ -16,3 +16,6 @@ public/packages/sleepingowl/
 .phpstorm.meta.php
 _ide_helper.php
 _ide_helper_models.php
+public/css/*
+public/js/*
+public/mix-manifest.json
