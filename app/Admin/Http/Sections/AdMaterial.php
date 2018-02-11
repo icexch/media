@@ -37,9 +37,9 @@ class AdMaterial extends Section
                 AdminColumn::relatedLink('advertiser.name', 'Advertiser'),
                 AdminColumn::text('adType.name', 'Type'),
                 AdminColumn::text('cpc', 'CPC'),
-                AdminColumn::text('cpc', 'Value of cpc'),
+                AdminColumn::text('cpc_value', 'Value of cpc'),
                 AdminColumn::text('cpv', 'CPV'),
-                AdminColumn::text('cpv', 'Value of cpv'),
+                AdminColumn::text('cpv_value', 'Value of cpv'),
                 AdminColumnEditable::checkbox('is_active', 'Active')
             ]);
     }

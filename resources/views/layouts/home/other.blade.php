@@ -14,14 +14,8 @@
 <body>
 
 <div class="all-wrap" id="all-wrap">
-    @if(auth()->user()->isAdvertiser())
-        @include('layouts.parts.dashboard.header-advertiser')
-    @else
-        @include('layouts.parts.dashboard.header-publisher')
-    @endif
-
+    @include('layouts.home.header')
     @yield('content')
-
     @include('layouts.parts.footer')
     <div class="up-arrow" id="up-arrow"></div>
 </div>

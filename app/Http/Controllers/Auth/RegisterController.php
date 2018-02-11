@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/publisher/dashboard';
 
     const ADVERTISER_ROLE = 'advertiser';
     const PUBLISHER_ROLE = 'publisher';
@@ -91,14 +91,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        $class = $data['type'] === self::ADVERTISER_ROLE ? Advertiser::class : Publisher::class;
+
+        $user = $class::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
-            'role'     => $this->rolesMap[$data['type']]
+            'password' => bcrypt($data['password'])
         ]);
 
         UserProfile::create(array_merge(['user_id' => $user->id], $data['profile']));
+
+        if($user->isAdvertiser()) {
+            $this->redirectTo = '/advertiser/dashboard';
+        }
 
         return $user;
     }

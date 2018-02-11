@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User\Advertiser;
+use App\Models\User\Moderator;
+use App\Models\User\Publisher;
 use App\Models\User\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -64,5 +67,20 @@ class LoginController extends Controller
         $this->redirectTo = '/admin';
 
         return $this->login($request);
+    }
+
+    /**
+     * @param Request $request
+     * @param         $user
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if($user->isAdvertiser()) {
+            $this->redirectTo = 'advertiser/dashboard';
+        }
+
+        if($user->isPublisher()) {
+            $this->redirectTo = 'publisher/dashboard';
+        }
     }
 }

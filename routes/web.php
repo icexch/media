@@ -14,16 +14,16 @@ Route::get('/contact', 'ContactController@index')->name('contact.show');
 Route::post('/contact/send', 'ContactController@send')->name('contact.send');
 
 // Authentication Routes...
-$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
-$this->post('login', 'Auth\LoginController@login');
-$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+$this->get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('auth/login', 'Auth\LoginController@login');
+$this->post('auth/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('login/admin','Auth\LoginController@showAdminLoginForm');
 Route::post('login/admin', 'Auth\LoginController@loginAdmin');
 
 // Registration Routes...
-$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-$this->post('register', 'Auth\RegisterController@register');
+$this->get('auth/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('auth/register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -31,18 +31,32 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('advertiser', 'HomeController@indexAdvertiser');
-
-Route::group(['prefix' => 'advertiser'], function() {
+// Advertiser routes
+Route::group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
+    $this->get('dashboard', 'DashboardController@advertiser')->name('advertiser.dashboard');
+    $this->get('profile', 'ProfileController@index')->name('advertiser.profile');
+    $this->get('ads', 'ProfileController@ads')->name('advertiser.ads');
+    $this->post('ads', 'ProfileController@storeAd');
+    $this->get('account', 'DashboardController@publisher')->name('advertiser.account');
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
 });
 
-Route::get('publisher', 'HomeController@indexPublisher');
-
-Route::group(['prefix' => 'publisher'], function() {
+// Publisher routes
+Route::group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher']], function() {
+    $this->get('dashboard', 'DashboardController@publisher')->name('publisher.dashboard');
+    $this->get('profile', 'ProfileController@index')->name('publisher.profile');
+    $this->get('places', 'PublisherController@places')->name('publisher.places');
+    $this->post('places/add', 'PublisherController@storePlace');
+    $this->get('account', 'DashboardController@publisher')->name('publisher.account');
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
 });
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('advertiser', 'HomeController@indexAdvertiser')->name('home.advertiser');
+Route::get('publisher', 'HomeController@indexPublisher')->name('home.publisher');
+
+// Contacts routes
+Route::get('/contact', 'ContactController@index')->name('contact.show');
+Route::post('/contact/send', 'ContactController@send')->name('contact.send');
