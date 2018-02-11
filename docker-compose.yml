@@ -9,6 +9,7 @@ services:
       dockerfile: ./.docker/build/php-fpm.dockerfile
     links:
       - db
+      - redis
     volumes:
       - .:/app
       - ./.docker/configs/php-fpm/www.conf:/etc/php/7.1/fpm/pool.d/www.conf
@@ -57,6 +58,10 @@ services:
     restart: always
     links:
       - app
+
+  redis:
+    container_name: redis.icex
+    image: "redis:alpine"
 
   selenium:
     image: "selenium/standalone-chrome:3.0.1-fermium"
