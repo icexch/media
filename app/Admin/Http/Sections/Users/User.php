@@ -32,7 +32,7 @@ class User extends Section
             ->setColumns([
                 AdminColumn::link('name', 'Username'),
                 AdminColumn::email('email', 'Email')->setWidth('150px')
-            ]);
+            ])->paginate(20);
     }
 
     /**
@@ -59,11 +59,10 @@ class User extends Section
      */
     public function onCreate()
     {
-        return $this->onEdit(null);
+        return $this->onEdit(null)->addItem(AdminFormElement::hidden('role')->setDefaultValue($this->class::ROLE));
     }
 
     public function onDelete()
     {
-
     }
 }

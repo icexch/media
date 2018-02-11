@@ -28,8 +28,7 @@ class CreateModerator extends Command
             $moderator = Moderator::create([
                 'name'     => $name,
                 'email'    => $email,
-                'password' => bcrypt($password),
-                'role'     => 1
+                'password' => bcrypt($password)
             ]);
 
             $this->info('Moderator creation success. ID#' . $moderator->id);

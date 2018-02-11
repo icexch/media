@@ -43,6 +43,27 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         'remember_token',
     ];
 
+    public static function boot()
+    {
+        self::creating(function(User $user) {
+            $user->role = static::ROLE;
+        });
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function newQuery()
+    {
+        $newBuilder = parent::newQuery();
+
+        if (defined('static::ROLE')) {
+            $newBuilder->whereRole(constant('static::ROLE'));
+        }
+
+        return $newBuilder;
+    }
+
     /**
      * Role mutator, protect against change.
      *
