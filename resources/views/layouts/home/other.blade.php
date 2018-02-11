@@ -2,11 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-
-    <title>ICEX Media</title>
-
+    <title>Guest registration - ICEX Media</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
     <style>
         body {
             opacity: 0;
@@ -17,20 +14,12 @@
 <body>
 
 <div class="all-wrap" id="all-wrap">
-    @include('layouts.parts.dashboard.header')
-
+    @include('layouts.home.header')
     @yield('content')
-
     @include('layouts.parts.footer')
-
     <div class="up-arrow" id="up-arrow"></div>
 </div>
-
-<link rel="stylesheet" href="css/main.css?1516859164">
-
-
-<script src="scripts/app.min.js?1516859164"></script>
-
-
+<link rel="stylesheet" href="{{ mix('/css/vendor.css') }}">
+<script src="{{ mix('/js/vendor.min.js') }}"></script>
 </body>
 </html>

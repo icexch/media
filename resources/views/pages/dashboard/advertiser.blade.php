@@ -1,31 +1,28 @@
-@extends('layouts.publishers')
+@extends('layouts.main')
 
-@section('title', 'Publishers Home')
+@section('title', 'New Add Advertisers - ICEX Media')
 
 @section('content')
-
-    {{--PAYMENTS--}}
-    <div class="publishers js-page">
-        <div class="publishers__bg" style="background-image: url(/img/publish_bg.jpg)">
-            <div class="publishers__bg-darken">
-                <div class="publishers__inner container-publishers">
-                    <div class="publishers__block">
-                        <h1 class="publishers__title">Welcome back !</h1>
-                        {{--CHART--}}
-                        <div class="chart">
-                            <div class="chart__itself chart-container" id="home-publishers-chart"></div>
-                            <div class="chart__tabs">
-                                <a href="#" class="chart__tabs-item chart__tabs-item_active js-chart-tab" data-id="2">Month</a>
-                                <a href="#" class="chart__tabs-item js-chart-tab" data-id="3">Years</a>
-                            </div>
-                        </div>
-                        {{--/CHART--}}
+    {{--HOME ADVERTISERS--}}
+    <div class="std-adv std-adv_home js-page"  style="background-image: url(/img/contact-us-bg.jpg)">
+        <div class="std-adv__container container">
+            <h1 class="std-adv__title">Welcome back !</h1>
+            <div class="std-adv__content">
+                {{--CHART--}}
+                <div class="chart">
+                    <div class="chart__itself chart-container" id="home-adv-chart"></div>
+                    <div class="chart__tabs">
+                        <a href="#" class="chart__tabs-item chart__tabs-item_active js-chart-tab" data-id="1">Today</a>
+                        <a href="#" class="chart__tabs-item js-chart-tab" data-id="2">Month</a>
+                        <a href="#" class="chart__tabs-item js-chart-tab" data-id="3">Years</a>
                     </div>
                 </div>
+                {{--/CHART--}}
             </div>
+            <p class="std-adv__title std-adv__title_bottom">Countries where your ads have been displayed in December 2017</p>
         </div>
     </div>
-    {{--/PAYMENTS--}}
+    {{--/HOME ADVERTISERS--}}
 @endsection
 
 @section('scripts')
@@ -38,7 +35,7 @@
                 var data = google.visualization.arrayToDataTable([
                     [
                         {label: 'Year', id: 'year'},
-                        {label: 'Sales', id: 'Sales', type: 'number'} // Use object notation to explicitly specify the data type.
+                        {label: 'Sales', id: 'Sales', type: 'number'}, // Use object notation to explicitly specify the data type.
                     ],
                     ['2013', 2000],
                     ['2014', 400],
@@ -47,7 +44,7 @@
                     ['2016', 500],
                     ['2016', 300],
                     ['2016', 1200],
-                    ['2016', 1568]
+                    ['2016', 1568],
                 ]);
                 var options = {
                     legend: {
@@ -92,7 +89,7 @@
 //					},
                 };
                 // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.AreaChart(document.getElementById('home-publishers-chart'));
+                var chart = new google.visualization.AreaChart(document.getElementById('home-adv-chart'));
                 var createSVG  = function(n,a,b){
                     var xmlns = "http://www.w3.org/2000/svg",
                         e     = document.createElementNS (xmlns, n);
@@ -111,7 +108,7 @@
                             id:'fx'
                         }
                     );
-                    document.getElementById('home-publishers-chart')
+                    document.getElementById('home-adv-chart')
                         .querySelector('svg>defs').appendChild(gradient);
                     gradient.appendChild(createSVG('stop',{offset:'0%'}));
                     gradient.appendChild(createSVG('stop',{offset:'100%'}));
@@ -133,5 +130,4 @@
             }
         })();
     </script>
-
 @endsection

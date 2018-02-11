@@ -53,8 +53,8 @@ class Platform extends Section
             ->addBody([
                 AdminFormElement::select('user_id', 'Publisher', Publisher::class)->setDisplay('name')->required(),
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name'),
-                AdminFormElement::select('region.name', 'Region')->required(),
-                AdminFormElement::select('category.name', 'Category')->required(),
+                AdminFormElement::select('region.name', 'Region')->setDisplay('name')->required(),
+                AdminFormElement::select('category.name', 'Category')->setDisplay('name')->required(),
                 AdminFormElement::checkbox('is_active', 'Activity')->required(),
                 AdminFormElement::text('url', 'platform url')
             ]);
