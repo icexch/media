@@ -21,15 +21,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home.guest');  
     }
 
     public function indexAdvertiser() {
-        return view('pages.home.advertiser');
+        return view('home.advertiser');
 
     }
 
     public function indexPublisher() {
-        return view('pages.home.publisher');
+        return view('home.publisher');
     }
 }

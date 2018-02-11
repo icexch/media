@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/contact', function () {
+    return view('contact-us');
+})->name('home.contact');
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -33,15 +32,17 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('advertiser', 'HomeController@indexAdvertiser');
+
 Route::group(['prefix' => 'advertiser'], function() {
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
 });
 
 Route::get('publisher', 'HomeController@indexPublisher');
+
 Route::group(['prefix' => 'publisher'], function() {
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
