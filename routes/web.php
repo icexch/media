@@ -10,9 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/contact', function () {
-    return view('contact-us');
-})->name('home.contact');
+Route::get('/contact', 'ContactController@index')->name('contact.show');
+Route::post('/contact/send', 'ContactController@send')->name('contact.send');
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
