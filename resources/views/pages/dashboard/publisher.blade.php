@@ -1,4 +1,4 @@
-@extends('layouts.publisher')
+@extends('layouts.main')
 
 @section('title', 'publisher Home')
 

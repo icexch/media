@@ -15,9 +15,10 @@ class CreatePlacesTable extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('ad_type_id');
-            $table->unsignedInteger('region_id');
+            $table->unsignedInteger('region_id')->nullable();
             $table->unsignedInteger('category_id');
             $table->boolean('is_active');
             $table->string('url');

@@ -35,6 +35,7 @@ class Place extends Section
         return AdminDisplay::table()
             ->setHtmlAttribute('class', 'table-primary table-bordered')
             ->setColumns([
+                AdminColumn::text('name', 'Name'),
                 AdminColumn::relatedLink('publisher.name', 'Publisher'),
                 AdminColumn::text('adType.name', 'Type'),
                 AdminColumn::relatedLink('region.name', 'Region'),
@@ -53,10 +54,11 @@ class Place extends Section
     {
         return AdminForm::panel()
             ->addBody([
+                AdminFormElement::text('name', 'Name'),
                 AdminFormElement::select('user_id', 'Publisher', Publisher::class)->setDisplay('name')->required(),
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name'),
-                AdminFormElement::select('region.name', 'Region', Region::class)->setDisplay('name')->required(),
-                AdminFormElement::select('category.name', 'Category', Category::class)->setDisplay('name')->required(),
+                AdminFormElement::select('region_id', 'Region', Region::class)->setDisplay('name')->required(),
+                AdminFormElement::select('category_id', 'Category', Category::class)->setDisplay('name')->required(),
                 AdminFormElement::text('url', 'place url'),
                 AdminFormElement::checkbox('is_active', 'Activity')->required(),
             ]);
@@ -72,6 +74,5 @@ class Place extends Section
 
     public function onDelete()
     {
-
     }
 }
