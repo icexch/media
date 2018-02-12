@@ -47,6 +47,7 @@ Route::group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
     $this->get('dashboard', 'DashboardController@publisher')->name('publisher.dashboard');
     $this->get('profile', 'ProfileController@index')->name('publisher.profile');
     $this->get('places', 'PublisherController@places')->name('publisher.places');
+    $this->get('places/add', 'PublisherController@createPlace')->name('publisher.places.create');;
     $this->post('places/add', 'PublisherController@storePlace');
     $this->get('account', 'DashboardController@publisher')->name('publisher.account');
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
