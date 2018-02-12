@@ -1,4 +1,6 @@
 let mix = require('laravel-mix');
 
-mix.copy('resources/assets/vendor/css/main.css', 'public/css/vendor.css')
-    .copy('resources/assets/vendor/js/app.min.js', 'public/js/vendor.min.js');
+mix.js('resources/assets/js/app.js', 'public/js')
+    .copy('resources/assets/vendor/css/main.css', 'public/css/main.css')
+    .copy('resources/assets/vendor/js/app.min.js', 'public/js/main.min.js')
+    .extract(['lodash']);
