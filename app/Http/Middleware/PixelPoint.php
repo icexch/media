@@ -17,9 +17,11 @@ class PixelPoint
     public function handle($request, Closure $next)
     {
         $refer = $request->header('referer');
+        $ids = array_map('intval', explode(',', $request->get("ids")));
+
         // TODO add redis array urls and check in redis
-        $place = Place::where('url', $refer)->count();
-        if ($place) {
+        $place = Place::where('url', $refer)->whereIn('id', $ids)->count();
+        if ($place > 0) {
             return $next($request);
         } else {
             return response()->json(["message" => "not allowed"], 423);

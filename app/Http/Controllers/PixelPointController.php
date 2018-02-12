@@ -37,7 +37,6 @@ class PixelPointController extends Controller
             return response()->json(["message" => "don't objects for showed"]);
         }
 
-
         $data = [
             'ads' => $this->pixelPointPlace->getAdsWithPlaceIds($referer, $ids),
         ];

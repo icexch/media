@@ -30,7 +30,7 @@
                         var adsIDs = [],
                             placeIDs = [];
                         for (var i = 0; i < data.ads.length; i++) {
-                            initAd(data.ads[i]) ? placeIDs.push(data.ads[i].placeId) && adsIDs.push(data.ads[i].id) : false;
+                            initAd(data.ads[i]) ? placeIDs.push(data.ads[i].placeID) && adsIDs.push(data.ads[i].id) : false;
                         }
                         showed(placeIDs, adsIDs)
                     }
@@ -43,10 +43,10 @@
     initAd = function (parameters) {
         var id = parameters.id || "",
             href = parameters.href || "",
-            placeId = parameters.placeId || "",
+            placeID = parameters.placeID || "",
             data = parameters.data || "";
 
-        var ads = document.querySelector("ins[data-area-ad-client='" + placeId + "']");
+        var ads = document.querySelector("ins[data-area-ad-client='" + placeID + "']");
         if (!ads) {
             return null;
         }
