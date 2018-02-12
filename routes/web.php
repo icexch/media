@@ -41,16 +41,6 @@ Route::group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
 });
-Route::get('/', 'HomeController@index')->name('home');
-
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('advertiser', 'HomeController@indexAdvertiser')->name('advertiser');
-    Route::group(['prefix' => 'advertiser'], function() {
-        $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
-        $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
-//    TODO test route and parametrs to method
-        $this->get('export/ads/{id}', 'ExportController@indexAdvertiser')->name('advertiser.export.ad');
-    });
 
 // Publisher routes
 Route::group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher']], function() {
@@ -61,13 +51,6 @@ Route::group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
     $this->get('account', 'DashboardController@publisher')->name('publisher.account');
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
-    Route::get('publisher', 'HomeController@indexPublisher')->name('publisher');
-    Route::group(['prefix' => 'publisher'], function() {
-        $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
-        $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
-        //    TODO test route and parametrs to method
-        $this->get('export/places/{id}', 'ExportController@indexPublisher')->name('publisher.export.place');
-    });
 });
 
 Route::get('/', 'HomeController@index')->name('home');
