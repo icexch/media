@@ -13,9 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group(['prefix' => 'v1'], function () {
 
-Route::group(["prefix" => "pixel-point"], function() {
-    Route::post("show", 'PixelPointController@show');
-    Route::post("showed", 'PixelPointController@showed');
-    Route::post("clicked", 'PixelPointController@clicked');
+    Route::group(["prefix" => "pixel-point"], function() {
+        Route::post("show", 'PixelPointController@show');
+        Route::post("showed", 'PixelPointController@showed');
+        Route::post("clicked", 'PixelPointController@clicked');
+    });
 });

@@ -41,11 +41,11 @@
                     {{--/MOBILE DROPDOWN--}}
                 </div>
 
-                <a href="#" class="header__nav-item">Home</a>
+                <a href="{{route('publisher')}}" class="header__nav-item">Home</a>
                 <a href="#" class="header__nav-item">Places</a>
                 <a href="#" class="header__nav-item">New Place</a>
-                <a href="#" class="header__nav-item">Export</a>
-                <a href="#" class="header__nav-item">Payments</a>
+                <a href="{{route('publisher.export')}}" class="header__nav-item">Export</a>
+                <a href="{{route('publisher.payments')}}" class="header__nav-item">Payments</a>
                 <a href="#" class="header__nav-item">Messages</a>
             </nav>
             {{--/NAV--}}
@@ -67,7 +67,7 @@
                     <div class="desktop-dropdown__link-wrap">
                         <a class="desktop-dropdown__link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                           document.getElementById('logout-form').submit();">
                             Log off
                         </a>
 

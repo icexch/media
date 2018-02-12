@@ -1,7 +1,8 @@
 (function() {
     var init, initAd, getAdInfo, createRequest, showed, clicked;
+    const HOST = "http://icexch.dev/api/v1/";
     init = function () {
-        var url = "/api/pixel-point/show";
+        var url = "pixel-point/show";
         var data = [
             ["ids", ""]
         ];
@@ -64,7 +65,7 @@
         };
     };
     createRequest = function (parameters) {
-        var url = parameters.url,
+        var url = HOST + parameters.url,
             type = parameters.type || "POST",
             data = parameters.data,
             isResponse = parameters.isResponse;
@@ -102,7 +103,7 @@
         }
     };
     showed = function (placeIDs, adsIDs) {
-        var url = "/api/pixel-point/showed";
+        var url = "pixel-point/showed";
         var data = [
             ["adsIDs", adsIDs.join(",")],
             ["placesIDs", placeIDs.join(",")]
@@ -113,7 +114,7 @@
     clicked = function (event) {
         event.preventDefault();
 
-        var url = "/api/pixel-point/clicked";
+        var url = "pixel-point/clicked";
         var data = [
             ["placeID", this.getAttribute("data-area-ad-client")],
             ["adID", this.getAttribute("data-area-ad-id")]

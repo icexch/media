@@ -4,20 +4,50 @@
 
 @section('content')
     {{--HOME ADVERTISERS--}}
-    <div class="std-adv std-adv_home js-page"  style="background-image: url(/img/contact-us-bg.jpg)">
+
+    <div class="std-adv std-adv_home js-page"  style="background-image: url(img/contact-us-bg.jpg)">
         <div class="std-adv__container container">
             <h1 class="std-adv__title">Welcome back !</h1>
             <div class="std-adv__content">
-                {{--CHART--}}
+
+
+                <div class="chart-table">
+                    <div class="chart-table__header">
+                        <div class="chart-table__header-col chart-table__col">Number of places</div>
+                        <div class="chart-table__header-col chart-table__col">Impressions sent total</div>
+                        <div class="chart-table__header-col chart-table__col">Clicks sent total</div>
+                        <div class="chart-table__header-col chart-table__col">Ratio clicks / impressions sent</div>
+                        <div class="chart-table__header-col chart-table__col">Amount paid</div>
+                        <div class="chart-table__header-col chart-table__col">Amount unpaid</div>
+                    </div>
+                    <div class="chart-table__body">
+                        <div class="chart-table__body-col chart-table__col">0</div>
+                        <div class="chart-table__body-col chart-table__col">0</div>
+                        <div class="chart-table__body-col chart-table__col">0</div>
+                        <div class="chart-table__body-col chart-table__col">nan%</div>
+                        <div class="chart-table__body-col chart-table__col">$0.00</div>
+                        <div class="chart-table__body-col chart-table__col">$0.00</div>
+                    </div>
+                </div>
+
+
+
                 <div class="chart">
                     <div class="chart__itself chart-container" id="home-adv-chart"></div>
                     <div class="chart__tabs">
-                        <a href="#" class="chart__tabs-item chart__tabs-item_active js-chart-tab" data-id="1">Today</a>
-                        <a href="#" class="chart__tabs-item js-chart-tab" data-id="2">Month</a>
-                        <a href="#" class="chart__tabs-item js-chart-tab" data-id="3">Years</a>
+                        <a href="#" class="chart__tabs-item chart__tabs-item_active js-chart-period" data-period="Month">Month</a>
+                        <a href="#" class="chart__tabs-item js-chart-period" data-period="Year">Years</a>
+                    </div>
+                    <div class="chart__asides">
+                        <div class="chart__aside-wrapper">
+                            <a href="#" data-dataset="impressions" class="chart__aside chart__aside_active js-chart-data">Impressions</a>
+                        </div>
+                        <div class="chart__aside-wrapper">
+                            <a href="#" data-dataset="clicks" class="chart__aside js-chart-data">Clicks</a>
+                        </div>
                     </div>
                 </div>
-                {{--/CHART--}}
+
             </div>
             <p class="std-adv__title std-adv__title_bottom">Countries where your ads have been displayed in December 2017</p>
         </div>
@@ -31,79 +61,153 @@
         (function() {
             google.charts.load('current', {'packages':['corechart']});
             google.charts.setOnLoadCallback(drawChart);
+            var createSVG  = function(n,a,b){
+                var xmlns = "http://www.w3.org/2000/svg",
+                    e     = document.createElementNS (xmlns, n);
+                for(var k in a){
+                    e.setAttributeNS (null, k,a[k]);
+                }
+                for(var k in b){
+                    e.setAttribute (k,b[k]);
+                }
+                return e;
+            };
+            // Options for year
+            window.optionsYear = {
+                legend: {
+                    position: 'none'
+                },
+                hAxis: {
+                    color: 'none',
+                    baselineColor: 'none',
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    gridlines: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    },
+                    format: 'y'
+                },
+                vAxis: {
+                    minValue: 0,
+                    gridlines: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    },
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                backgroundColor: { fill:'transparent' },
+                colors: ['#fff'],
+                chartArea: {
+                    height: '80%',
+                    top: 10,
+                    bottom: 40,
+                    left: 80,
+                    right: 40
+                }
+            };
+            // Options for month
+            window.optionsMonth = {
+                legend: {
+                    position: 'none'
+                },
+                hAxis: {
+                    color: 'none',
+                    baselineColor: 'none',
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    gridlines: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    },
+                    format: 'y/M'
+                },
+                vAxis: {
+                    minValue: 0,
+                    gridlines: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    },
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                backgroundColor: { fill:'transparent' },
+                colors: ['#fff'],
+                chartArea: {
+                    height: '80%',
+                    top: 10,
+                    bottom: 40,
+                    left: 80,
+                    right: 40
+                }
+            };
+            // Current period
+            window.currentPeriod = 'Month';
+            // Current options
+            window.currentOptions = window['options' + window.currentPeriod];
             function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    [
-                        {label: 'Year', id: 'year'},
-                        {label: 'Sales', id: 'Sales', type: 'number'}, // Use object notation to explicitly specify the data type.
-                    ],
-                    ['2013', 2000],
-                    ['2014', 400],
-                    ['2015', 1000],
-                    ['2016', 2000],
-                    ['2016', 500],
-                    ['2016', 300],
-                    ['2016', 1200],
-                    ['2016', 1568],
+                if (!window.chart) {
+                    // Instantiate and draw our chart, passing in some options.
+                    window.chart = new google.visualization.AreaChart(document.getElementById('home-adv-chart'));
+                }
+                // Impressions year data
+                window.impressionsYearData = new google.visualization.DataTable();
+                window.impressionsYearData.addColumn('date', 'Year');
+                window.impressionsYearData.addColumn('number', 'Impressions');
+                window.impressionsYearData.addRows([
+                    [new Date(2013, 0), 21],
+                    [new Date(2014, 0), 18],
+                    [new Date(2015, 0), 27],
+                    [new Date(2016, 0), 35],
+                    [new Date(2017, 0), 23],
+                    [new Date(2018, 0), 20]
                 ]);
-                var options = {
-                    legend: {
-                        position: 'none'
-                    },
-                    hAxis: {
-                        title: '',
-                        titleTextStyle: {
-                            color: '#ffffff'
-                        },
-                        textStyle: {
-                            color: '#fff',
-                        },
-                        gridlines: {
-                            color: '#ffffff',
-                            count: -1,
-                        },
-                    },
-                    vAxis: {
-                        minValue: 0,
-                        gridlines: {
-                            color: '#ffffff',
-                            count: -1,
-                        },
-                        textStyle: {
-                            color: '#fff',
-                        }
-                    },
-                    backgroundColor: { fill:'transparent' },
-                    colors: ['#fff'],
-                    chartArea: {
-                        // 'width': '90%',
-                        'height': '80%',
-                        top: 10,
-                        bottom: 40,
-                        left: 80,
-                        right: 80,
-                    },
-//					animation:{
-//						duration: 1000,
-//						easing: 'out',
-//					},
-                };
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.AreaChart(document.getElementById('home-adv-chart'));
-                var createSVG  = function(n,a,b){
-                    var xmlns = "http://www.w3.org/2000/svg",
-                        e     = document.createElementNS (xmlns, n);
-                    for(var k in a){
-                        e.setAttributeNS (null, k,a[k]);
-                    }
-                    for(var k in b){
-                        e.setAttribute (k,b[k]);
-                    }
-                    return e;
-                };
+                // Impressions month data
+                window.impressionsMonthData = new google.visualization.DataTable();
+                window.impressionsMonthData.addColumn('date', 'Month');
+                window.impressionsMonthData.addColumn('number', 'Impressions');
+                window.impressionsMonthData.addRows([
+                    [new Date(2013, 0), 21],
+                    [new Date(2013, 1), 18],
+                    [new Date(2013, 2), 27],
+                    [new Date(2013, 3), 35],
+                    [new Date(2013, 4), 23],
+                    [new Date(2013, 5), 20],
+                    [new Date(2013, 6), 25],
+                    [new Date(2013, 7), 11]
+                ]);
+                // Clicks year data
+                window.clicksYearData = new google.visualization.DataTable();
+                window.clicksYearData.addColumn('date', 'Year');
+                window.clicksYearData.addColumn('number', 'Clicks');
+                window.clicksYearData.addRows([
+                    [new Date(2013, 0), 18],
+                    [new Date(2014, 0), 39],
+                    [new Date(2015, 0), 16],
+                    [new Date(2016, 0), 35],
+                    [new Date(2017, 0), 23],
+                    [new Date(2018, 0), 20]
+                ]);
+                // Clicks month data
+                window.clicksMonthData = new google.visualization.DataTable();
+                window.clicksMonthData.addColumn('date', 'Month');
+                window.clicksMonthData.addColumn('number', 'Clicks');
+                window.clicksMonthData.addRows([
+                    [new Date(2013, 0), 28],
+                    [new Date(2013, 1), 14],
+                    [new Date(2013, 2), 27],
+                    [new Date(2013, 3), 16],
+                    [new Date(2013, 4), 23],
+                    [new Date(2013, 5), 20],
+                    [new Date(2013, 6), 166],
+                    [new Date(2013, 7), 11]
+                ]);
+                window.currentDataSet = 'impressions';
+                window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
                 google.visualization.events.addListener(chart, 'ready', function(){
                     var gradient = createSVG('linearGradient',{
-                            x1:0,y1:0,x2:0,y2:1
+                            x1:0, y1:0, x2:0, y2:1
                         },{
                             id:'fx'
                         }
@@ -113,21 +217,42 @@
                     gradient.appendChild(createSVG('stop',{offset:'0%'}));
                     gradient.appendChild(createSVG('stop',{offset:'100%'}));
                 });
-                chart.draw(data, options);
-                function tabClick() {
-                    var $link = $('.js-chart-tab');
-                    $link.click(function() {
-                        var $t = $(this);
-                        $link.removeClass('chart__tabs-item_active');
-                        $t.addClass('chart__tabs-item_active');
-                        // Your logics go here
-                        data.setValue(0, 1, 1200);
-                        chart.draw(data, options);
-                        return false;
-                    });
-                }
-                tabClick();
+                window.chart.draw(window.currentData, window.currentOptions);
+                jQuery(document).ready(function($) {
+                    var $periodLink = $('.js-chart-period'),
+                        $dataLink = $('.js-chart-data');
+                    if (!window.chart.eventInitialized) {
+                        // Period
+                        $periodLink.click(function() {
+                            var $t = $(this),
+                                period = $t.data('period');
+                            $periodLink.removeClass('chart__tabs-item_active');
+                            $t.addClass('chart__tabs-item_active');
+                            window.currentPeriod = period;
+                            window.currentOptions = window['options' + window.currentPeriod];
+                            window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
+                            window.chart.draw(window.currentData, window.currentOptions);
+                            return false;
+                        });
+                        // Data set
+                        $dataLink.click(function() {
+                            var $t = $(this),
+                                dataset = $t.data('dataset');
+                            $dataLink.removeClass('chart__aside_active');
+                            $t.addClass('chart__aside_active');
+                            window.currentDataSet = dataset;
+                            window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
+                            window.chart.draw(window.currentData, window.currentOptions);
+                            return false;
+                        });
+                        window.chart.eventInitialized = true;
+                    }
+                });
             }
+            window.addEventListener('resize', function(){
+                // drawChart();
+                window.chart.draw(window.currentData, window.currentOptions);
+            });
         })();
     </script>
 @endsection

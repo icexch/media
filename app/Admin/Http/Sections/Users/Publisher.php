@@ -5,5 +5,5 @@ use AdminFormElement;
 
 class Publisher extends User
 {
-    protected $alias = 'users/publishers';
+    protected $alias = 'users/publisher';
 }

@@ -1,4 +1,4 @@
-@extends('layouts.publishers')
+@extends('layouts.publisher')
 
 @section('title', 'Publishers Payments')
 

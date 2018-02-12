@@ -1,19 +1,19 @@
-@extends('layouts.publishers')
+@extends('layouts.publisher')
 
-@section('title', 'Publishers Home')
+@section('title', 'publisher Home')
 
 @section('content')
 
     {{--PAYMENTS--}}
-    <div class="publishers js-page">
-        <div class="publishers__bg" style="background-image: url(/img/publish_bg.jpg)">
-            <div class="publishers__bg-darken">
-                <div class="publishers__inner container-publishers">
-                    <div class="publishers__block">
-                        <h1 class="publishers__title">Welcome back !</h1>
+    <div class="publisher js-page">
+        <div class="publisher__bg" style="background-image: url(/img/publish_bg.jpg)">
+            <div class="publisher__bg-darken">
+                <div class="publisher__inner container-publisher">
+                    <div class="publisher__block">
+                        <h1 class="publisher__title">Welcome back !</h1>
                         {{--CHART--}}
                         <div class="chart">
-                            <div class="chart__itself chart-container" id="home-publishers-chart"></div>
+                            <div class="chart__itself chart-container" id="home-publisher-chart"></div>
                             <div class="chart__tabs">
                                 <a href="#" class="chart__tabs-item chart__tabs-item_active js-chart-tab" data-id="2">Month</a>
                                 <a href="#" class="chart__tabs-item js-chart-tab" data-id="3">Years</a>
@@ -92,7 +92,7 @@
 //					},
                 };
                 // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.AreaChart(document.getElementById('home-publishers-chart'));
+                var chart = new google.visualization.AreaChart(document.getElementById('home-publisher-chart'));
                 var createSVG  = function(n,a,b){
                     var xmlns = "http://www.w3.org/2000/svg",
                         e     = document.createElementNS (xmlns, n);
@@ -111,7 +111,7 @@
                             id:'fx'
                         }
                     );
-                    document.getElementById('home-publishers-chart')
+                    document.getElementById('home-publisher-chart')
                         .querySelector('svg>defs').appendChild(gradient);
                     gradient.appendChild(createSVG('stop',{offset:'0%'}));
                     gradient.appendChild(createSVG('stop',{offset:'100%'}));
