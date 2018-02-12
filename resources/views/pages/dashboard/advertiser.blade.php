@@ -1,10 +1,5 @@
-@extends('layouts.main')
-
-@section('title', 'New Add Advertisers - ICEX Media')
-
+@section('title', 'New Add Advertisers - ICEX Media')]
 @section('content')
-    {{--HOME ADVERTISERS--}}
-
     <div class="std-adv std-adv_home js-page"  style="background-image: url(img/contact-us-bg.jpg)">
         <div class="std-adv__container container">
             <h1 class="std-adv__title">Welcome back !</h1>
@@ -52,207 +47,246 @@
             <p class="std-adv__title std-adv__title_bottom">Countries where your ads have been displayed in December 2017</p>
         </div>
     </div>
-    {{--/HOME ADVERTISERS--}}
 @endsection
-
+@section('styles')
+<link rel="stylesheet" href="css/main.css?1518344843">
+@endsection
 @section('scripts')
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-        (function() {
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-            var createSVG  = function(n,a,b){
-                var xmlns = "http://www.w3.org/2000/svg",
-                    e     = document.createElementNS (xmlns, n);
-                for(var k in a){
-                    e.setAttributeNS (null, k,a[k]);
-                }
-                for(var k in b){
-                    e.setAttribute (k,b[k]);
-                }
-                return e;
-            };
-            // Options for year
-            window.optionsYear = {
-                legend: {
-                    position: 'none'
-                },
-                hAxis: {
-                    color: 'none',
-                    baselineColor: 'none',
-                    textStyle: {
-                        color: '#fff'
-                    },
-                    gridlines: {
-                        color: 'rgba(255, 255, 255, 0.5)'
-                    },
-                    format: 'y'
-                },
-                vAxis: {
-                    minValue: 0,
-                    gridlines: {
-                        color: 'rgba(255, 255, 255, 0.5)'
-                    },
-                    textStyle: {
-                        color: '#fff'
-                    }
-                },
-                backgroundColor: { fill:'transparent' },
-                colors: ['#fff'],
-                chartArea: {
-                    height: '80%',
-                    top: 10,
-                    bottom: 40,
-                    left: 80,
-                    right: 40
-                }
-            };
-            // Options for month
-            window.optionsMonth = {
-                legend: {
-                    position: 'none'
-                },
-                hAxis: {
-                    color: 'none',
-                    baselineColor: 'none',
-                    textStyle: {
-                        color: '#fff'
-                    },
-                    gridlines: {
-                        color: 'rgba(255, 255, 255, 0.5)'
-                    },
-                    format: 'y/M'
-                },
-                vAxis: {
-                    minValue: 0,
-                    gridlines: {
-                        color: 'rgba(255, 255, 255, 0.5)'
-                    },
-                    textStyle: {
-                        color: '#fff'
-                    }
-                },
-                backgroundColor: { fill:'transparent' },
-                colors: ['#fff'],
-                chartArea: {
-                    height: '80%',
-                    top: 10,
-                    bottom: 40,
-                    left: 80,
-                    right: 40
-                }
-            };
-            // Current period
-            window.currentPeriod = 'Month';
-            // Current options
-            window.currentOptions = window['options' + window.currentPeriod];
-            function drawChart() {
-                if (!window.chart) {
-                    // Instantiate and draw our chart, passing in some options.
-                    window.chart = new google.visualization.AreaChart(document.getElementById('home-adv-chart'));
-                }
-                // Impressions year data
-                window.impressionsYearData = new google.visualization.DataTable();
-                window.impressionsYearData.addColumn('date', 'Year');
-                window.impressionsYearData.addColumn('number', 'Impressions');
-                window.impressionsYearData.addRows([
-                    [new Date(2013, 0), 21],
-                    [new Date(2014, 0), 18],
-                    [new Date(2015, 0), 27],
-                    [new Date(2016, 0), 35],
-                    [new Date(2017, 0), 23],
-                    [new Date(2018, 0), 20]
-                ]);
-                // Impressions month data
-                window.impressionsMonthData = new google.visualization.DataTable();
-                window.impressionsMonthData.addColumn('date', 'Month');
-                window.impressionsMonthData.addColumn('number', 'Impressions');
-                window.impressionsMonthData.addRows([
-                    [new Date(2013, 0), 21],
-                    [new Date(2013, 1), 18],
-                    [new Date(2013, 2), 27],
-                    [new Date(2013, 3), 35],
-                    [new Date(2013, 4), 23],
-                    [new Date(2013, 5), 20],
-                    [new Date(2013, 6), 25],
-                    [new Date(2013, 7), 11]
-                ]);
-                // Clicks year data
-                window.clicksYearData = new google.visualization.DataTable();
-                window.clicksYearData.addColumn('date', 'Year');
-                window.clicksYearData.addColumn('number', 'Clicks');
-                window.clicksYearData.addRows([
-                    [new Date(2013, 0), 18],
-                    [new Date(2014, 0), 39],
-                    [new Date(2015, 0), 16],
-                    [new Date(2016, 0), 35],
-                    [new Date(2017, 0), 23],
-                    [new Date(2018, 0), 20]
-                ]);
-                // Clicks month data
-                window.clicksMonthData = new google.visualization.DataTable();
-                window.clicksMonthData.addColumn('date', 'Month');
-                window.clicksMonthData.addColumn('number', 'Clicks');
-                window.clicksMonthData.addRows([
-                    [new Date(2013, 0), 28],
-                    [new Date(2013, 1), 14],
-                    [new Date(2013, 2), 27],
-                    [new Date(2013, 3), 16],
-                    [new Date(2013, 4), 23],
-                    [new Date(2013, 5), 20],
-                    [new Date(2013, 6), 166],
-                    [new Date(2013, 7), 11]
-                ]);
-                window.currentDataSet = 'impressions';
-                window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
-                google.visualization.events.addListener(chart, 'ready', function(){
-                    var gradient = createSVG('linearGradient',{
-                            x1:0, y1:0, x2:0, y2:1
-                        },{
-                            id:'fx'
-                        }
-                    );
-                    document.getElementById('home-adv-chart')
-                        .querySelector('svg>defs').appendChild(gradient);
-                    gradient.appendChild(createSVG('stop',{offset:'0%'}));
-                    gradient.appendChild(createSVG('stop',{offset:'100%'}));
-                });
-                window.chart.draw(window.currentData, window.currentOptions);
-                jQuery(document).ready(function($) {
-                    var $periodLink = $('.js-chart-period'),
-                        $dataLink = $('.js-chart-data');
-                    if (!window.chart.eventInitialized) {
-                        // Period
-                        $periodLink.click(function() {
-                            var $t = $(this),
-                                period = $t.data('period');
-                            $periodLink.removeClass('chart__tabs-item_active');
-                            $t.addClass('chart__tabs-item_active');
-                            window.currentPeriod = period;
-                            window.currentOptions = window['options' + window.currentPeriod];
-                            window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
-                            window.chart.draw(window.currentData, window.currentOptions);
-                            return false;
-                        });
-                        // Data set
-                        $dataLink.click(function() {
-                            var $t = $(this),
-                                dataset = $t.data('dataset');
-                            $dataLink.removeClass('chart__aside_active');
-                            $t.addClass('chart__aside_active');
-                            window.currentDataSet = dataset;
-                            window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
-                            window.chart.draw(window.currentData, window.currentOptions);
-                            return false;
-                        });
-                        window.chart.eventInitialized = true;
-                    }
-                });
+
+<script src="scripts/app.min.js?1518344843"></script>
+
+
+
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    (function() {
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        var createSVG  = function(n,a,b){
+            var xmlns = "http://www.w3.org/2000/svg",
+                e     = document.createElementNS (xmlns, n);
+            for(var k in a){
+                e.setAttributeNS (null, k,a[k]);
             }
-            window.addEventListener('resize', function(){
-                // drawChart();
-                window.chart.draw(window.currentData, window.currentOptions);
+            for(var k in b){
+                e.setAttribute (k,b[k]);
+            }
+            return e;
+        };
+
+        // Options for year
+        window.optionsYear = {
+            legend: {
+                position: 'none'
+            },
+
+            hAxis: {
+                color: 'none',
+                baselineColor: 'none',
+                textStyle: {
+                    color: '#fff'
+                },
+                gridlines: {
+                    color: 'rgba(255, 255, 255, 0.5)'
+                },
+                format: 'y'
+            },
+            vAxis: {
+                minValue: 0,
+                gridlines: {
+                    color: 'rgba(255, 255, 255, 0.5)'
+                },
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+
+            backgroundColor: { fill:'transparent' },
+            colors: ['#fff'],
+            chartArea: {
+                height: '80%',
+                top: 10,
+                bottom: 40,
+                left: 80,
+                right: 40
+            }
+        };
+
+        // Options for month
+        window.optionsMonth = {
+            legend: {
+                position: 'none'
+            },
+
+            hAxis: {
+                color: 'none',
+                baselineColor: 'none',
+                textStyle: {
+                    color: '#fff'
+                },
+                gridlines: {
+                    color: 'rgba(255, 255, 255, 0.5)'
+                },
+                format: 'y/M'
+            },
+            vAxis: {
+                minValue: 0,
+                gridlines: {
+                    color: 'rgba(255, 255, 255, 0.5)'
+                },
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+
+            backgroundColor: { fill:'transparent' },
+            colors: ['#fff'],
+            chartArea: {
+                height: '80%',
+                top: 10,
+                bottom: 40,
+                left: 80,
+                right: 40
+            }
+        };
+
+        // Current period
+        window.currentPeriod = 'Month';
+
+        // Current options
+        window.currentOptions = window['options' + window.currentPeriod];
+
+        function drawChart() {
+            if (!window.chart) {
+                // Instantiate and draw our chart, passing in some options.
+                window.chart = new google.visualization.AreaChart(document.getElementById('home-adv-chart'));
+            }
+
+            // Impressions year data
+            window.impressionsYearData = new google.visualization.DataTable();
+            window.impressionsYearData.addColumn('date', 'Year');
+            window.impressionsYearData.addColumn('number', 'Impressions');
+            window.impressionsYearData.addRows([
+                [new Date(2013, 0), 21],
+                [new Date(2014, 0), 18],
+                [new Date(2015, 0), 27],
+                [new Date(2016, 0), 35],
+                [new Date(2017, 0), 23],
+                [new Date(2018, 0), 20]
+            ]);
+
+            // Impressions month data
+            window.impressionsMonthData = new google.visualization.DataTable();
+            window.impressionsMonthData.addColumn('date', 'Month');
+            window.impressionsMonthData.addColumn('number', 'Impressions');
+            window.impressionsMonthData.addRows([
+                [new Date(2013, 0), 21],
+                [new Date(2013, 1), 18],
+                [new Date(2013, 2), 27],
+                [new Date(2013, 3), 35],
+                [new Date(2013, 4), 23],
+                [new Date(2013, 5), 20],
+                [new Date(2013, 6), 25],
+                [new Date(2013, 7), 11]
+            ]);
+
+            // Clicks year data
+            window.clicksYearData = new google.visualization.DataTable();
+            window.clicksYearData.addColumn('date', 'Year');
+            window.clicksYearData.addColumn('number', 'Clicks');
+            window.clicksYearData.addRows([
+                [new Date(2013, 0), 18],
+                [new Date(2014, 0), 39],
+                [new Date(2015, 0), 16],
+                [new Date(2016, 0), 35],
+                [new Date(2017, 0), 23],
+                [new Date(2018, 0), 20]
+            ]);
+
+            // Clicks month data
+            window.clicksMonthData = new google.visualization.DataTable();
+            window.clicksMonthData.addColumn('date', 'Month');
+            window.clicksMonthData.addColumn('number', 'Clicks');
+            window.clicksMonthData.addRows([
+                [new Date(2013, 0), 28],
+                [new Date(2013, 1), 14],
+                [new Date(2013, 2), 27],
+                [new Date(2013, 3), 16],
+                [new Date(2013, 4), 23],
+                [new Date(2013, 5), 20],
+                [new Date(2013, 6), 166],
+                [new Date(2013, 7), 11]
+            ]);
+
+            window.currentDataSet = 'impressions';
+            window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
+
+            google.visualization.events.addListener(chart, 'ready', function(){
+
+                var gradient = createSVG('linearGradient',{
+                        x1:0, y1:0, x2:0, y2:1
+                    },{
+                        id:'fx'
+                    }
+                );
+                document.getElementById('home-adv-chart')
+                    .querySelector('svg>defs').appendChild(gradient);
+                gradient.appendChild(createSVG('stop',{offset:'0%'}));
+                gradient.appendChild(createSVG('stop',{offset:'100%'}));
             });
-        })();
-    </script>
+
+            window.chart.draw(window.currentData, window.currentOptions);
+
+            jQuery(document).ready(function($) {
+                var $periodLink = $('.js-chart-period'),
+                    $dataLink = $('.js-chart-data');
+
+                if (!window.chart.eventInitialized) {
+
+                    // Period
+                    $periodLink.click(function() {
+                        var $t = $(this),
+                            period = $t.data('period');
+
+                        $periodLink.removeClass('chart__tabs-item_active');
+                        $t.addClass('chart__tabs-item_active');
+
+                        window.currentPeriod = period;
+                        window.currentOptions = window['options' + window.currentPeriod];
+                        window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
+
+                        window.chart.draw(window.currentData, window.currentOptions);
+                        return false;
+                    });
+
+                    // Data set
+                    $dataLink.click(function() {
+                        var $t = $(this),
+                            dataset = $t.data('dataset');
+
+                        $dataLink.removeClass('chart__aside_active');
+                        $t.addClass('chart__aside_active');
+
+                        window.currentDataSet = dataset;
+                        window.currentData = window[window.currentDataSet + window.currentPeriod + 'Data'];
+
+                        window.chart.draw(window.currentData, window.currentOptions);
+                        return false;
+                    });
+
+                    window.chart.eventInitialized = true;
+                }
+            });
+        }
+
+        window.addEventListener('resize', function(){
+            // drawChart();
+            window.chart.draw(window.currentData, window.currentOptions);
+        });
+    })();
+
+
+
+</script>
 @endsection

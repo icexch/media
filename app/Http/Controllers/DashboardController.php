@@ -1,20 +1,56 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Services\PixelPoint\PixelPointAdService;
+use App\Services\PixelPoint\PixelPointPlaceService;
 
 class DashboardController extends Controller
 {
+    private $pixelAd;
+    private $pixelPlace;
+    private $user;
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Create a new controller instance.
+     *
+     * @param PixelPointAdService $pixelPointAdService
+     * @param PixelPointPlaceService $pixelPointPlaceService
      */
-    public function advertiser()
-    {
-        return view('pages.dashboard.advertiser');
+    public function __construct(
+        PixelPointAdService $pixelPointAdService,
+        PixelPointPlaceService $pixelPointPlaceService
+    ) {
+        $this->pixelAd = $pixelPointAdService;
+        $this->pixelPlace = $pixelPointPlaceService;
+
+        $this->middleware(function ($request, $next) {
+            $this->user = \Auth::user();
+
+            return $next($request);
+        });
+
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function publisher()
+    public function index()
     {
+        return view('home.guest');
+    }
+
+    public function indexAdvertiser() {
+        dd($this->user);
+//        $data = $this->pixelAd->getImpressions();
+//        $data = $this->pixelAd->getClicks();
+
+        return view('pages.dashboard.advertiser');
+
+    }
+
+    public function indexPublisher() {
         return view('pages.dashboard.publisher');
     }
 }

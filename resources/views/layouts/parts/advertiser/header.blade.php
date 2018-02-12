@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <a href="{{route('advertiser')}}" class="header__nav-item">Home</a>
+                <a href="{{route('advertiser.dashboard')}}" class="header__nav-item">Home</a>
                 <a href="#" class="header__nav-item">Ads</a>
                 <a href="#" class="header__nav-item">Campaigns</a>
                 <a href="{{route('advertiser.export')}}" class="header__nav-item">Export</a>
@@ -62,7 +62,7 @@
                     <i class="header__add-new-icon"></i>
                     <span class="header__add-new-text">New Ad</span>
                 </a>
-                @include('layouts.parts.dashboard.user-menu.php')
+                @include('layouts.parts.user-menu')
             </nav>
         </div>
 

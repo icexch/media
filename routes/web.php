@@ -33,7 +33,7 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // Advertiser routes
 Route::group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
-    $this->get('dashboard', 'DashboardController@advertiser')->name('advertiser.dashboard');
+    $this->get('dashboard', 'DashboardController@indexAdvertiser')->name('advertiser.dashboard');
     $this->get('profile', 'ProfileController@index')->name('advertiser.profile');
     $this->get('ads', 'ProfileController@ads')->name('advertiser.ads');
     $this->post('ads', 'ProfileController@storeAd');
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
 
 // Publisher routes
 Route::group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher']], function() {
-    $this->get('dashboard', 'DashboardController@publisher')->name('publisher.dashboard');
+    $this->get('dashboard', 'DashboardController@indexPublisher')->name('publisher.dashboard');
     $this->get('profile', 'ProfileController@index')->name('publisher.profile');
     $this->get('places', 'PublisherController@places')->name('publisher.places');
     $this->post('places/add', 'PublisherController@storePlace');
