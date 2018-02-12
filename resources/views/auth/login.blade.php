@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.home.other')
 
 @section('content')
     <div class="guest-login" style="background-image: url(img/contact-us-bg.jpg)">

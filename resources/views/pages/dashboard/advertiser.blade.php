@@ -1,4 +1,4 @@
-@extends('layouts.advertiser')
+@extends('layouts.main')
 
 @section('title', 'New Add Advertisers - ICEX Media')
 

@@ -5,13 +5,15 @@ use App\Models\User\Publisher;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
+use App\Models\Region;
+use App\Models\Category;
 use AdminDisplay;
 use AdminColumn;
 use AdminForm;
 use AdminFormElement;
 use AdminColumnEditable;
 
-class Platform extends Section
+class Place extends Section
 {
     protected $checkAccess = false;
 
@@ -53,10 +55,10 @@ class Platform extends Section
             ->addBody([
                 AdminFormElement::select('user_id', 'Publisher', Publisher::class)->setDisplay('name')->required(),
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name'),
-                AdminFormElement::select('region.name', 'Region')->required(),
-                AdminFormElement::select('category.name', 'Category')->required(),
+                AdminFormElement::select('region.name', 'Region', Region::class)->setDisplay('name')->required(),
+                AdminFormElement::select('category.name', 'Category', Category::class)->setDisplay('name')->required(),
+                AdminFormElement::text('url', 'place url'),
                 AdminFormElement::checkbox('is_active', 'Activity')->required(),
-                AdminFormElement::text('url', 'platform url')
             ]);
     }
 

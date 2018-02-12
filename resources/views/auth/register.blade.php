@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.home.other')
 
 @section('content')
     <div class="guest-reg" style="background-image: url(img/contact-us-bg.jpg)">
@@ -52,16 +52,6 @@
                             <div class="guest-form__input-holder">
                                 <input id="g-reg-email" type="text" name="email" class="guest-form__input"
                                        placeholder="E-mail">
-                            </div>
-                        </div>
-
-                        <div class="guest-form__line">
-                            <div class="guest-form__line-title-wrap">
-                                <label for="g-reg-name" class="guest-form__line-title guest-form__line-title_required">Name</label>
-                            </div>
-                            <div class="guest-form__input-holder">
-                                <input id="g-reg-name" name="profile[name]" type="text" class="guest-form__input"
-                                       placeholder="Name">
                             </div>
                         </div>
 

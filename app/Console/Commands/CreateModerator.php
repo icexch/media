@@ -15,8 +15,8 @@ class CreateModerator extends Command
     {
         $name = $this->ask('Set name');
         $email = $this->ask('Set email');
-        $password = $this->ask('Set password');
-        $confirmation = $this->ask('Confirm password');
+        $password = $this->secret('Set password');
+        $confirmation = $this->secret('Confirm password');
 
         if ($password !== $confirmation) {
             $this->alert('Password confirmation invalid');
@@ -28,7 +28,7 @@ class CreateModerator extends Command
             $moderator = Moderator::create([
                 'name'     => $name,
                 'email'    => $email,
-                'password' => bcrypt($password)
+                'password' => trim($password)
             ]);
 
             $this->info('Moderator creation success. ID#' . $moderator->id);

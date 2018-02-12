@@ -2,7 +2,7 @@
 
 use \App\Models\User\Publisher;
 
-class Platform extends BaseModel
+class Place extends BaseModel
 {
     protected $casts = [
         'user_id'     => 'int',

@@ -1,7 +1,7 @@
 <?php namespace App\Models\User;
 
 
-use App\Models\Platform;
+use App\Models\Place;
 
 class Publisher extends User
 {
@@ -10,8 +10,8 @@ class Publisher extends User
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function platforms()
+    public function places()
     {
-        return $this->hasMany(Platform::class);
+        return $this->hasMany(Place::class);
     }
 }

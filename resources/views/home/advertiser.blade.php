@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.home.index')
 
 @section('content')
     <div class="guest-advertises">
