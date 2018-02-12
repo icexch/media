@@ -24,6 +24,7 @@ class CreateAdMaterialsTable extends Migration
             $table->integer('cpc_value');
             $table->double('cpv', 8, 2);
             $table->integer('cpv_value');
+            $table->text('content');
             $table->boolean('is_active');
             $table->timestamps();
         });
