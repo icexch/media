@@ -15,9 +15,9 @@
 
 <div class="all-wrap" id="all-wrap">
     @if(auth()->user()->isAdvertiser())
-        @include('layouts.parts.dashboard.header-advertiser')
+        @include('layouts.parts.header-advertiser')
     @else
-        @include('layouts.parts.dashboard.header-publisher')
+        @include('layouts.parts.header-publisher')
     @endif
 
     @yield('content')

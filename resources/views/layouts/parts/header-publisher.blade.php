@@ -32,7 +32,7 @@
             </nav>
         </div>
         <div class="header__right-part">
-            @include('layouts.parts.dashboard.header-user')
+            @include('layouts.parts.user-menu')
         </div>
     </div>
 </div>
