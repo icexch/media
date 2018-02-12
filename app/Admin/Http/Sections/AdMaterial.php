@@ -66,6 +66,7 @@ class AdMaterial extends Section
                 AdminFormElement::text('cpc_value', 'Value of cpc')->addValidationRule('integer')->required(),
                 AdminFormElement::text('cpv', 'CPV')->addValidationRule('numeric')->required(),
                 AdminFormElement::text('cpv_value', 'Value of cpv')->addValidationRule('numeric')->required(),
+                AdminFormElement::textarea('content', 'Content'),
                 AdminFormElement::checkbox('is_active', 'Active')
             ]);
     }
