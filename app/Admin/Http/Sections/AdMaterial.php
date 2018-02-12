@@ -5,6 +5,8 @@ use App\Models\User\Advertiser;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
+use App\Models\Region;
+use App\Models\Category;
 use AdminDisplay;
 use AdminColumn;
 use AdminForm;
@@ -36,6 +38,8 @@ class AdMaterial extends Section
                 AdminColumn::link('name', 'Name'),
                 AdminColumn::relatedLink('advertiser.name', 'Advertiser'),
                 AdminColumn::text('adType.name', 'Type'),
+                AdminColumn::relatedLink('region.name', 'Region'),
+                AdminColumn::relatedLink('category.name', 'Category'),
                 AdminColumn::text('cpc', 'CPC'),
                 AdminColumn::text('cpc_value', 'Value of cpc'),
                 AdminColumn::text('cpv', 'CPV'),
@@ -56,6 +60,8 @@ class AdMaterial extends Section
                 AdminFormElement::text('name', 'Name')->required(),
                 AdminFormElement::select('user_id', 'Advertiser', Advertiser::class)->setDisplay('name')->required(),
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name'),
+                AdminFormElement::select('region_id', 'Region', Region::class)->setDisplay('name'),
+                AdminFormElement::select('category_id', 'Category', Category::class)->setDisplay('name'),
                 AdminFormElement::text('cpc', 'CPC')->addValidationRule('numeric')->required(),
                 AdminFormElement::text('cpc_value', 'Value of cpc')->addValidationRule('integer')->required(),
                 AdminFormElement::text('cpv', 'CPV')->addValidationRule('numeric')->required(),

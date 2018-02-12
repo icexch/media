@@ -18,6 +18,8 @@ class CreateAdMaterialsTable extends Migration
             $table->string('name');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('ad_type_id');
+            $table->unsignedInteger('region_id');
+            $table->unsignedInteger('category_id');
             $table->double('cpc', 8, 2);
             $table->integer('cpc_value');
             $table->double('cpv', 8, 2);
