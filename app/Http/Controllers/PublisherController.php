@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Place;
+
 class PublisherController extends Controller
 {
     /**
@@ -7,7 +9,9 @@ class PublisherController extends Controller
      */
     public function places()
     {
-        return view('pages.places.index');
+        $places = Place::where('user_id', auth()->user()->id)->get();
+
+        return view('pages.places.index', compact('places'));
     }
 
     public function storePlace()

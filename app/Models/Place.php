@@ -5,6 +5,7 @@ use \App\Models\User\Publisher;
 class Place extends BaseModel
 {
     protected $casts = [
+        'name'        => 'string',
         'user_id'     => 'int',
         'ad_type_id'  => 'int',
         'region_id'   => 'int',
