@@ -30,13 +30,16 @@ class PixelPointController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Request $request) {
+        $referer = $request->header('referer');
         $ids = array_map('intval', explode(',', $request->get("ids")));
 
-        if (!count($ids))
+        if (!count($ids)) {
             return response()->json(["message" => "don't objects for showed"]);
+        }
+
 
         $data = [
-            'ads' => $this->pixelPointPlace->getAdsWithPlaceIds($ids),
+            'ads' => $this->pixelPointPlace->getAdsWithPlaceIds($referer, $ids),
         ];
 
         return response()->json($data);
