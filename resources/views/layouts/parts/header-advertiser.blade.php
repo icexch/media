@@ -67,7 +67,7 @@
                 <i class="header__add-new-icon"></i>
                 <span class="header__add-new-text">New Ad</span>
             </a>
-            @include('layouts.parts.dashboard.header-user')
+            @include('layouts.parts.dashboard.user-menu.php')
         </div>
     </div>
 </div>
