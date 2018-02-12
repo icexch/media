@@ -25,7 +25,7 @@
     @include('layouts.parts.footer')
     <div class="up-arrow" id="up-arrow"></div>
 </div>
-<link rel="stylesheet" href="{{ mix('/css/vendor.css') }}">
-<script src="{{ mix('/js/vendor.min.js') }}"></script>
+@include('layouts.parts.styles')
+@include('layouts.parts.scripts')
 </body>
 </html>
