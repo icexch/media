@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Services\PixelPointAdsService;
-use App\Services\PixelPointPlaceService;
+use App\Services\PixelPoint\PixelPointAdService;
+use App\Services\PixelPoint\PixelPointPlaceService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->singleton(PixelPointPlaceService::class);
-        $this->app->singleton(PixelPointAdsService::class);
+        $this->app->singleton(PixelPointAdService::class);
     }
 }

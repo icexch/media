@@ -42,7 +42,7 @@ class DashboardController extends Controller
     }
 
     public function indexAdvertiser() {
-        dd($this->user);
+//        dd($this->user);
 //        $data = $this->pixelAd->getImpressions();
 //        $data = $this->pixelAd->getClicks();
 
