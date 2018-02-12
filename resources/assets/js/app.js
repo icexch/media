@@ -1,22 +1,31 @@
+class App {
+    constructor() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+        this.initModules();
+    }
 
-require('./bootstrap');
+    initModules() {
+        let modules = $('[data-module]');
 
-window.Vue = require('vue');
+        modules.each(function (key, element) {
+            try {
+                let moduleName = _.upperFirst(_.camelCase($(element).data().module));
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+                let module = require(`./modules/${moduleName}.js`);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+                new module.default();
+            } catch (e) {
+                console.log(e);
+            }
+        });
+    }
+}
 
-const app = new Vue({
-    el: '#app'
+$(() => {
+    new App();
 });
