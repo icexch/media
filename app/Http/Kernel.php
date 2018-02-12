@@ -59,6 +59,7 @@ class Kernel extends HttpKernel
         'can'        => \Illuminate\Auth\Middleware\Authorize::class,
         'guest'      => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'role'       => Role::class
+        'role'       => Role::class,
+        'pixel-point'      => \App\Http\Middleware\PixelPoint::class,
     ];
 }

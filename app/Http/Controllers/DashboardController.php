@@ -31,20 +31,7 @@ class DashboardController extends Controller
 
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home.guest');
-    }
-
     public function indexAdvertiser() {
-//        dd($this->user);
-//        $data = $this->pixelAd->getImpressions();
-//        $data = $this->pixelAd->getClicks();
 
         return view('pages.dashboard.advertiser');
 

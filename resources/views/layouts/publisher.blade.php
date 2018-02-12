@@ -22,10 +22,10 @@
 </div>
 
 
-<link rel="stylesheet" href="/css/main.css?1516859167">
+<link rel="stylesheet" href="{{ mix('/css/vendor.css') }}">
 @yield('styles')
 
-<script src="/scripts/app.min.js?1516859167"></script>
+<script src="{{ mix('/js/vendor.min.js') }}"></script>
 @yield('scripts')
 
 </body>

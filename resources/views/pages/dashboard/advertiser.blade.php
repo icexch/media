@@ -25,8 +25,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="chart">
                     <div class="chart__itself chart-container" id="home-adv-chart"></div>
                     <div class="chart__tabs">
@@ -48,9 +46,11 @@
         </div>
     </div>
 @endsection
+
 @section('styles')
 <link rel="stylesheet" href="css/main.css?1518344843">
 @endsection
+
 @section('scripts')
 
 <script src="scripts/app.min.js?1518344843"></script>
