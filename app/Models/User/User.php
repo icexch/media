@@ -1,6 +1,8 @@
 <?php namespace App\Models\User;
 
+use App\Models\AdMaterial;
 use App\Models\BaseModel;
+use App\Models\Place;
 use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
@@ -76,6 +78,14 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         }
 
         $this->attributes['role'] = $val;
+    }
+
+    public function adMaterials() {
+        return $this->hasMany(AdMaterial::class);
+    }
+
+    public function places() {
+        return $this->hasMany(Place::class);
     }
 
     /**

@@ -5,7 +5,7 @@
 @section('content')
     {{--EXPORT--}}
     <div class="publishers js-page">
-        <div class="publishers__bg" style="background-image: url(img/publish_bg.jpg)">
+        <div class="publishers__bg" style="background-image: url(/img/publish_bg.jpg)">
             <div class="publishers__bg-darken">
                 <div class="publishers__inner container-publishers">
                     <div class="export">

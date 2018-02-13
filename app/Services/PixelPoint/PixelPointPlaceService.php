@@ -37,5 +37,4 @@ class PixelPointPlaceService extends PixelPointService
 
         return $ads;
     }
-
 }

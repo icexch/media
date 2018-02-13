@@ -32,12 +32,25 @@ class DashboardController extends Controller
     }
 
     public function indexAdvertiser() {
+        $adsIds = $this->user->adMaterials()->pluck('id')->toArray();
 
-        return view('pages.dashboard.advertiser');
+        $clicksYear       = $this->pixelAd->getStatsYears($adsIds);
+        $clicksMonth      = $this->pixelAd->getStatsMonths($adsIds);
+        $impressionsYear  = $this->pixelAd->getStatsYears($adsIds, 1);
+        $impressionsMonth = $this->pixelAd->getStatsMonths($adsIds, 1);
+
+        return view('pages.dashboard.advertiser', compact('clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
 
     }
 
     public function indexPublisher() {
-        return view('pages.dashboard.publisher');
+        $placesIDs = $this->user->places()->pluck('id')->toArray();
+
+        $clicksYear       = $this->pixelPlace->getStatsYears($placesIDs);
+        $clicksMonth      = $this->pixelPlace->getStatsMonths($placesIDs);
+        $impressionsYear  = $this->pixelPlace->getStatsYears($placesIDs, 1);
+        $impressionsMonth = $this->pixelPlace->getStatsMonths($placesIDs, 1);
+
+        return view('pages.dashboard.publisher', compact('clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
     }
 }

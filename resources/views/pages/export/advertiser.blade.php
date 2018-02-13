@@ -4,7 +4,7 @@
 
 @section('content')
     {{--EDIT ACCOUNT ADVERTISERS--}}
-    <div class="std-adv js-page"  style="background-image: url(img/contact-us-bg.jpg)">
+    <div class="std-adv js-page"  style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="std-adv__container container">
             <h1 class="std-adv__title">Export Data to A CSV File
             </h1>
