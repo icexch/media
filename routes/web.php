@@ -43,6 +43,7 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
     $this->get('account', 'DashboardController@advertiser')->name('advertiser.account');
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
+    $this->post('export', 'ExportController@exportAdvertiser')->name('advertiser.export.download');
 });
 
 // Publisher routes
@@ -57,6 +58,7 @@ $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
     $this->get('account', 'DashboardController@publisher')->name('publisher.account');
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
+    $this->post('export', 'ExportController@exportPublisher')->name('publisher.export.download');
 });
 
 $this->get('/', 'HomeController@index')->name('home');

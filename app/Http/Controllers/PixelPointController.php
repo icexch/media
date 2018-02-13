@@ -51,7 +51,7 @@ class PixelPointController extends Controller
             return response()->json(['message' => "don't objects for saved", 'error' => false]);
         }
 
-        $this->pixelPointPlace->addClick($placeID, ["adsID" => $adID]);
+        $this->pixelPointPlace->addClick($placeID, ["adID" => $adID]);
         $this->pixelPointAd->addClick($adID, ["placeID" => $placeID]);
 
         return response()->json(['message' => 'saved -', 'error' => false]);
@@ -66,8 +66,8 @@ class PixelPointController extends Controller
         }
         $time = time();
         for($i=0;$i < count($adsIDs);$i++) {
-            $this->pixelPointPlace->addShow($adsIDs[$i], ["placeID" => $placesIDs[$i]], $time);
-            $this->pixelPointAd->addShow($placesIDs[$i], ["adID" => $adsIDs[$i]], $time);
+            $this->pixelPointAd->addShow($adsIDs[$i], ["placeID" => $placesIDs[$i]], $time);
+            $this->pixelPointPlace->addShow($placesIDs[$i], ["adID" => $adsIDs[$i]], $time);
         }
 
         return response()->json(['message' => 'saved - ', 'error' => false]);

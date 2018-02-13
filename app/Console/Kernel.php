@@ -5,6 +5,8 @@ namespace App\Console;
 use App\Console\Commands\CreateModerator;
 use App\Console\Commands\GatherCategories;
 use App\Console\Commands\GatherRegions;
+use App\Console\Commands\GenerateRedisDataCommand;
+use App\Console\Commands\StatsTest;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -18,7 +20,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         GatherRegions::class,
         GatherCategories::class,
-        CreateModerator::class
+        CreateModerator::class,
+        GenerateRedisDataCommand::class,
     ];
 
     /**

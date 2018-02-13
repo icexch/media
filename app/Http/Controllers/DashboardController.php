@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     private $pixelAd;
     private $pixelPlace;
-    private $user;
     /**
      * Create a new controller instance.
      *
@@ -22,17 +21,10 @@ class DashboardController extends Controller
     ) {
         $this->pixelAd = $pixelPointAdService;
         $this->pixelPlace = $pixelPointPlaceService;
-
-        $this->middleware(function ($request, $next) {
-            $this->user = \Auth::user();
-
-            return $next($request);
-        });
-
     }
 
     public function indexAdvertiser() {
-        $adsIds = $this->user->adMaterials()->pluck('id')->toArray();
+        $adsIds = auth()->user()->adMaterials()->pluck('id')->toArray();
 
         $clicksYear       = $this->pixelAd->getStatsYears($adsIds);
         $clicksMonth      = $this->pixelAd->getStatsMonths($adsIds);
@@ -44,7 +36,7 @@ class DashboardController extends Controller
     }
 
     public function indexPublisher() {
-        $placesIDs = $this->user->places()->pluck('id')->toArray();
+        $placesIDs = auth()->user()->places()->pluck('id')->toArray();
 
         $clicksYear       = $this->pixelPlace->getStatsYears($placesIDs);
         $clicksMonth      = $this->pixelPlace->getStatsMonths($placesIDs);
