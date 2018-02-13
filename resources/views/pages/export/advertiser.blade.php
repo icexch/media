@@ -32,22 +32,6 @@
                                         <span class="form__checkbox-text">Ad number</span>
                                     </label>
                                     <label class="form__block-checkbox">
-                                        <input type="checkbox" name="isCampaignNumber" class="js-checkbox-small">
-                                        <span class="form__checkbox-text">Campaign number</span>
-                                    </label>
-                                    <label class="form__block-checkbox">
-                                        <input type="checkbox" name="isZoneNumber" class="js-checkbox-small">
-                                        <span class="form__checkbox-text">Zone number</span>
-                                    </label>
-                                    <label class="form__block-checkbox">
-                                        <input type="checkbox" name="isCampaignEnabled" class="js-checkbox-small">
-                                        <span class="form__checkbox-text">Campaign enabled</span>
-                                    </label>
-                                    <label class="form__block-checkbox">
-                                        <input type="checkbox" name="isAdApproved" class="js-checkbox-small">
-                                        <span class="form__checkbox-text">Ad approved</span>
-                                    </label>
-                                    <label class="form__block-checkbox">
                                         <input type="checkbox" name="isImpressions" class="js-checkbox-small">
                                         <span class="form__checkbox-text">Impressions</span>
                                     </label>
@@ -84,10 +68,6 @@
                                         <span class="form__checkbox-text">Ad number</span>
                                     </label>
                                     <label class="form__block-checkbox">
-                                        <input type="checkbox" name="isCampaignNumber" class="js-checkbox-small">
-                                        <span class="form__checkbox-text">Campaign number</span>
-                                    </label>
-                                    <label class="form__block-checkbox">
                                         <input type="checkbox" name="isYear" class="js-checkbox-small">
                                         <span class="form__checkbox-text">Year</span>
                                     </label>
@@ -116,18 +96,18 @@
                                             <div class="form__select-holder form__select-holder_small">
                                                 <select id="adv-exp-month" name="month2" class="form__select form__select_small">
                                                     <option disabled selected>Month</option>
-                                                    <option>January</option>
-                                                    <option>February</option>
-                                                    <option>March</option>
-                                                    <option>April</option>
-                                                    <option>May</option>
-                                                    <option>June</option>
-                                                    <option>July</option>
-                                                    <option>August</option>
-                                                    <option>September</option>
-                                                    <option>October</option>
-                                                    <option>November</option>
-                                                    <option>December</option>
+                                                    <option value="01">January</option>
+                                                    <option value="02">February</option>
+                                                    <option value="03">March</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">May</option>
+                                                    <option value="06">June</option>
+                                                    <option value="07">July</option>
+                                                    <option value="08">August</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -152,10 +132,6 @@
                                     <label class="form__block-checkbox">
                                         <input type="checkbox" name="isAdNumber" class="js-checkbox-small">
                                         <span class="form__checkbox-text">Ad number</span>
-                                    </label>
-                                    <label class="form__block-checkbox">
-                                        <input type="checkbox" name="isCampaignNumber" class="js-checkbox-small">
-                                        <span class="form__checkbox-text">Campaign number</span>
                                     </label>
                                     <label class="form__block-checkbox">
                                         <input type="checkbox" name="isYear" class="js-checkbox-small">

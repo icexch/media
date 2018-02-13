@@ -160,7 +160,7 @@
                 window.impressionsYearData.addColumn('number', 'Impressions');
                 window.impressionsYearData.addRows([
                         @foreach($impressionsYear as $year => $impressionYear)
-                    [new Date("{{$year}}", 0), {{$impressionYear}}],
+                    [new Date("{{$year}}", 0), {{$impressionYear['count']}}],
                     @endforeach
                 ]);
 
@@ -180,7 +180,7 @@
                 window.clicksYearData.addColumn('number', 'Clicks');
                 window.clicksYearData.addRows([
                         @foreach($clicksYear as $year => $clickYear)
-                    [new Date("{{$year}}", 0), {{$clickYear}}],
+                    [new Date("{{$year}}", 0), {{$clickYear['count']}}],
                     @endforeach
                 ]);
 

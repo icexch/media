@@ -39,18 +39,6 @@
                                             <span class="form__checkbox-text">URL or domain</span>
                                         </label>
                                         <label class="form__block-checkbox">
-                                            <input type="checkbox" name="isUrl" class="js-checkbox-small">
-                                            <span class="form__checkbox-text">Where to track hits (domain, url, all)</span>
-                                        </label>
-                                        <label class="form__block-checkbox">
-                                            <input type="checkbox" name="isZoneNumber" class="js-checkbox-small">
-                                            <span class="form__checkbox-text">Zone number</span>
-                                        </label>
-                                        <label class="form__block-checkbox">
-                                            <input type="checkbox" name="isPlaceApproved" class="js-checkbox-small">
-                                            <span class="form__checkbox-text">Place approved</span>
-                                        </label>
-                                        <label class="form__block-checkbox">
                                             <input type="checkbox" name="isImpressions" class="js-checkbox-small">
                                             <span class="form__checkbox-text">Impressions</span>
                                         </label>
@@ -83,10 +71,6 @@
                                             <span class="form__checkbox-text">Place number</span>
                                         </label>
                                         <label class="form__block-checkbox">
-                                            <input type="checkbox" name="isZoneNumber" class="js-checkbox-small">
-                                            <span class="form__checkbox-text">Zone number</span>
-                                        </label>
-                                        <label class="form__block-checkbox">
                                             <input type="checkbox" name="isYear" class="js-checkbox-small">
                                             <span class="form__checkbox-text">Year</span>
                                         </label>
@@ -95,15 +79,15 @@
                                             <span class="form__checkbox-text">Month</span>
                                         </label>
                                         <label class="form__block-checkbox">
-                                            <input type="checkbox" name="day" class="js-checkbox-small">
+                                            <input type="checkbox" name="isDay" class="js-checkbox-small">
                                             <span class="form__checkbox-text">Day</span>
                                         </label>
                                         <label class="form__block-checkbox">
-                                            <input type="checkbox" name="impressions" class="js-checkbox-small">
+                                            <input type="checkbox" name="isImpressions" class="js-checkbox-small">
                                             <span class="form__checkbox-text">Impressions</span>
                                         </label>
                                         <label class="form__block-checkbox">
-                                            <input type="checkbox" name="clicks" class="js-checkbox-small">
+                                            <input type="checkbox" name="isClicks" class="js-checkbox-small">
                                             <span class="form__checkbox-text">Clicks</span>
                                         </label>
                                     </div>
@@ -113,20 +97,20 @@
                                             <div class="form__date-select">
                                                 <label for="p-ex-month" class="form__date">Month</label>
                                                 <div class="form__select-holder form__select-holder_small">
-                                                    <select id="p-ex-month" name="month" class="form__select form__select_small">
+                                                    <select id="p-ex-month" name="find-month" class="form__select form__select_small">
                                                         <option disabled selected>Month</option>
-                                                        <option>January</option>
-                                                        <option>February</option>
-                                                        <option>March</option>
-                                                        <option>April</option>
-                                                        <option>May</option>
-                                                        <option>June</option>
-                                                        <option>July</option>
-                                                        <option>August</option>
-                                                        <option>September</option>
-                                                        <option>October</option>
-                                                        <option>November</option>
-                                                        <option>December</option>
+                                                        <option value="01">January</option>
+                                                        <option value="02">February</option>
+                                                        <option value="03">March</option>
+                                                        <option value="04">April</option>
+                                                        <option value="05">May</option>
+                                                        <option value="06">June</option>
+                                                        <option value="07">July</option>
+                                                        <option value="08">August</option>
+                                                        <option value="09">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -134,7 +118,7 @@
                                             <div class="form__date-select">
                                                 <label for="p-ex-year2" class="form__date">Year:</label>
                                                 <div class="form__input-holder">
-                                                    <input id="p-ex-year2" type="text" name="year2" class="form__input form__input_small" placeholder="Year">
+                                                    <input id="p-ex-year2" type="text" name="find-year2" class="form__input form__input_small" placeholder="Year">
                                                 </div>
                                             </div>
                                         </div>
@@ -151,10 +135,6 @@
                                         <label class="form__block-checkbox">
                                             <input type="checkbox" name="isPlaceNumber" class="js-checkbox-small">
                                             <span class="form__checkbox-text">Place number</span>
-                                        </label>
-                                        <label class="form__block-checkbox">
-                                            <input type="checkbox" name="isZoneNumber" class="js-checkbox-small">
-                                            <span class="form__checkbox-text">Zone number</span>
                                         </label>
                                         <label class="form__block-checkbox">
                                             <input type="checkbox" name="isYear" class="js-checkbox-small">

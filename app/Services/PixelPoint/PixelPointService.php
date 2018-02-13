@@ -111,54 +111,6 @@ class PixelPointService {
         }
         return $output;
     }
-    public function getStatsMonths($IDs, $clicksOrImpressions = 0) {
-        $keyName = $clicksOrImpressions ? $this->impressionKey : $this->clicksKey;
-        $output = [];
-        $time = time();
-        $yearStart = $time - 31556926;
-        $monthSeconds = 2629743;
-        while ($yearStart<=$time) {
-            $monthKey = (string)date('Y-m', $yearStart);
-            $output[$monthKey] = ['year' => date('Y', $yearStart), 'month' => date('m', $yearStart), 'count' => 0];
-            for ($i=0;$i<count($IDs);$i++) {
-                $count = Redis::ZCOUNT($this->currentKey.":".$IDs[$i].":".$keyName, $yearStart, $yearStart + $monthSeconds);
-                $output[$monthKey]['count'] += $count;
-            }
-            $yearStart+=$monthSeconds;
-        }
-        ksort($output);
-        return $output;
-    }
-    public function getStatsYears($IDs, $clicksOrImpressions = 0) {
-        $keyName = $clicksOrImpressions ? $this->impressionKey : $this->clicksKey;
-
-        $output = [];
-
-        $yearSeconds = 31556926;
-
-        for ($i=0;$i<count($IDs);$i++) {
-            $firstRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$this->clicksKey, 0, 0);
-            $lastRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$this->clicksKey, -1, -1);
-            if(!count($firstRecord)) {
-                continue;
-            }
-
-            $yearStart = json_decode($firstRecord[0])->timestamp;
-            $yearEnd = json_decode($lastRecord[0])->timestamp;
-
-            while ($yearStart<=$yearEnd) {
-                $yearKey = (string)date('Y', $yearStart);
-                $output[$yearKey] = 0;
-
-                $count = Redis::ZCOUNT($this->currentKey.":".$IDs[$i].":".$keyName, $yearStart, $yearStart + $yearSeconds);
-                $output[$yearKey] += $count;
-
-                $yearStart+=$yearSeconds;
-            }
-        }
-        ksort($output);
-        return $output;
-    }
     // TODO all calls edit and make event and queue
     protected function calculatings (int $userID, float $change, array $data = [], int $time = null)
     {
@@ -173,5 +125,65 @@ class PixelPointService {
 
         return  Redis::zAdd($this->userCalculatings.":".$userID, $time, $str);
     }
+    public function getStatsMonths(array $IDs, $clicksOrImpressions = 0) {
+        $time = time();
+        $startDate = $time - 31556926;
+        $endDate = $time;
+        $step = 2629743;
 
+        return $this->getStats($IDs,$clicksOrImpressions, $startDate, $endDate, $step, 'Y-m');
+    }
+    public function getStatsYears(array $IDs, $clicksOrImpressions = 0) {
+        $yearSeconds = 31556926;
+        return $this->getStats($IDs, $clicksOrImpressions,0,0,$yearSeconds,'Y');
+    }
+
+    /**
+     * @param array $IDs
+     * @param int $startDate = 1 year
+     * @param int $endData
+     * @param int $step = 1 year
+     * @param string $keyOutput
+     * @param int $clicksOrImpressions
+     * @return array
+     */
+    public function getStats(array $IDs, int $clicksOrImpressions = 0, int $startDate = 0, int $endData = 0, int $step = 0, string $keyOutput = 'Y') {
+        $keyName = $clicksOrImpressions ? $this->impressionKey : $this->clicksKey;
+
+        $output = [];
+
+        for ($i=0;$i<count($IDs);$i++) {
+           if($startDate) {
+               $dateStart = $startDate;
+           } else {
+               $firstRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$this->clicksKey, 0, 0);
+               if(!count($firstRecord)) {
+                   continue;
+               }
+               $dateStart = json_decode($firstRecord[0])->timestamp;
+           }
+
+           if ($endData) {
+               $dateEnd = $endData;
+           } else {
+               $lastRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$this->clicksKey, -1, -1);
+               $dateEnd = json_decode($lastRecord[0])->timestamp;
+           }
+            if(!$step) {
+                $step = $dateEnd;
+            }
+
+            while ($dateStart<=$dateEnd) {
+                $yearKey = (string)date($keyOutput, $dateStart);
+                isset($output[$yearKey]) ?: $output[$yearKey] = ['year' => date('Y', $dateStart), 'month' => date('m', $dateStart), 'count' => 0];
+
+                $count = Redis::ZCOUNT($this->currentKey.":".$IDs[$i].":".$keyName, $dateStart, $dateStart + $step);
+                $output[$yearKey]['count'] += $count;
+
+                $dateStart+=$step;
+            }
+        }
+        ksort($output);
+        return $output;
+    }
 }

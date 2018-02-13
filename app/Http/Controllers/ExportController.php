@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PixelPoint\PixelPointAdService;
+use App\Services\PixelPoint\PixelPointPlaceService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
+    private $pixelAd;
+    private $pixelPlace;
+
+    public function __construct(
+        PixelPointAdService $pixelPointAdService,
+        PixelPointPlaceService $pixelPointPlaceService
+    ) {
+        $this->pixelAd = $pixelPointAdService;
+        $this->pixelPlace = $pixelPointPlaceService;
+    }
+
     public function indexAdvertiser() {
         return view('pages.export.advertiser');
     }
@@ -24,10 +36,6 @@ class ExportController extends Controller
         $types = [
             1 => [
                 "isAdNumber",
-                "isCampaignNumber",
-                "isZoneNumber",
-                "isCampaignEnabled",
-                "isAdApproved",
                 "isImpressions",
                 "isClicks",
                 "isRatioClicksImpressions",
@@ -36,7 +44,6 @@ class ExportController extends Controller
             ],
             2 => [
                 "isAdNumber",
-                "isCampaignNumber",
                 "isYear",
                 "isMonth",
                 "isDay",
@@ -47,7 +54,6 @@ class ExportController extends Controller
             ],
             3 => [
                 "isAdNumber",
-                "isCampaignNumber",
                 "isYear",
                 "isMonth",
                 "isImpressions",
@@ -56,60 +62,42 @@ class ExportController extends Controller
                 "year3",
             ]
         ];
-        $columns = $request->only($types[$type]);
+        dump(123);
+        dd(array_keys($types[$type]));
+        $columns = $request->only(array_keys($types[$type]));
 
-        $date = date("YmdHis", time());
-        $headers = [
-            "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=$date.csv",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0"
-        ];
 
-        $callback = function() use ( $columns)
-        {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
-
-            //TODO add foreach and insert data
-            fputcsv($file, [12]);
-
-            fclose($file);
-        };
-        return Response::stream($callback, 200, $headers);
+        return 0;
     }
 
     public function exportPublisher(Request $request) {
+        $places = auth()->user()->places()->get();
+
         $type = $request->get("typeStats");
         if(!$type) {
             return redirect()->back();
         }
         $types = [
             1 => [
-                "isPlaceNumber",
-                "isPlaceTitle",
-                "isUrl",
-                "isZoneNumber",
-                "isPlaceApproved",
-                "isImpressions",
-                "isCliks",
+                "isPlaceNumber" => "id",
+                "isPlaceTitle" => "name",
+                "isUrl" => "url",
+                "isImpressions" => "impressions",
+                "isCliks" => "clicks",
                 "isRatioClicksImpressions",
-                "isEarned" ,
+                "isEarned",
             ],
             2 => [
-                "isPlaceNumber" ,
-                "isZoneNumber" ,
-                "isYear",
-                "isMonth" ,
-                "impressions" ,
-                "clicks",
-                "month",
-                "year2" ,
+                "isPlaceNumber" => "id",
+                "isYear" => "year",
+                "isMonth" => "month",
+                "isImpressions" => "impressions",
+                "isClicks" => "clicks",
+                "find-month" => null,
+                "find-year2" => null,
             ],
             3 => [
                 "isPlaceNumber" ,
-                "isZoneNumber" ,
                 "isYear" ,
                 "isMonth" ,
                 "impressions" ,
@@ -122,24 +110,56 @@ class ExportController extends Controller
                 "year3",
             ]
         ];
-
         $columns = $request->only($types[$type]);
+
+        switch ($type) {
+            case 1:
+                break;
+            case 2:
+                $data = [];
+                foreach ($places as $place) {
+                    $impressions = array_values($this->pixelPlace->getStats([$place->id], 1));
+                    $clicks = array_values($this->pixelPlace->getStats([$place->id], 0));
+                    $impressions = !count($impressions) ?: $impressions[0]['count'];
+                    $clicks = !count($clicks) ?: $clicks[0]['count'];
+                    $data[] = [
+                        'ID' => $place->id,
+                        'Title' => $place->name,
+                        'Url' => $place->url,
+                        'Impression' => $impressions,
+                        'Clicks' => $clicks,
+                        'Ratio Clicks/Impressions' => $clicks/$impressions,
+                    ];
+                }
+                return $this->export($data);
+                break;
+            case 3:
+                break;
+        }
 
     }
 
-    private function export() {
-        Excel::create('Filename', function($excel) {
+    private function export($data) {
+        $date = date("YmdHis", time());
+        $headers = [
+            "Content-type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=$date.csv",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        ];
+        $callback = function() use ($data)
+        {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, array_keys($data[0]));
 
-            // Set the title
-            $excel->setTitle('Our new awesome title');
+            foreach ($data as $item) {
+                fputcsv($file, array_values($item));
+            }
 
-            // Chain the setters
-            $excel->setCreator('Maatwebsite')
-                ->setCompany('Maatwebsite');
 
-            // Call them separately
-            $excel->setDescription('A demonstration to change the file properties');
-
-        })->download('csv');
+            fclose($file);
+        };
+        return Response::stream($callback, 200, $headers);
     }
 }
