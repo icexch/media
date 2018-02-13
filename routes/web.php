@@ -39,8 +39,8 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
     $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
     $this->post('ads/add', 'AdvertiserController@storeAd')->name('advertiser.ads.store');
 
-    $this->get('account', 'AdvertiserController@showProfile')->name('advertiser.account.show');
-    $this->post('account', 'AdvertiserController@updateProfile')->name('advertiser.account.update');
+    $this->get('account', 'AccountController@edit')->name('advertiser.account.edit');
+    $this->post('account', 'AccountController@update')->name('advertiser.account.update');
 
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
@@ -54,8 +54,8 @@ $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
     $this->get('places/add', 'PublisherController@createPlace')->name('publisher.places.create');
     $this->post('places/add', 'PublisherController@storePlace')->name('publisher.places.store');
 
-    $this->get('account', 'PublisherController@showProfile')->name('publisher.account.show');
-    $this->post('account', 'PublisherController@storeProfile')->name('publisher.account.store');
+    $this->get('account', 'AccountController@edit')->name('publisher.account.edit');
+    $this->post('account', 'AccountController@update')->name('publisher.account.update');
 
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');

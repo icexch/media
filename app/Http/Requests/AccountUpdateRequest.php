@@ -2,14 +2,14 @@
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdvertiserUpdateProfileRequest extends FormRequest
+class AccountUpdateRequest extends FormRequest
 {
     /**
      * @return bool
      */
     public function authorize()
     {
-        return auth()->check() && auth()->user()->isAdvertiser();
+        return auth()->check();
     }
 
     /**

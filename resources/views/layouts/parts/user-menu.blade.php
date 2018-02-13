@@ -5,7 +5,7 @@
     </div>
     <div class="desktop-dropdown js-desktop-dropdown">
         <div class="desktop-dropdown__link-wrap">
-            <a href="{{ auth()->user()->isAdvertiser() ? route('advertiser.account.show') : route('publisher.account.show') }}"
+            <a href="{{ auth()->user()->isAdvertiser() ? route('advertiser.account.edit') : route('publisher.account.edit') }}"
                class="desktop-dropdown__link">
                 Edit account
             </a>
