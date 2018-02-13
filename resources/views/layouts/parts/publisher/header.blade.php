@@ -7,7 +7,7 @@
         </div>
         <div class="header__left-part">
             <a href="#" class="header__logo">
-                <img src="/img/logo-mobile.svg" alt="" class="header__logo-img">
+                <img src="img/logo-mobile.svg" alt="" class="header__logo-img">
             </a>
             <nav class="header__nav" id="nav">
                 <div class="header__nav-logo-wrap">
@@ -25,8 +25,8 @@
                         <a href="#" class="header__nav-item-dropdown-link">Log Off</a>
                     </div>
                 </div>
-                <a href="{{route('publisher.dashboard')}}" class="header__nav-item">Home</a>
-                <a href="#" class="header__nav-item">Places</a>
+                <a href="{{ route('publisher.dashboard') }}" class="header__nav-item">Home</a>
+                <a href="{{ route('publisher.places') }}" class="header__nav-item">Places</a>
                 <a href="#" class="header__nav-item">New Place</a>
                 <a href="{{route('publisher.export')}}" class="header__nav-item">Export</a>
                 <a href="{{route('publisher.payments')}}" class="header__nav-item">Payments</a>

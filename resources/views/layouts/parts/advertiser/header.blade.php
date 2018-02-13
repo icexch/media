@@ -7,7 +7,7 @@
         </div>
         <div class="header__left-part">
             <a href="#" class="header__logo">
-                <img src="/img/logo-mobile.svg" alt="" class="header__logo-img">
+                <img src="img/logo-mobile.svg" alt="" class="header__logo-img">
             </a>
             <nav class="header__nav" id="nav">
                 <div class="header__nav-logo-wrap">
@@ -25,6 +25,7 @@
                 </div>
 
                 <a href="{{route('advertiser.dashboard')}}" class="header__nav-item">Home</a>
+                <a href="{{ route('advertiser.ads') }}" class="header__nav-item">Ads</a>
                 <a href="#" class="header__nav-item">Ads</a>
                 <a href="#" class="header__nav-item">Campaigns</a>
                 <a href="{{route('advertiser.export')}}" class="header__nav-item">Export</a>
@@ -62,39 +63,11 @@
                     <i class="header__add-new-icon"></i>
                     <span class="header__add-new-text">New Ad</span>
                 </a>
-                @include('layouts.parts.user-menu')
             </nav>
         </div>
 
         <div class="header__right-part">
-            <a href="#" class="header__add-new">
-                <i class="header__add-new-icon"></i>
-                <span class="header__add-new-text">New Ad</span>
-            </a>
-            <div class="header__login js-header-item-dropdown">
-                <div class="header__login-toggle js-header-item-toggle">
-                    <i class="header__login-icon"></i>
-                    <span class="header__login-text">{{Auth::user()->name}}</span>
-                </div>
-
-                <div class="desktop-dropdown js-desktop-dropdown">
-                    <div class="desktop-dropdown__link-wrap">
-                        <a href="#" class="desktop-dropdown__link">Edit account</a>
-                    </div>
-                    <div class="desktop-dropdown__link-wrap">
-                        <a class="desktop-dropdown__link" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            Log off
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
-                </div>
-
-            </div>
+            @include('layouts.parts.user-menu')
         </div>
 
 

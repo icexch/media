@@ -10,16 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/contact', 'ContactController@index')->name('contact.show');
-Route::post('/contact/send', 'ContactController@send')->name('contact.send');
+$this->get('/contact', 'ContactController@index')->name('contact.show');
+$this->post('/contact/send', 'ContactController@send')->name('contact.send');
 
 // Authentication Routes...
 $this->get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('auth/login', 'Auth\LoginController@login');
 $this->post('auth/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('login/admin','Auth\LoginController@showAdminLoginForm');
-Route::post('login/admin', 'Auth\LoginController@loginAdmin');
+$this->get('login/admin','Auth\LoginController@showAdminLoginForm');
+$this->post('login/admin', 'Auth\LoginController@loginAdmin');
 
 // Registration Routes...
 $this->get('auth/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -32,31 +32,37 @@ $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // Advertiser routes
-Route::group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
+$this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
     $this->get('dashboard', 'DashboardController@indexAdvertiser')->name('advertiser.dashboard');
     $this->get('profile', 'ProfileController@index')->name('advertiser.profile');
-    $this->get('ads', 'ProfileController@ads')->name('advertiser.ads');
-    $this->post('ads', 'ProfileController@storeAd');
-    $this->get('account', 'DashboardController@publisher')->name('advertiser.account');
+
+    $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
+    $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
+    $this->post('ads/add', 'AdvertiserController@storeAd')->name('advertiser.ads.store');
+
+    $this->get('account', 'DashboardController@advertiser')->name('advertiser.account');
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
 });
 
 // Publisher routes
-Route::group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher']], function() {
+$this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher']], function() {
     $this->get('dashboard', 'DashboardController@indexPublisher')->name('publisher.dashboard');
     $this->get('profile', 'ProfileController@index')->name('publisher.profile');
+
     $this->get('places', 'PublisherController@places')->name('publisher.places');
-    $this->post('places/add', 'PublisherController@storePlace');
+    $this->get('places/add', 'PublisherController@createPlace')->name('publisher.places.create');
+    $this->post('places/add', 'PublisherController@storePlace')->name('publisher.places.store');
+
     $this->get('account', 'DashboardController@publisher')->name('publisher.account');
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('advertiser', 'HomeController@indexAdvertiser')->name('home.advertiser');
-Route::get('publisher', 'HomeController@indexPublisher')->name('home.publisher');
+$this->get('/', 'HomeController@index')->name('home');
+$this->get('advertiser', 'HomeController@indexAdvertiser')->name('home.advertiser');
+$this->get('publisher', 'HomeController@indexPublisher')->name('home.publisher');
 
 // Contacts routes
-Route::get('/contact', 'ContactController@index')->name('contact.show');
-Route::post('/contact/send', 'ContactController@send')->name('contact.send');
+$this->get('/contact', 'ContactController@index')->name('contact.show');
+$this->post('/contact/send', 'ContactController@send')->name('contact.send');
