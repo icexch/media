@@ -5,7 +5,10 @@
     </div>
     <div class="desktop-dropdown js-desktop-dropdown">
         <div class="desktop-dropdown__link-wrap">
-            <a href="{{ action('ProfileController@index') }}" class="desktop-dropdown__link">Edit account</a>
+            <a href="{{ auth()->user()->isAdvertiser() ? route('advertiser.account.show') : route('publisher.account.show') }}"
+               class="desktop-dropdown__link">
+                Edit account
+            </a>
         </div>
         <div class="desktop-dropdown__link-wrap">
             <a class="desktop-dropdown__link"

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\AdMaterialCreateRequest;
+use App\Http\Requests\AdvertiserUpdateProfileRequest;
 use App\Models\AdMaterial;
 use App\Models\AdType;
 use App\Models\Category;
@@ -44,5 +45,27 @@ class AdvertiserController extends Controller
         $adMaterial->save();
 
         return redirect()->route('advertiser.ads');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showProfile()
+    {
+        return view('pages.profile.advertiser.index');
+    }
+
+    /**
+     * @param AdvertiserUpdateProfileRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateProfile(AdvertiserUpdateProfileRequest $request)
+    {
+        $user = auth()->user();
+        $user->update($request->only(['name', 'email']));
+        $user->profile()->update($request->get('profile'));
+
+        return redirect()->back();
     }
 }
