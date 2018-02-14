@@ -1,10 +1,10 @@
 <footer class="footer footer_main">
     <div class="footer__container container">
         <div class="footer__link-list">
-            <a href="#" class="footer__link-item">Home</a>
-            <a href="#" class="footer__link-item">Existing places</a>
-            <a href="#" class="footer__link-item">New Place</a>
-            <a href="#" class="footer__link-item">Payments</a>
+            <a href="{{ route('advertiser.dashboard') }}" class="footer__link-item">Home</a>
+            <a href="{{ route('advertiser.ads') }}" class="footer__link-item">Ads</a>
+            <a href="{{ route('advertiser.ads.create') }}" class="footer__link-item">New Ad</a>
+            <a href="{{ route('advertiser.export') }}" class="footer__link-item">Export</a>
             <a class="footer__link-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
