@@ -140,7 +140,7 @@ class ExportPublisherService extends ExportService {
                 if(isset($clicks[$i])) {
                     !isset($columns['isClicks']) ?: $item['Clicks'] = $clicksCount;
                 }
-                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = $clicksCount / $impressionsCount;
+                !isset($columns['isRationClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = $clicksCount / $impressionsCount;
 
                 $data[] = $item;
             }
