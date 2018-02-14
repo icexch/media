@@ -6,7 +6,6 @@
             <h1 class="guest-reg__title">
                 {{ $type === 'advertiser' ? 'Advertisers' : 'Publishers' }} - Signup
             </h1>
-
             <div class="guest-reg__content">
                 <div class="guest-form">
                     <form method="post" action="{{ action('Auth\RegisterController@register') }}">
@@ -14,6 +13,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="type" value="{{ $type }}">
 
+                        @include('parts.errors')
                         <div class="guest-form__line">
                             <div class="guest-form__line-title-wrap">
                                 <label for="g-reg-user" class="guest-form__line-title guest-form__line-title_required">Username</label>

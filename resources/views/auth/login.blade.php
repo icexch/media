@@ -9,6 +9,9 @@
                     <form method="post" action="{{ action('Auth\LoginController@login') }}">
                         {{ method_field('POST') }}
                         {{ csrf_field() }}
+
+                        @include('parts.errors'))
+
                         <div class="guest-form__wrap">
                             <div class="guest-form__line">
                                 <div class="guest-form__line-title-wrap">
