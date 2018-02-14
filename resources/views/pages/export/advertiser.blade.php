@@ -150,7 +150,7 @@
                                         <span class="form__checkbox-text">Clicks</span>
                                     </label>
                                     <label class="form__block-checkbox">
-                                        <input type="checkbox" name="isRationClicksImpressions" class="js-checkbox-small">
+                                        <input type="checkbox" name="isRatioClicksImpressions" class="js-checkbox-small">
                                         <span class="form__checkbox-text">Ratio clicks/impressions</span>
                                     </label>
                                 </div>

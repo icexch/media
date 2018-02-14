@@ -34,7 +34,7 @@ class ExportAdvertiserService extends ExportService {
             "isMonth" => 'month',
             "isImpressions" => 'impressions',
             "isClicks" => 'clicks',
-            "isRationClicksImpressions" => null,
+            "isRatioClicksImpressions" => null,
             "find-year3" => null,
         ]
     ];
@@ -80,7 +80,7 @@ class ExportAdvertiserService extends ExportService {
             !isset($columns['isPlaceTitle']) ?: $item['Title'] = $ad->name;
             !isset($columns['isImpressions']) ?: $item['Impressions'] = $impressions;
             !isset($columns['isClicks']) ?: $item['Clicks'] = $clicks;
-            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = $clicks/$impressions;
+            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicks/$impressions, 2);
             !isset($columns['isUnusedImpression']) ?: $item['UnusedImpression'] = $unusedImpression;
             !isset($columns['isUnusedClicks']) ?: $item['UnusedClicks'] = $unusedClicks;
             $data[] = $item;
@@ -143,7 +143,7 @@ class ExportAdvertiserService extends ExportService {
                 if(isset($clicks[$i])) {
                     !isset($columns['isClicks']) ?: $item['Clicks'] = $clicksCount;
                 }
-                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = $clicksCount / $impressionsCount;
+                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicksCount / $impressionsCount, 2);
 
                 $data[] = $item;
             }

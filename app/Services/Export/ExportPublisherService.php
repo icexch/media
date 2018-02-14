@@ -35,7 +35,7 @@ class ExportPublisherService extends ExportService {
             "isMonth" => 'month',
             "isImpressions" => 'impressions',
             "isClicks" => 'clicks',
-            "isRationClicksImpressions" => null,
+            "isRatioClicksImpressions" => null,
             "find-year3" => null,
         ]
     ];
@@ -78,7 +78,7 @@ class ExportPublisherService extends ExportService {
             !isset($columns['isUrl']) ?: $item['Url'] = $place->url;
             !isset($columns['isImpressions']) ?: $item['Impressions'] = $impressions;
             !isset($columns['isClicks']) ?: $item['Clicks'] = $clicks;
-            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = $clicks/$impressions;
+            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicks/$impressions, 2);
             $data[] = $item;
         }
         return $data;
@@ -140,7 +140,7 @@ class ExportPublisherService extends ExportService {
                 if(isset($clicks[$i])) {
                     !isset($columns['isClicks']) ?: $item['Clicks'] = $clicksCount;
                 }
-                !isset($columns['isRationClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = $clicksCount / $impressionsCount;
+                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicksCount / $impressionsCount, 2);
 
                 $data[] = $item;
             }
