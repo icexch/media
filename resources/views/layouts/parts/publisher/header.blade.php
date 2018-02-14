@@ -26,11 +26,21 @@
                     </div>
                 </div>
                 <a href="{{ route('publisher.dashboard') }}" class="header__nav-item">Home</a>
-                <a href="{{ route('publisher.places') }}" class="header__nav-item">Places</a>
-                <a href="#" class="header__nav-item">New Place</a>
+                <div class="header__nav-item header__nav-item_response js-header-item-dropdown">
+                    <div class="header__nav-item-toggle js-header-item-toggle">
+                        Places
+                    </div>
+                    <div class="desktop-dropdown js-desktop-dropdown">
+                        <div class="desktop-dropdown__link-wrap">
+                            <a href="{{ route('publisher.places') }}" class="desktop-dropdown__link">Existing Places</a>
+                        </div>
+                        <div class="desktop-dropdown__link-wrap">
+                            <a href="{{ route('publisher.places.create') }}" class="desktop-dropdown__link">New Place</a>
+                        </div>
+                    </div>
+                </div>
                 <a href="{{route('publisher.export')}}" class="header__nav-item">Export</a>
                 <a href="{{route('publisher.payments')}}" class="header__nav-item">Payments</a>
-                <a href="#" class="header__nav-item">Messages</a>
             </nav>
         </div>
         <div class="header__right-part">
