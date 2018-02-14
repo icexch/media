@@ -12,7 +12,7 @@
                         <div class="guest-form__wrap">
                             <div class="guest-form__line">
                                 <div class="guest-form__line-title-wrap">
-                                    <label for="g-log-user" class="guest-form__line-title">Username</label>
+                                    <label for="g-log-user" class="guest-form__line-title">Email</label>
                                 </div>
                                 <div class="guest-form__input-holder">
                                     <input id="email" type="email" class="guest-form__input" name="email"
