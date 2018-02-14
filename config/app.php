@@ -169,6 +169,7 @@ return [
          */
         SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
         App\Admin\Providers\AdminSectionsServiceProvider::class,
+        \nilsenj\Toastr\ToastrServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Toastr' => \nilsenj\Toastr\Facades\Toastr::class
     ],
 
 ];
