@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-02-10 19:40:05.
+    * Generated on 2018-02-12 12:21:53.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -65,6 +65,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'App\Services\PixelPoint\PixelPointPlaceService' => \App\Services\PixelPoint\PixelPointPlaceService::class,
+        'App\Services\PixelPoint\PixelPointAdService' => \App\Services\PixelPoint\PixelPointAdService::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -221,6 +223,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'App\Services\PixelPoint\PixelPointPlaceService' => \App\Services\PixelPoint\PixelPointPlaceService::class,
+        'App\Services\PixelPoint\PixelPointAdService' => \App\Services\PixelPoint\PixelPointAdService::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -377,6 +381,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'App\Services\PixelPoint\PixelPointPlaceService' => \App\Services\PixelPoint\PixelPointPlaceService::class,
+        'App\Services\PixelPoint\PixelPointAdService' => \App\Services\PixelPoint\PixelPointAdService::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -533,6 +539,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'App\Services\PixelPoint\PixelPointPlaceService' => \App\Services\PixelPoint\PixelPointPlaceService::class,
+        'App\Services\PixelPoint\PixelPointAdService' => \App\Services\PixelPoint\PixelPointAdService::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -689,6 +697,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'App\Services\PixelPoint\PixelPointPlaceService' => \App\Services\PixelPoint\PixelPointPlaceService::class,
+        'App\Services\PixelPoint\PixelPointAdService' => \App\Services\PixelPoint\PixelPointAdService::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -845,6 +855,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'App\Services\PixelPoint\PixelPointPlaceService' => \App\Services\PixelPoint\PixelPointPlaceService::class,
+        'App\Services\PixelPoint\PixelPointAdService' => \App\Services\PixelPoint\PixelPointAdService::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -1001,6 +1013,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'App\Services\PixelPoint\PixelPointPlaceService' => \App\Services\PixelPoint\PixelPointPlaceService::class,
+        'App\Services\PixelPoint\PixelPointAdService' => \App\Services\PixelPoint\PixelPointAdService::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,

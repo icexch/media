@@ -33,7 +33,7 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // Advertiser routes
 $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
-    $this->get('dashboard', 'DashboardController@advertiser')->name('advertiser.dashboard');
+    $this->get('dashboard', 'DashboardController@indexAdvertiser')->name('advertiser.dashboard');
 
     $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
     $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
@@ -44,12 +44,12 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
 
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
-    $this->post('export', 'ExportController@exportAdvertiser')->name('advertiser.export.download');
+    $this->post('export', 'ExportController@exportAllAdvertiser')->name('advertiser.export.all.download');
 });
 
 // Publisher routes
 $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher']], function() {
-    $this->get('dashboard', 'DashboardController@publisher')->name('publisher.dashboard');
+    $this->get('dashboard', 'DashboardController@indexPublisher')->name('publisher.dashboard');
 
     $this->get('places', 'PublisherController@places')->name('publisher.places');
     $this->get('places/add', 'PublisherController@createPlace')->name('publisher.places.create');
@@ -60,7 +60,7 @@ $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
 
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
-    $this->post('export', 'ExportController@exportPublisher')->name('publisher.export.download');
+    $this->post('export', 'ExportController@exportAllPublisher')->name('publisher.export.all.download');
 });
 
 $this->get('/', 'HomeController@index')->name('home');

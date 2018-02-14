@@ -11,7 +11,7 @@
                     <div class="export">
                         <h1 class="export__title">Export Data to A CSV File</h1>
                         <div class="export__form">
-                            <form method="POST" action="{{route('publisher.export.download')}}">
+                            <form method="POST" action="{{route('publisher.export.all.download')}}">
                                 {{csrf_field()}}
                                 <div class="export__form-select-wrap">
                                     <div class="form__select-holder">

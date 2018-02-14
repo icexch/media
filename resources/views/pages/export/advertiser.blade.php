@@ -12,7 +12,7 @@
                 {{--EXPORT--}}
                 <div class="export">
                     <div class="export__form">
-                        <form method="POST" action="{{route('advertiser.export.download')}}">
+                        <form method="POST" action="{{route('advertiser.export.all.download')}}">
                             {{csrf_field()}}
                             <div class="export__form-select-wrap">
                                 <div class="form__select-holder">
@@ -94,7 +94,7 @@
                                         <div class="form__date-select">
                                             <label for="adv-exp-month" class="form__date">Month:</label>
                                             <div class="form__select-holder form__select-holder_small">
-                                                <select id="adv-exp-month" name="month2" class="form__select form__select_small">
+                                                <select id="adv-exp-month" name="find-month2" class="form__select form__select_small">
                                                     <option disabled selected>Month</option>
                                                     <option value="01">January</option>
                                                     <option value="02">February</option>
@@ -115,7 +115,7 @@
                                         <div class="form__date-select">
                                             <label for="adv-exp-year2" class="form__date">Year:</label>
                                             <div class="form__input-holder">
-                                                <input id="adv-exp-year2" name="year2" type="text" class="form__input form__input_small">
+                                                <input id="adv-exp-year2" name="find-year2" type="text" class="form__input form__input_small">
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
                                         <div class="form__date-select">
                                             <label for="adv-exp-year1" class="form__date">Year:</label>
                                             <div class="form__input-holder">
-                                                <input id="adv-exp-year1" name="year3" type="text" class="form__input form__input_small">
+                                                <input id="adv-exp-year1" name="find - year3" type="text" class="form__input form__input_small">
                                             </div>
                                         </div>
                                     </div>
