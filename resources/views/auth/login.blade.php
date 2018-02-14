@@ -1,7 +1,7 @@
 @extends('layouts.home.other')
 
 @section('content')
-    <div class="guest-login" style="background-image: url(img/contact-us-bg.jpg)">
+    <div class="guest-login" style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="guest-login__container container">
             <p class="guest-login__title guest-login__title_response">Login</p>
             <div class="guest-login__content">

@@ -1,7 +1,7 @@
 @extends('layouts.home.other')
 
 @section('content')
-    <div class="contact-us" style="background-image: url(img/contact-us-bg.jpg)">
+    <div class="contact-us" style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="contact-us__container container">
             <h1 class="contact-us__title">Contact Us</h1>
             <div class="contact-us__content">

@@ -7,7 +7,7 @@
         </div>
         <div class="header__left-part">
             <a href="#" class="header__logo">
-                <img src="img/logo-mobile.svg" alt="" class="header__logo-img">
+                <img src="/img/logo-mobile.svg" alt="" class="header__logo-img">
             </a>
             <nav class="header__nav" id="nav">
                 <div class="header__nav-logo-wrap">

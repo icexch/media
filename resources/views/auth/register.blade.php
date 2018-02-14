@@ -1,7 +1,7 @@
 @extends('layouts.home.other')
 
 @section('content')
-    <div class="guest-reg" style="background-image: url(img/contact-us-bg.jpg)">
+    <div class="guest-reg" style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="guest-reg__container container">
             <h1 class="guest-reg__title">
                 {{ $type === 'advertiser' ? 'Advertisers' : 'Publishers' }} - Signup
