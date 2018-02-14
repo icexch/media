@@ -1,5 +1,5 @@
 @extends('layouts.advertiser')
-@section('title', 'New Add Advertisers - ICEX Media')
+@section('title', $title.' - ICEX Media')
 @section('content')
     <div class="std-adv std-adv_home js-page"  style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="std-adv__container container">
@@ -43,7 +43,9 @@
                 </div>
 
             </div>
-            <p class="std-adv__title std-adv__title_bottom">Countries where your ads have been displayed in December 2017</p>
+            <p class="std-adv__title std-adv__title_bottom">
+                 <a href="{{$exportLink}}" target="_blank" class="adv-table__link">Export data to a CSV file</a>
+            </p>
         </div>
     </div>
 @endsection

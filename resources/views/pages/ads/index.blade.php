@@ -57,7 +57,7 @@
                                             <p class="adv-table__text">0</p>
                                         </div>
                                         <div class="adv-table__column">
-                                            <a href="#">
+                                            <a href="{{route('advertiser.chart.id', ['id' => $adMaterial->id])}}">
                                                 <i class="adv-table__icon adv-table__icon_graphic"></i>
                                             </a>
                                         </div>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="adv-table__link-wrap">
-                        <a href="#" target="_blank" class="adv-table__link">Export data to a CSV file</a>
+                        <a href="{{route('advertiser.export')}}" target="_blank" class="adv-table__link">Export data to a CSV file</a>
                     </div>
                 </div>
 

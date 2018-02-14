@@ -73,7 +73,7 @@
                                             </p>
                                         </div>
                                         <div class="adv-table__column">
-                                            <a href="#">
+                                            <a href="{{route('publisher.chart.id', ['id' => $place->id])}}">
                                                 <i class="adv-table__icon adv-table__icon_graphic"></i>
                                             </a>
                                         </div>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <div class="adv-table__link-wrap">
-                        <a href="#" target="_blank" class="adv-table__link">Export data to a CSV file</a>
+                        <a href="{{route('publisher.export')}}" target="_blank" class="adv-table__link">Export data to a CSV file</a>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@
                 {{--EXPORT--}}
                 <div class="export">
                     <div class="export__form">
-                        <form method="POST" action="{{route('advertiser.export.all.download')}}">
+                        <form method="POST" action="{{$id != 0 ? route('publisher.export.id', ['id' => $id]): route('publisher.export.all')}}">
                             {{csrf_field()}}
                             <div class="export__form-select-wrap">
                                 <div class="form__select-holder">

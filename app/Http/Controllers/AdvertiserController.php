@@ -6,6 +6,7 @@ use App\Models\AdMaterial;
 use App\Models\AdType;
 use App\Models\Category;
 use App\Models\Region;
+use App\Services\PixelPoint\PixelPointAdService;
 
 class AdvertiserController extends Controller
 {
@@ -45,5 +46,17 @@ class AdvertiserController extends Controller
         $adMaterial->save();
 
         return redirect()->route('advertiser.ads');
+    }
+
+    public function chart($id, PixelPointAdService $pixelPointService) {
+        $ad = AdMaterial::select('id', 'name')->findOrFail($id);
+        $clicksYear       = $pixelPointService->getStatsYears([$ad->id]);
+        $clicksMonth      = $pixelPointService->getStatsMonths([$ad->id]);
+        $impressionsYear  = $pixelPointService->getStatsYears([$ad->id], 1);
+        $impressionsMonth = $pixelPointService->getStatsMonths([$ad->id], 1);
+        $title = $ad->name;
+        $exportLink = route('advertiser.export.one', ['id' => $ad->id]);
+
+        return view('pages.dashboard.advertiser', compact('exportLink', 'title', 'clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
     }
 }

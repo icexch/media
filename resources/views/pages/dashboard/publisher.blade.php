@@ -1,9 +1,9 @@
 @extends('layouts.publisher')
-@section('title', 'Publishers Home')
+@section('title', $title.' - ICEX Media')
 
 @section('content')
     <div class="publishers js-page">
-        <div class="publishers__bg" style="background-image: url(img/publish_bg.jpg)">
+        <div class="publishers__bg" style="background-image: url(/img/publish_bg.jpg)">
             <div class="publishers__bg-darken">
                 <div class="publishers__inner container-publishers">
                     <div class="publishers__block">
@@ -48,7 +48,9 @@
                             </div>
 
                         </div>
-
+                        <p class="std-adv__title std-adv__title_bottom">
+                                <a href="{{$exportLink}}" target="_blank" class="adv-table__link">Export data to a CSV file</a>
+                        </p>
                     </div>
                 </div>
             </div>

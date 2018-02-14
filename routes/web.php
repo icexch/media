@@ -36,6 +36,8 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
     $this->get('dashboard', 'DashboardController@indexAdvertiser')->name('advertiser.dashboard');
 
     $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
+    $this->get('ads/{id}/chart', 'AdvertiserController@chart')->name('advertiser.chart.id');
+
     $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
     $this->post('ads/add', 'AdvertiserController@storeAd')->name('advertiser.ads.store');
 
@@ -44,7 +46,9 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
 
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
-    $this->post('export', 'ExportController@exportAllAdvertiser')->name('advertiser.export.all.download');
+    $this->get('{id}/export', 'ExportController@indexAdvertiser')->name('advertiser.export.one');
+    $this->post('export', 'ExportController@exportAllAdvertiser')->name('advertiser.export.all');
+    $this->post('{id}/export', 'ExportController@exportAdvertiser')->name('advertiser.export.id');
 });
 
 // Publisher routes
@@ -52,6 +56,7 @@ $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
     $this->get('dashboard', 'DashboardController@indexPublisher')->name('publisher.dashboard');
 
     $this->get('places', 'PublisherController@places')->name('publisher.places');
+    $this->get('places/{id}/chart', 'PublisherController@chart')->name('publisher.chart.id');
     $this->get('places/add', 'PublisherController@createPlace')->name('publisher.places.create');
     $this->post('places/add', 'PublisherController@storePlace')->name('publisher.places.store');
 
@@ -60,7 +65,9 @@ $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
 
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
-    $this->post('export', 'ExportController@exportAllPublisher')->name('publisher.export.all.download');
+    $this->get('{id}/export', 'ExportController@indexPublisher')->name('publisher.export.one');
+    $this->post('export', 'ExportController@exportAllPublisher')->name('publisher.export.all');
+    $this->post('{id}/export', 'ExportController@exportPublisher')->name('publisher.export.id');
 });
 
 $this->get('/', 'HomeController@index')->name('home');

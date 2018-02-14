@@ -30,8 +30,9 @@ class DashboardController extends Controller
         $clicksMonth      = $this->pixelAd->getStatsMonths($adsIds);
         $impressionsYear  = $this->pixelAd->getStatsYears($adsIds, 1);
         $impressionsMonth = $this->pixelAd->getStatsMonths($adsIds, 1);
-
-        return view('pages.dashboard.advertiser', compact('clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
+        $title = 'Advertisers Home';
+        $exportLink = route('advertiser.export');
+        return view('pages.dashboard.advertiser', compact('exportLink', 'title', 'clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
 
     }
 
@@ -42,7 +43,8 @@ class DashboardController extends Controller
         $clicksMonth      = $this->pixelPlace->getStatsMonths($placesIDs);
         $impressionsYear  = $this->pixelPlace->getStatsYears($placesIDs, 1);
         $impressionsMonth = $this->pixelPlace->getStatsMonths($placesIDs, 1);
-
-        return view('pages.dashboard.publisher', compact('clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
+        $title = 'Publishers Home';
+        $exportLink = route('publisher.export');
+        return view('pages.dashboard.publisher', compact('exportLink', 'title', 'clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
     }
 }
