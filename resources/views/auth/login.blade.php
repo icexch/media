@@ -34,7 +34,7 @@
                                 <div class="guest-login__choose-type-item-wrap">
                                     <a href="#"
                                        class="guest-login__choose-type-item
-                                              {{ (!request()->query('type') || request()->query('type') ==='publisher') ?
+                                              {{ (!request()->query('type') || request()->query('type') !=='advertiser') ?
                                               'guest-login__choose-type-item_active' : '' }}  js-login-type"
                                        data-type="publisher">Publisher</a>
                                 </div>
