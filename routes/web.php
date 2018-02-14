@@ -34,13 +34,14 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 // Advertiser routes
 $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
     $this->get('dashboard', 'DashboardController@advertiser')->name('advertiser.dashboard');
-    $this->get('profile', 'ProfileController@index')->name('advertiser.profile');
 
     $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
     $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
     $this->post('ads/add', 'AdvertiserController@storeAd')->name('advertiser.ads.store');
 
-    $this->get('account', 'DashboardController@advertiser')->name('advertiser.account');
+    $this->get('account', 'AccountController@edit')->name('advertiser.account.edit');
+    $this->post('account', 'AccountController@update')->name('advertiser.account.update');
+
     $this->get('payments', 'PaymentsController@indexAdvertiser')->name('advertiser.payments');
     $this->get('export', 'ExportController@indexAdvertiser')->name('advertiser.export');
 });
@@ -48,13 +49,14 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
 // Publisher routes
 $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher']], function() {
     $this->get('dashboard', 'DashboardController@publisher')->name('publisher.dashboard');
-    $this->get('profile', 'ProfileController@index')->name('publisher.profile');
 
     $this->get('places', 'PublisherController@places')->name('publisher.places');
     $this->get('places/add', 'PublisherController@createPlace')->name('publisher.places.create');
     $this->post('places/add', 'PublisherController@storePlace')->name('publisher.places.store');
 
-    $this->get('account', 'DashboardController@publisher')->name('publisher.account');
+    $this->get('account', 'AccountController@edit')->name('publisher.account.edit');
+    $this->post('account', 'AccountController@update')->name('publisher.account.update');
+
     $this->get('payments', 'PaymentsController@indexPublisher')->name('publisher.payments');
     $this->get('export', 'ExportController@indexPublisher')->name('publisher.export');
 });

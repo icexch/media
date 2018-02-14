@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\AdMaterialCreateRequest;
+use App\Http\Requests\AccountUpdateRequest;
 use App\Models\AdMaterial;
 use App\Models\AdType;
 use App\Models\Category;
