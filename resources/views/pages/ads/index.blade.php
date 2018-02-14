@@ -27,6 +27,9 @@
                             <div class="adv-table__column">
                                 <p class="adv-table__title">Imressions(total)</p>
                             </div>
+                            <div class="adv-table__column">
+                                <p class="adv-table__title">Actions</p>
+                            </div>
                         </div>
 
                         <div class="adv-table__body">
@@ -52,6 +55,11 @@
                                         </div>
                                         <div class="adv-table__column">
                                             <p class="adv-table__text">0</p>
+                                        </div>
+                                        <div class="adv-table__column">
+                                            <a href="#">
+                                                <i class="adv-table__icon adv-table__icon_graphic"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 @endforeach
