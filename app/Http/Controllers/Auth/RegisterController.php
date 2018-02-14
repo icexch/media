@@ -53,7 +53,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm(Request $request)
     {
-        $type = in_array($request->query('type'),
+        $type = array_key_exists($request->query('type'),
             $this->rolesMap) ? $request->query('type') : self::PUBLISHER_ROLE;
 
         return view('auth.register', compact('type'));
