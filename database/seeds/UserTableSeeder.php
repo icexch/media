@@ -12,14 +12,27 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for($i=0;$i<10;$i++) {
-            \App\Models\User\User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => 123123,
-                'role' => rand(1,3),
-                'balance' => $faker->randomFloat(9, 0, 1000)
-            ]);
+
+        for($i=0; $i<3; $i++) {
+            $this->createUserInstance(\App\Models\User\Moderator::class, $faker);
+            $this->createUserInstance(\App\Models\User\Publisher::class, $faker);
+            $this->createUserInstance(\App\Models\User\Advertiser::class, $faker);
         }
+    }
+
+    /**
+     * @param $userClass
+     * @param $faker
+     *
+     * @return mixed
+     */
+    protected function createUserInstance($userClass, $faker)
+    {
+        return $userClass::create([
+            'name' => $faker->name,
+            'email' => $faker->email,
+            'password' => 'test',
+            'balance' => $faker->randomFloat(9, 0, 1000)
+        ]);
     }
 }
