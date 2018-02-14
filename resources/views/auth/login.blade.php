@@ -33,11 +33,14 @@
                             <div class="guest-login__choose-type">
                                 <div class="guest-login__choose-type-item-wrap">
                                     <a href="#"
-                                       class="guest-login__choose-type-item guest-login__choose-type-item_active js-login-type"
+                                       class="guest-login__choose-type-item
+                                              {{ (!request()->query('type') || request()->query('type') ==='publisher') ?
+                                              'guest-login__choose-type-item_active' : '' }}  js-login-type"
                                        data-type="publisher">Publisher</a>
                                 </div>
                                 <div class="guest-login__choose-type-item-wrap">
-                                    <a href="#" class="guest-login__choose-type-item js-login-type"
+                                    <a href="#" class="guest-login__choose-type-item {{ (request()->query('type') ==='advertiser') ?
+                                              'guest-login__choose-type-item_active' : '' }} js-login-type"
                                        data-type="advertiser">Advertiser</a>
                                 </div>
                                 <input type="hidden" id="login-type" value="publisher">

@@ -14,7 +14,7 @@
             <a href="{{ route('home') }}" class="header__nav-item">Home</a>
             <a href="{{ route('home.advertiser') }}" class="header__nav-item">Advertisers</a>
             <a href="{{ route('home.publisher') }}" class="header__nav-item">Publishers</a>
-            <a href="#" class="header__nav-item">Statistic</a>
+            {{--<a href="#" class="header__nav-item">Statistic</a>--}}
             <a href="{{ route('contact.show') }}" class="header__nav-item">Contact Us</a>
         </nav>
 
