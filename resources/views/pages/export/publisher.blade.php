@@ -43,7 +43,7 @@
                                             <span class="form__checkbox-text">Impressions</span>
                                         </label>
                                         <label class="form__block-checkbox">
-                                            <input type="checkbox" name="isCliks" class="js-checkbox-small">
+                                            <input type="checkbox" name="isClicks" class="js-checkbox-small">
                                             <span class="form__checkbox-text">Clicks</span>
                                         </label>
                                         <label class="form__block-checkbox">
@@ -97,7 +97,7 @@
                                             <div class="form__date-select">
                                                 <label for="p-ex-month" class="form__date">Month</label>
                                                 <div class="form__select-holder form__select-holder_small">
-                                                    <select id="p-ex-month" name="find-month" class="form__select form__select_small">
+                                                    <select id="p-ex-month" name="find-month2" class="form__select form__select_small">
                                                         <option disabled selected>Month</option>
                                                         <option value="01">January</option>
                                                         <option value="02">February</option>
@@ -164,7 +164,7 @@
                                             <div class="form__date-select">
                                                 <label for="p-ex-year1" class="form__date">Year:</label>
                                                 <div class="form__input-holder">
-                                                    <input id="p-ex-year1" type="text" name="year3" class="form__input form__input_small">
+                                                    <input id="p-ex-year1" type="text" name="find-year3" class="form__input form__input_small">
                                                 </div>
                                             </div>
                                         </div>

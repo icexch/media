@@ -129,7 +129,7 @@ class PixelPointService {
         $time = time();
         $startDate = $time - 31556926;
         $endDate = $time;
-        $step = 2629743;
+        $step = "+1 month";
 
         return $this->getStats($IDs,$clicksOrImpressions, $startDate, $endDate, $step, 'Y-m');
     }
@@ -147,7 +147,7 @@ class PixelPointService {
      * @param int $clicksOrImpressions
      * @return array
      */
-    public function getStats(array $IDs, int $clicksOrImpressions = 0, int $startDate = 0, int $endData = 0, int $step = 0, string $keyOutput = 'Y') {
+    public function getStats(array $IDs, int $clicksOrImpressions = 0, int $startDate = 0, int $endData = 0, $step = null, string $keyOutput = 'Y') {
         $keyName = $clicksOrImpressions ? $this->impressionKey : $this->clicksKey;
 
         $output = [];
@@ -175,12 +175,23 @@ class PixelPointService {
 
             while ($dateStart<=$dateEnd) {
                 $yearKey = (string)date($keyOutput, $dateStart);
-                isset($output[$yearKey]) ?: $output[$yearKey] = ['year' => date('Y', $dateStart), 'month' => date('m', $dateStart), 'count' => 0];
+                if(is_int($step)) {
+                    $nextDate = $dateStart+$step;
+                } else {
+                    $nextDate = strtotime(date('Y-m-d H:i:s', $dateStart)." ".$step);
+                }
 
-                $count = Redis::ZCOUNT($this->currentKey.":".$IDs[$i].":".$keyName, $dateStart, $dateStart + $step);
+                isset($output[$yearKey]) ?: $output[$yearKey] = [
+                    'year' => date('Y', $dateStart),
+                    'month' => date('m', $dateStart),
+                    'day' => date('d', $dateStart),
+                    'count' => 0
+                ];
+
+                $count = Redis::ZCOUNT($this->currentKey.":".$IDs[$i].":".$keyName, $dateStart, $nextDate);
                 $output[$yearKey]['count'] += $count;
 
-                $dateStart+=$step;
+                $dateStart = $nextDate;
             }
         }
         ksort($output);
