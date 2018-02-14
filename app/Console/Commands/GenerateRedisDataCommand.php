@@ -63,13 +63,17 @@ class GenerateRedisDataCommand extends Command
                     $placeID = rand(0, count($placesIDs) - 1);
                     $isb = rand(0, 1);
 
-                    if($isb) {
-                        $this->pixelAd->addShow($adID, ['placeID' => $placeID], $timestamp);
-                        $this->pixelPlace->addShow($placeID, ['adID' => $adID], $timestamp);
-                    } else {
-                        $this->pixelAd->addClick($adID, ['placeID' => $placeID], $timestamp);
-                        $this->pixelPlace->addClick($placeID, ['adID' => $adID], $timestamp);
-                    }
+                   try {
+                       if($isb) {
+                           $this->pixelAd->addShow($adID, ['placeID' => $placeID], $timestamp);
+                           $this->pixelPlace->addShow($placeID, ['adID' => $adID], $timestamp);
+                       } else {
+                           $this->pixelAd->addClick($adID, ['placeID' => $placeID], $timestamp);
+                           $this->pixelPlace->addClick($placeID, ['adID' => $adID], $timestamp);
+                       }
+                   } catch (\Exception $exception) {
+
+                   }
                 }
                 $timestamp += 2629743;
             }
