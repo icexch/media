@@ -49,12 +49,43 @@ class PublisherController extends Controller
 
     public function chart($id, PixelPointPlaceService $pixelPointService) {
         $place = Place::select('id', 'name')->findOrFail($id);
+        $clicksTotal      = 0;
+        $impressionsTotal = 0;
+
+        $impressions = $pixelPointService->getImpressions([$place->id]);
+        $adsCount = $impressions->map(function($click) {
+            return $click['adID'];
+        })->unique()->count();
+
         $clicksYear       = $pixelPointService->getStatsYears([$place->id]);
         $clicksMonth      = $pixelPointService->getStatsMonths([$place->id]);
         $impressionsYear  = $pixelPointService->getStatsYears([$place->id], 1);
         $impressionsMonth = $pixelPointService->getStatsMonths([$place->id], 1);
+
+        foreach ($clicksYear as $item) {
+            $clicksTotal += $item['count'];
+        }
+
+        foreach ($impressionsYear as $item) {
+            $impressionsTotal += $item['count'];
+        }
+
         $title = $place->name;
         $exportLink = route('publisher.export.one', ['id' => $place->id]);
-        return view('pages.dashboard.publisher', compact('exportLink', 'title', 'clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
+
+
+
+        return view('pages.dashboard.publisher', compact(
+            'exportLink',
+            'title',
+            'clicksYear',
+            'clicksMonth',
+            'impressionsYear',
+            'impressionsMonth',
+            'clicksTotal',
+            'impressionsTotal',
+            'adsCount'
+            )
+        );
     }
 }

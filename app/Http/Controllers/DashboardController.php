@@ -43,10 +43,9 @@ class DashboardController extends Controller
                 'impressionsMonth',
                 'clicksTotal',
                 'impressionsTotal',
-                'adsCount'
+                'placesCount'
             )
         );
-
     }
 
     public function indexPublisher(PixelPointPlaceService $pixelPointService) {

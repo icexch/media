@@ -24,16 +24,17 @@ class PixelPointService {
         $str = json_encode($data);
 
         if ($this->currentKey == 'ad') {
-            $ad = AdMaterial::find($id);
-            $place = Place::find($data['placeID']);
+            $ad = AdMaterial::with('adType')->find($id);
+            $place = Place::with('adType')->find($data['placeID']);
         } elseif ($this->currentKey == 'place') {
-            $ad = AdMaterial::find($data['adID']);
-            $place = Place::find($id);
+            $ad = AdMaterial::with('adType')->find($data['adID']);
+            $place = Place::with('adType')->find($id);
         }
-        $cpcPrice = $ad->cpc / $ad->cpc_value;
 
+        $cpcPrice = $ad->cpc_value > 0 ?  $ad->cpc / $ad->cpc_value : 0;
         $this->calculatings($ad->user_id, -$cpcPrice, ['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'click'], $time);
         $this->calculatings($place->user_id, $cpcPrice,['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'click'], $time);
+
 
         return Redis::zAdd($this->currentKey.":".$id.":".$this->clicksKey, $time, $str);
     }
@@ -55,7 +56,7 @@ class PixelPointService {
 
             return $this->arrayStrToArrayCollect($data);
         }
-        return [];
+        return collect([]);
     }
     public function addShow(int $id, array $data = [], int $time = null)
     {
@@ -68,13 +69,15 @@ class PixelPointService {
 
         $str = json_encode($data);
         if ($this->currentKey == 'ad') {
-            $ad = AdMaterial::find($id);
-            $place = Place::find($data['placeID']);
+            $ad = AdMaterial::with('adType')->find($id);
+            $place = Place::with('adType')->find($data['placeID']);
         } elseif ($this->currentKey == 'place') {
-            $ad = AdMaterial::find($data['adID']);
-            $place = Place::find($id);
+            $ad = AdMaterial::with('adType')->find($data['adID']);
+            $place = Place::with('adType')->find($id);
         }
-        $cpvPrice = $ad->cpv / $ad->cpv_value;
+
+        $cpvPrice = $ad->cpv_value > 0 ? $ad->cpv / $ad->cpv_value : 0;
+
         $this->calculatings($ad->user_id, -$cpvPrice, ['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'show'], $time);
         $this->calculatings($place->user_id, $cpvPrice,['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'show'], $time);
 
@@ -95,7 +98,7 @@ class PixelPointService {
         } else if($ids) {
             return $this->arrayStrToArrayCollect(Redis::zRange($this->currentKey.":".$ids.":".$this->impressionKey, 0, -1));
         }
-        return [];
+        return collect([]);
     }
 
     protected function arrayStrToArrayCollect($data) {
@@ -115,14 +118,13 @@ class PixelPointService {
     protected function calculatings (int $userID, float $change, array $data = [], int $time = null)
     {
         $time = $time ? $time : time();
+
         $data = array_merge($data,
             [
                 'timestamp' => $time,
                 'change' => $change
             ]);
-
         $str = json_encode($data);
-
         return  Redis::zAdd($this->userCalculatings.":".$userID, $time, $str);
     }
     public function getStatsMonths(array $IDs, $clicksOrImpressions = 0) {

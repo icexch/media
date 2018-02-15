@@ -14,11 +14,12 @@ class AdMaterialTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         $placesIDs = \App\Models\Place::pluck('id');
         $userIDs = \App\Models\User\User::where('role', 2)->pluck('id')->toArray();
+
         foreach ($placesIDs as $placesID) {
             for ($i=0;$i<5;$i++) {
                 \App\Models\AdMaterial::create([
                     'name' => $faker->name,
-                    'user_id' => rand(0, count($userIDs) - 1),
+                    'user_id' => $userIDs[rand(0, count($userIDs) - 1)],
                     'ad_type_id' => rand(1,2),
                     'region_id' => rand(1,2),
                     'category_id' => rand(1,2),

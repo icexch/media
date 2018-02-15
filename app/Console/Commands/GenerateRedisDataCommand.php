@@ -59,8 +59,8 @@ class GenerateRedisDataCommand extends Command
 
                 for ($i=0;$i< $iter;$i++) {
                     $timestamp += 60;
-                    $adID = rand(0, count($adsIDs) - 1);
-                    $placeID = rand(0, count($placesIDs) - 1);
+                    $adID = $adsIDs[rand(0, count($adsIDs) - 1)];
+                    $placeID = $placesIDs[rand(0, count($placesIDs) - 1)];
                     $isb = rand(0, 1);
 
                    try {

@@ -17,14 +17,15 @@ class PixelPointPlaceService extends PixelPointService
         $ads = [];
         //TODO optimise
         foreach ($places as $place) {
-            $adsForAdType = AdMaterial::where('is_active', 1)->where('ad_type_id', $place->ad_type_id);
+            $adsForAdType = AdMaterial::with('adType')->where('is_active', 1)->where('ad_type_id', $place->ad_type_id);
             $adsForAdType->select(
                 \DB::raw("*,(category_id = $place->category_id and region_id = $place->region_id) " .
                     "as fullOptions, (category_id = $place->category_id || region_id = $place->region_id) as orOptions"));
             $adsForAdType->orderByDesc('fullOptions');
             $adsForAdType->orderByDesc('orOptions');
+
             $adsForAdType->whereHas('advertiser', function ($query) {
-                $query->where('balance', '>=', \DB::raw('(cpc / cpc_value)'));
+                $query->where('balance', '>=', \DB::raw('(ad_types.cpc / ad_types.cpc_value)'));
             })->get();
             $ad = $adsForAdType->first();
 

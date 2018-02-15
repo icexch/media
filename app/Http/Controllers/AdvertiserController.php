@@ -50,13 +50,40 @@ class AdvertiserController extends Controller
 
     public function chart($id, PixelPointAdService $pixelPointService) {
         $ad = AdMaterial::select('id', 'name')->findOrFail($id);
+
+        $impressions = $pixelPointService->getImpressions([$ad->id]);
+        $placesCount = $impressions->map(function($click) {
+            return $click['placeID'];
+        })->unique()->count();
+
+        $clicksTotal      = 0;
+        $impressionsTotal = 0;
         $clicksYear       = $pixelPointService->getStatsYears([$ad->id]);
         $clicksMonth      = $pixelPointService->getStatsMonths([$ad->id]);
         $impressionsYear  = $pixelPointService->getStatsYears([$ad->id], 1);
         $impressionsMonth = $pixelPointService->getStatsMonths([$ad->id], 1);
+
+        foreach ($clicksYear as $item) {
+            $clicksTotal += $item['count'];
+        }
+
+        foreach ($impressionsYear as $item) {
+            $impressionsTotal += $item['count'];
+        }
+
         $title = $ad->name;
         $exportLink = route('advertiser.export.one', ['id' => $ad->id]);
 
-        return view('pages.dashboard.advertiser', compact('exportLink', 'title', 'clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
+        return view('pages.dashboard.advertiser', compact(
+            'exportLink',
+            'title',
+            'clicksYear',
+            'clicksMonth',
+            'impressionsYear',
+            'impressionsMonth',
+            'clicksTotal',
+            'impressionsTotal',
+            'placesCount'
+        ));
     }
 }
