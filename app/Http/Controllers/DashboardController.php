@@ -7,44 +7,84 @@ use App\Services\PixelPoint\PixelPointPlaceService;
 
 class DashboardController extends Controller
 {
-    private $pixelAd;
-    private $pixelPlace;
-    /**
-     * Create a new controller instance.
-     *
-     * @param PixelPointAdService $pixelPointAdService
-     * @param PixelPointPlaceService $pixelPointPlaceService
-     */
-    public function __construct(
-        PixelPointAdService $pixelPointAdService,
-        PixelPointPlaceService $pixelPointPlaceService
-    ) {
-        $this->pixelAd = $pixelPointAdService;
-        $this->pixelPlace = $pixelPointPlaceService;
-    }
+    public function __construct() {}
 
-    public function indexAdvertiser() {
+    public function indexAdvertiser(PixelPointAdService $pixelPointService) {
         $adsIds = auth()->user()->adMaterials()->pluck('id')->toArray();
 
-        $clicksYear       = $this->pixelAd->getStatsYears($adsIds);
-        $clicksMonth      = $this->pixelAd->getStatsMonths($adsIds);
-        $impressionsYear  = $this->pixelAd->getStatsYears($adsIds, 1);
-        $impressionsMonth = $this->pixelAd->getStatsMonths($adsIds, 1);
+        $impressions = $pixelPointService->getImpressions($adsIds);
+        $placesCount = $impressions->map(function($click) {
+            return $click['placeID'];
+        })->unique()->count();
+
+        $clicksTotal      = 0;
+        $impressionsTotal = 0;
+        $clicksYear       = $pixelPointService->getStatsYears($adsIds);
+        $clicksMonth      = $pixelPointService->getStatsMonths($adsIds);
+        $impressionsYear  = $pixelPointService->getStatsYears($adsIds, 1);
+        $impressionsMonth = $pixelPointService->getStatsMonths($adsIds, 1);
+
+        foreach ($clicksYear as $item) {
+            $clicksTotal += $item['count'];
+        }
+
+        foreach ($impressionsYear as $item) {
+            $impressionsTotal += $item['count'];
+        }
+
         $title = 'Advertisers Home';
         $exportLink = route('advertiser.export');
-        return view('pages.dashboard.advertiser', compact('exportLink', 'title', 'clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
+        return view('pages.dashboard.advertiser', compact(
+                'exportLink',
+                'title',
+                'clicksYear',
+                'clicksMonth',
+                'impressionsYear',
+                'impressionsMonth',
+                'clicksTotal',
+                'impressionsTotal',
+                'adsCount'
+            )
+        );
 
     }
 
-    public function indexPublisher() {
+    public function indexPublisher(PixelPointPlaceService $pixelPointService) {
         $placesIDs = auth()->user()->places()->pluck('id')->toArray();
 
-        $clicksYear       = $this->pixelPlace->getStatsYears($placesIDs);
-        $clicksMonth      = $this->pixelPlace->getStatsMonths($placesIDs);
-        $impressionsYear  = $this->pixelPlace->getStatsYears($placesIDs, 1);
-        $impressionsMonth = $this->pixelPlace->getStatsMonths($placesIDs, 1);
+        $impressions = $pixelPointService->getImpressions($placesIDs);
+        $adsCount = $impressions->map(function($click) {
+            return $click['adID'];
+        })->unique()->count();
+
+        $clicksTotal      = 0;
+        $impressionsTotal = 0;
+        $clicksYear       = $pixelPointService->getStatsYears($placesIDs);
+        $clicksMonth      = $pixelPointService->getStatsMonths($placesIDs);
+        $impressionsYear  = $pixelPointService->getStatsYears($placesIDs, 1);
+        $impressionsMonth = $pixelPointService->getStatsMonths($placesIDs, 1);
+
+        foreach ($clicksYear as $item) {
+            $clicksTotal += $item['count'];
+        }
+
+        foreach ($impressionsYear as $item) {
+            $impressionsTotal += $item['count'];
+        }
+
         $title = 'Publishers Home';
         $exportLink = route('publisher.export');
-        return view('pages.dashboard.publisher', compact('exportLink', 'title', 'clicksYear', 'clicksMonth', 'impressionsYear', 'impressionsMonth'));
+        return view('pages.dashboard.publisher', compact(
+            'exportLink',
+            'title',
+            'clicksYear',
+            'clicksMonth',
+            'impressionsYear',
+            'impressionsMonth',
+            'clicksTotal',
+            'impressionsTotal',
+            'adsCount'
+            )
+        );
     }
 }

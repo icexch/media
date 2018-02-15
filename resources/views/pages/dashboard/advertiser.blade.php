@@ -9,7 +9,7 @@
 
                 <div class="chart-table">
                     <div class="chart-table__header">
-                        <div class="chart-table__header-col chart-table__col">Number of places</div>
+                        <div class="chart-table__header-col chart-table__col">Number of Places</div>
                         <div class="chart-table__header-col chart-table__col">Impressions sent total</div>
                         <div class="chart-table__header-col chart-table__col">Clicks sent total</div>
                         <div class="chart-table__header-col chart-table__col">Ratio clicks / impressions sent</div>
@@ -17,10 +17,10 @@
                         <div class="chart-table__header-col chart-table__col">Amount unpaid</div>
                     </div>
                     <div class="chart-table__body">
-                        <div class="chart-table__body-col chart-table__col">0</div>
-                        <div class="chart-table__body-col chart-table__col">0</div>
-                        <div class="chart-table__body-col chart-table__col">0</div>
-                        <div class="chart-table__body-col chart-table__col">nan%</div>
+                        <div class="chart-table__body-col chart-table__col">{{$placesCount}}</div>
+                        <div class="chart-table__body-col chart-table__col">{{$impressionsTotal}}</div>
+                        <div class="chart-table__body-col chart-table__col">{{$clicksTotal}}</div>
+                        <div class="chart-table__body-col chart-table__col">{{$impressionsTotal > 0 ? round($clicksTotal/$impressionsTotal,2) * 100 : 0}} %</div>
                         <div class="chart-table__body-col chart-table__col">$0.00</div>
                         <div class="chart-table__body-col chart-table__col">$0.00</div>
                     </div>
