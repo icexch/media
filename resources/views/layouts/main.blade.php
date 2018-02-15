@@ -22,7 +22,11 @@
 
     @yield('content')
 
-    @include('layouts.parts.footer')
+    @if(auth()->user()->isAdvertiser())
+        @include('layouts.parts.advertiser.footer')
+    @else
+            @include('layouts.parts.publisher.footer')
+    @endif
     <div class="up-arrow" id="up-arrow"></div>
 </div>
 @include('layouts.parts.styles')

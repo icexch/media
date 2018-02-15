@@ -45,6 +45,10 @@ class AdMaterial extends Section
                 AdminColumn::text('cpv', 'CPV'),
                 AdminColumn::text('cpv_value', 'Value of cpv'),
                 AdminColumnEditable::checkbox('is_active', 'Active')
+            ])->setApply([
+                function ($query) {
+                    $query->orderBy('is_active', 'asc');
+                }
             ]);
     }
 
@@ -81,6 +85,6 @@ class AdMaterial extends Section
 
     public function onDelete()
     {
-        
+
     }
 }

@@ -25,43 +25,21 @@
                 </div>
 
                 <a href="{{route('advertiser.dashboard')}}" class="header__nav-item">Home</a>
-                <a href="{{ route('advertiser.ads') }}" class="header__nav-item">Ads</a>
-                <a href="#" class="header__nav-item">Ads</a>
-                <a href="{{route('advertiser.export')}}" class="header__nav-item">Export</a>
-                <a href="#" class="header__nav-item">Messages</a>
-                <a href="#" class="header__nav-item">Publishers</a>
-                {{--<a href="{{route('advertiser.payments')}}" class="header__nav-item">Payments</a>--}}
-
                 <div class="header__nav-item header__nav-item_response js-header-item-dropdown">
                     <div class="header__nav-item-toggle js-header-item-toggle">
-                        Orders
+                        Ads
                     </div>
-
                     <div class="desktop-dropdown js-desktop-dropdown">
                         <div class="desktop-dropdown__link-wrap">
-                            <a href="#" class="desktop-dropdown__link">Existing Orders</a>
+                            <a href="{{ route('advertiser.ads') }}" class="desktop-dropdown__link">Existing Ads</a>
                         </div>
                         <div class="desktop-dropdown__link-wrap">
-                            <a href="#" class="desktop-dropdown__link">New Order</a>
+                            <a href="{{ route('advertiser.ads.create') }}" class="desktop-dropdown__link">New Ad</a>
                         </div>
                     </div>
                 </div>
-                <div class="header__nav-item header__nav-item_dropdown js-header-nav-item-parent">
-                    <div class="header__nav-item-container js-header-nav-item-trigger">
-                        <a href="#" class="header__nav-item-text">Orders</a>
-                        <i class="header__nav-item-icon"></i>
-                    </div>
-
-                    <div class="header__nav-item-dropdown js-header-nav-item-dropdown">
-                        <a href="#" class="header__nav-item-dropdown-link">Existing Orders</a>
-                        <a href="#" class="header__nav-item-dropdown-link">New Order</a>
-                    </div>
-
-                </div>
-                <a href="#" class="header__add-new header__add-new_response">
-                    <i class="header__add-new-icon"></i>
-                    <span class="header__add-new-text">New Ad</span>
-                </a>
+                <a href="{{route('advertiser.export')}}" class="header__nav-item">Export</a>
+                {{--<a href="{{route('advertiser.payments')}}" class="header__nav-item">Payments</a>--}}
             </nav>
         </div>
 

@@ -35,9 +35,9 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
     $this->get('dashboard', 'DashboardController@indexAdvertiser')->name('advertiser.dashboard');
 
-    $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
     $this->get('ads/{id}/chart', 'AdvertiserController@chart')->name('advertiser.chart.id');
 
+    $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
     $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
     $this->post('ads/add', 'AdvertiserController@storeAd')->name('advertiser.ads.store');
 
