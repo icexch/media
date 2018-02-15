@@ -3,7 +3,11 @@
 class AdType extends BaseModel
 {
     protected $casts = [
-        'name' => 'string'
+        'name' => 'string',
+        'cpc'        => 'double',
+        'cpc_value'  => 'int',
+        'cpv'        => 'double',
+        'cpv_value'  => 'int',
     ];
 
     /**

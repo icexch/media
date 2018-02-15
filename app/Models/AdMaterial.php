@@ -11,10 +11,6 @@ class AdMaterial extends BaseModel
         'name'       => 'string',
         'user_id'    => 'int',
         'ad_type_id' => 'int',
-        'cpc'        => 'double',
-        'cpc_value'  => 'int',
-        'cpv'        => 'double',
-        'cpv_value'  => 'int',
         'is_active'  => 'bool'
     ];
 

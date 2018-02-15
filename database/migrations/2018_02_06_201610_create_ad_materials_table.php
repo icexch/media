@@ -20,10 +20,6 @@ class CreateAdMaterialsTable extends Migration
             $table->unsignedInteger('ad_type_id');
             $table->unsignedInteger('region_id')->nullable();
             $table->unsignedInteger('category_id');
-            $table->double('cpc', 8, 2)->default(0);
-            $table->integer('cpc_value')->default(0);
-            $table->double('cpv', 8, 2)->default(0);
-            $table->integer('cpv_value')->default(0);
             $table->text('content')->nullable();
             $table->boolean('is_active');
             $table->timestamps();

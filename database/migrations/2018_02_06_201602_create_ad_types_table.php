@@ -16,6 +16,11 @@ class CreateAdTypesTable extends Migration
         Schema::create('ad_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->double('cpc', 8, 2)->default(0);
+            $table->integer('cpc_value')->default(0);
+            $table->double('cpv', 8, 2)->default(0);
+            $table->integer('cpv_value')->default(0);
+            $table->text('content')->nullable();
             $table->timestamps();
         });
 

@@ -22,10 +22,6 @@ class AdMaterialTableSeeder extends Seeder
                     'ad_type_id' => rand(1,2),
                     'region_id' => rand(1,2),
                     'category_id' => rand(1,2),
-                    'cpc' => rand(1, 5),
-                    'cpc_value' => rand(100, 1000),
-                    'cpv' => rand(1, 5),
-                    'cpv_value' => rand(100, 1000),
                     'content' => "<img src='$faker->imageUrl(468,60)'>",
                     'is_active' => true,
                 ]);

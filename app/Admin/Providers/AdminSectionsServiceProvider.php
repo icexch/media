@@ -2,6 +2,7 @@
 
 use App\Admin\Widgets\NavigationUserBlock;
 use App\Models\AdMaterial;
+use App\Models\AdType;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Region;
@@ -21,7 +22,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
         AdMaterial::class => 'App\Admin\Http\Sections\AdMaterial',
         Category::class   => 'App\Admin\Http\Sections\Category',
         Region::class     => 'App\Admin\Http\Sections\Region',
-        Place::class      => 'App\Admin\Http\Sections\Place'
+        Place::class      => 'App\Admin\Http\Sections\Place',
+        AdType::class     => 'App\Admin\Http\Sections\AdType'
     ];
 
     /**
