@@ -25,7 +25,7 @@
                 <div class="text-block__divider"></div>
                 <div class="text-block__text">
                     You can use any standard advertising formats with the help of pre-given types of banners or create your
-                    own new formats, and to maintain advertising campaigns with all the advanced focusing settings or
+                    own new formats, and to maintain advertising ads with all the advanced focusing settings or
                     place banners statically, only gathering statistics.
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <div class="text-slider__slider-item-divider"></div>
                     <div class="text-slider__slider-item-text">
                         <p class="text-slider__slider-item-text-p">
-                            You can use any standard advertising formats with the help of pre-given types of banners or create your own new formats, and to maintain advertising campaigns with all the advanced focusing settings or place banners statically, only gathering statistics.
+                            You can use any standard advertising formats with the help of pre-given types of banners or create your own new formats, and to maintain advertising ads with all the advanced focusing settings or place banners statically, only gathering statistics.
                         </p>
                         <p class="text-slider__slider-item-text-p">
                             In any case you will get detailed statistic reports on a number of parameters to analyze what placement was the most successful.
@@ -86,7 +86,7 @@
                                 <div class="features__slider-item-icon features__slider-item-icon_cost"></div>
                                 <p class="features__slider-item-title">COST EFFICIENCY</p>
                                 <div class="features__slider-item-divider"></div>
-                                <div class="features__slider-item-text">Your ad spend can go further, with less budget spent on poorly-targeted impressions or impressions delivered to fulfill a bulk inventory purchase, despite questionable relevance to campaign goals.</div>
+                                <div class="features__slider-item-text">Your ad spend can go further, with less budget spent on poorly-targeted impressions or impressions delivered to fulfill a bulk inventory purchase, despite questionable relevance to ad goals.</div>
                             </div>
                         </div>
                         <div class="swiper-slide">
@@ -94,7 +94,7 @@
                                 <div class="features__slider-item-icon features__slider-item-icon_yield-management"></div>
                                 <p class="features__slider-item-title">YIELD MANAGEMENT</p>
                                 <div class="features__slider-item-divider"></div>
-                                <div class="features__slider-item-text">With the ability to evaluate and place cost parameters on each impression opportunity, pay-for-performance takes on a new, positive meaning for your campaign. RTB buyers will have control over price/performance unprecedented in the world of display.</div>
+                                <div class="features__slider-item-text">With the ability to evaluate and place cost parameters on each impression opportunity, pay-for-performance takes on a new, positive meaning for your ad. RTB buyers will have control over price/performance unprecedented in the world of display.</div>
                             </div>
                         </div>
                         <div class="swiper-slide">
@@ -110,7 +110,7 @@
                                 <div class="features__slider-item-icon features__slider-item-icon_performance"></div>
                                 <p class="features__slider-item-title">PERFORMANCE</p>
                                 <div class="features__slider-item-divider"></div>
-                                <div class="features__slider-item-text">In aggregate, all of the benefits described here should deliver an overall performance lift for online campaigns compared to previous approaches. And the good news is that this difference should be consistent and sustainable, across all types of target markets and audiences.</div>
+                                <div class="features__slider-item-text">In aggregate, all of the benefits described here should deliver an overall performance lift for online ads compared to previous approaches. And the good news is that this difference should be consistent and sustainable, across all types of target markets and audiences.</div>
                             </div>
                         </div>
                     </div>
@@ -125,8 +125,8 @@
 
         <div class="cta guest-publisher__cta" style="background-image: url(img/cta-bg.jpg)">
             <div class="cta__container small-container">
-                <h2 class="cta__title">WHILE EVERY CAMPAIGN IS INFLUENCED BY A MYRIAD OF VARIABLES, REAL-TIME BIDDING WILL HELP ADVERTISERS MORE
-                    EFFECTIVELY UNCOVER, UNDERSTAND, AND UNLEASH OPPORTUNITY WITHIN EACH CAMPAIGN EFFORT.
+                <h2 class="cta__title">WHILE EVERY AD IS INFLUENCED BY A MYRIAD OF VARIABLES, REAL-TIME BIDDING WILL HELP ADVERTISERS MORE
+                    EFFECTIVELY UNCOVER, UNDERSTAND, AND UNLEASH OPPORTUNITY WITHIN EACH AD EFFORT.
                     EXCITING TIMES ARE AHEAD FOR ADVERTISERS.</h2>
                 <div class="cta__link-wrap">
                     <a href="#" class="cta__link">start now</a>

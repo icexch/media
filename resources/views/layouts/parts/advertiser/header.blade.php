@@ -26,7 +26,7 @@
 
                 <a href="{{route('advertiser.dashboard')}}" class="header__nav-item">Home</a>
                 <a href="{{ route('advertiser.ads') }}" class="header__nav-item">Ads</a>
-                <a href="#" class="header__nav-item">Campaigns</a>
+                <a href="#" class="header__nav-item">Ads</a>
                 <a href="{{route('advertiser.export')}}" class="header__nav-item">Export</a>
                 <a href="#" class="header__nav-item">Messages</a>
                 <a href="#" class="header__nav-item">Publishers</a>

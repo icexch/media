@@ -32,7 +32,7 @@
                             Segment audience by its interests and then build communication with each group separately, by using opportunities of retargeting, or manage announcements on your own site using YourAdsMedia.
                         </p>
                         <p class="text-slider__slider-item-text-p">
-                            With YourAdsMedia you can evaluate results of the advertising campaign in complex, with determining effectiveness of various channels of communication, advertising spaces, creative; eliminate of wasted impressions.
+                            With YourAdsMedia you can evaluate results of the advertising ad in complex, with determining effectiveness of various channels of communication, advertising spaces, creative; eliminate of wasted impressions.
                         </p>
                     </div>
                 </div>
