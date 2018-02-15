@@ -75,7 +75,7 @@ class GenerateRedisDataCommand extends Command
                            $this->pixelPlace->addClick($placeID, ['adID' => $adID], $timestamp);
                        }
                    } catch (\Exception $exception) {
-
+                        $this->error('error addClick or addShow(');
                    }
                 }
                 $timestamp += 2629743;
