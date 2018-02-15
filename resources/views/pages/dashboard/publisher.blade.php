@@ -14,7 +14,7 @@
 
                             <div class="chart-table">
                                 <div class="chart-table__header">
-                                    <div class="chart-table__header-col chart-table__col">Number of Ads</div>
+                                    <div class="chart-table__header-col chart-table__col">Number of Place</div>
                                     <div class="chart-table__header-col chart-table__col">Impressions sent total</div>
                                     <div class="chart-table__header-col chart-table__col">Clicks sent total</div>
                                     <div class="chart-table__header-col chart-table__col">Ratio clicks / impressions sent</div>
