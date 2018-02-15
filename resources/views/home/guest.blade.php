@@ -216,7 +216,7 @@
         <div class="text-block guest-home__image-block">
             <div class="text-block__container small-container">
                 <p class="text-block__subtitle">Your Ads Media DSP provides the technology & the people you need to run
-                    programmatic campaigns & reach customized audiences in the moments that matter most</p>
+                    programmatic ads & reach customized audiences in the moments that matter most</p>
                 <div class="text-block__text">
                     Now that everyone is acknowledging the enormous potential of Data, how many people actually know how
                     to easily send the right message or the right ad to the right person at the right time in a
@@ -232,7 +232,7 @@
             <div class="cta__container small-container">
                 <h2 class="cta__title">BILD YOUR IDEAL DSP PLATFORM (IN MINUTES)</h2>
                 <div class="cta__link-wrap">
-                    <a href="#" class="cta__link">start now</a>
+                    <a href="{{ route('login') }}" class="cta__link">start now</a>
                 </div>
             </div>
         </div>

@@ -15,10 +15,12 @@ class VKGateway extends ApiGateway
     }
 
     /**
+     * @param string $lang
+     *
      * @return array
      */
-    public function getCategories(): array
+    public function getCategories(string $lang): array
     {
-        return $this->request('ads.getCategories',['access_token' => env('VK_ACCESS_TOKEN')]);
+        return $this->request('ads.getCategories',['access_token' => env('VK_ACCESS_TOKEN'), 'lang' => $lang]);
     }
 }

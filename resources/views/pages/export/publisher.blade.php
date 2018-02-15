@@ -11,6 +11,15 @@
                     <div class="export">
                         <h1 class="export__title">Export Data to A CSV File</h1>
                         <div class="export__form">
+                            @if(isset($errors) and count($errors->all()) > 0)
+                                <h4 class="alert-heading">Problem!</h4>
+                                <ul>
+                                    @foreach ($errors->all('<li style="color:red">:message</li>') as $message)
+                                        {!! $message !!}
+                                    @endforeach
+                                </ul>
+                                <br>
+                            @endif
                             <form method="POST" action="{{$id != 0 ? route('publisher.export.id', ['id' => $id]): route('publisher.export.all')}}">
                                 {{csrf_field()}}
                                 <div class="export__form-select-wrap">
@@ -35,7 +44,7 @@
                                             <span class="form__checkbox-text">Place title</span>
                                         </label>
                                         <label class="form__block-checkbox">
-                                            <input type="checkbox" class="js-checkbox-small">
+                                            <input type="checkbox" name="isUrl" class="js-checkbox-small">
                                             <span class="form__checkbox-text">URL or domain</span>
                                         </label>
                                         <label class="form__block-checkbox">
@@ -97,7 +106,7 @@
                                             <div class="form__date-select">
                                                 <label for="p-ex-month" class="form__date">Month</label>
                                                 <div class="form__select-holder form__select-holder_small">
-                                                    <select id="p-ex-month" name="find-month2" class="form__select form__select_small">
+                                                    <select id="p-ex-month" name="find-month2" class="form__select form__select_small" >
                                                         <option disabled selected>Month</option>
                                                         <option value="01">January</option>
                                                         <option value="02">February</option>
@@ -118,7 +127,7 @@
                                             <div class="form__date-select">
                                                 <label for="p-ex-year2" class="form__date">Year:</label>
                                                 <div class="form__input-holder">
-                                                    <input id="p-ex-year2" type="text" name="find-year2" class="form__input form__input_small" placeholder="Year">
+                                                    <input id="p-ex-year2" type="text" name="find-year2" class="form__input form__input_small" placeholder="Year" >
                                                 </div>
                                             </div>
                                         </div>

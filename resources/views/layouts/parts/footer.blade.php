@@ -7,11 +7,11 @@
             </div>
             <div class="footer__mail-block">
                 <p class="footer__mail-text">E-mail: </p>
-                <a href="mailto:info@youradsmedia.com" class="footer__mail-itself">info@youradsmedia.com</a>
+                <a href="mailto:info@icex.media" class="footer__mail-itself">info@icex.media</a>
             </div>
         </div>
         <div class="footer__right-part">
-            <p class="footer__your-ads-media">© youradsmedia.com 2015</p>
+            <p class="footer__your-ads-media">© icex.media.com 2018</p>
         </div>
     </div>
 </footer>

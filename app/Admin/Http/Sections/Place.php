@@ -42,7 +42,11 @@ class Place extends Section
                 AdminColumn::relatedLink('category.name', 'Category'),
                 AdminColumnEditable::checkbox('is_active', 'Active'),
                 AdminColumn::url('url', 'platform url'),
-            ]);
+            ])->setApply([
+                function ($query) {
+                    $query->orderBy('is_active', 'asc');
+                }
+            ]);;
     }
 
     /**

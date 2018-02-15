@@ -12,7 +12,12 @@
                 <div class="top-block__description">
                     YourAdsMedia provide a full cycle for your company. Since the creation of a small website, logo design and corporate identity and ending display promotional materials on all the sites in our network. Or in a particular region, country, city conducted your activity. We present a powerful system of managing ads on sites, which is very easy to be used right from the start just now and which gives practically unlimited opportunities in future.
                 </div>
-                <button type="button" class="top-block__get-started js-smooth-scroll" data-href="#screen_2">Get started</button>
+                <a type="button"
+                   class="top-block__get-started js-smooth-scroll"
+                   style="text-decoration: none"
+                   href="{{ route('register', ['type' => 'advertiser']) }}">
+                    Get started
+                </a>
             </div>
         </div>
 
@@ -32,7 +37,7 @@
                             Segment audience by its interests and then build communication with each group separately, by using opportunities of retargeting, or manage announcements on your own site using YourAdsMedia.
                         </p>
                         <p class="text-slider__slider-item-text-p">
-                            With YourAdsMedia you can evaluate results of the advertising campaign in complex, with determining effectiveness of various channels of communication, advertising spaces, creative; eliminate of wasted impressions.
+                            With YourAdsMedia you can evaluate results of the advertising ad in complex, with determining effectiveness of various channels of communication, advertising spaces, creative; eliminate of wasted impressions.
                         </p>
                     </div>
                 </div>

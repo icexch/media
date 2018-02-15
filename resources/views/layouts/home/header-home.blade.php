@@ -8,7 +8,7 @@
 
         <nav class="header__nav" id="nav">
             <div class="header__nav-logo-wrap">
-                <a href="/" class="header__nav-logo"></a>
+                <a href="{{ route('home') }}" class="header__nav-logo"></a>
             </div>
 
             <a href="{{ route('home') }}" class="header__nav-item">Home</a>
@@ -30,12 +30,24 @@
                 {{ csrf_field() }}
             </form>
         @else
-            <a href="#" class="header__login">
-                <i class="header__login-icon"></i>
-                <a class="header__login-text" href="{{ action('Auth\LoginController@showLoginForm') }}">
+            <nav class="header__nav">
+                <a class="header__login-text header__nav-item" href="{{ action('Auth\LoginController@showLoginForm') }}">
                     Login
                 </a>
-            </a>
+                <div class="header__nav-item header__nav-item_response js-header-item-dropdown">
+                    <div class="header__login-text header__nav-item-toggle js-header-item-toggle">
+                        Register
+                    </div>
+                    <div class="desktop-dropdown js-desktop-dropdown">
+                        <div class="desktop-dropdown__link-wrap">
+                            <a href="{{ route('register', ['type' => 'publisher']) }}" class="desktop-dropdown__link">Publisher</a>
+                        </div>
+                        <div class="desktop-dropdown__link-wrap">
+                            <a href="{{ route('register', ['type' => 'advertiser']) }}" class="desktop-dropdown__link">Advertiser</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         @endif
     </div>
 </div>

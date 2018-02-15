@@ -26,11 +26,13 @@ class ExportController extends Controller
 
     public function exportAllAdvertiser(Request $request, ExportAdvertiserService $exportService) {
         $ads = auth()->user()->adMaterials()->get();
-        $type = $request->get("type-stats");
+        $type = $request->get("typeStats");
         if(!$type) {
             return redirect()->back();
         }
+        $request->validate($exportService->validateColumns((int)$type));
         $columns = $request->only($exportService->getKeysColumns((int)$type));
+
         return $exportService->export($type, $ads, $columns);
     }
 
@@ -40,7 +42,10 @@ class ExportController extends Controller
         if(!$type) {
             return redirect()->back();
         }
+        $request->validate($exportService->validateColumns((int)$type));
         $columns = $request->only($exportService->getKeysColumns((int)$type));
+        
+
         return $exportService->export($type, $ad, $columns);
     }
 
@@ -50,7 +55,10 @@ class ExportController extends Controller
         if(!$type) {
             return redirect()->back();
         }
+
+        $request->validate($exportService->validateColumns((int)$type));
         $columns = $request->only($exportService->getKeysColumns((int)$type));
+        
 
         return $exportService->export($type, $places, $columns);
     }
@@ -61,6 +69,7 @@ class ExportController extends Controller
         if(!$type) {
             return redirect()->back();
         }
+        $request->validate($exportService->validateColumns((int)$type));
         $columns = $request->only($exportService->getKeysColumns((int)$type));
         return $exportService->export($type, $place, $columns);
     }
