@@ -17,7 +17,7 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function send(Request $request)
+    public function send(ContactCreateRequest $request)
     {
         $contact = Contact::create($request->all());
 
