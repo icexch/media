@@ -11,7 +11,7 @@
 
         <div class="header__left-part">
 
-            <a href="#" class="header__logo">
+            <a href="{{ route('home') }}" class="header__logo">
                 <img src="/img/logo-mobile.svg" alt="" class="header__logo-img">
             </a>
 

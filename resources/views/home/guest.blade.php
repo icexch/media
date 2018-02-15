@@ -232,7 +232,7 @@
             <div class="cta__container small-container">
                 <h2 class="cta__title">BILD YOUR IDEAL DSP PLATFORM (IN MINUTES)</h2>
                 <div class="cta__link-wrap">
-                    <a href="#" class="cta__link">start now</a>
+                    <a href="{{ route('login') }}" class="cta__link">start now</a>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
             <div class="header__burger-line"></div>
         </div>
         <div class="header__left-part">
-            <a href="#" class="header__logo">
+            <a href="{{ route('advertiser.dashboard') }}" class="header__logo">
                 <img src="/img/logo-mobile.svg" alt="" class="header__logo-img">
             </a>
             <nav class="header__nav" id="nav">

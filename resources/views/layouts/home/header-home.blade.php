@@ -8,7 +8,7 @@
 
         <nav class="header__nav" id="nav">
             <div class="header__nav-logo-wrap">
-                <a href="/" class="header__nav-logo"></a>
+                <a href="{{ route('home') }}" class="header__nav-logo"></a>
             </div>
 
             <a href="{{ route('home') }}" class="header__nav-item">Home</a>

@@ -54,7 +54,7 @@
                                 </label>
                             </div>
                             <div class="guest-form__line guest-form__line_checkbox">
-                                <label class="guest-form__checkbox-holder">
+                                <label class="guest-form__checkbox-holder" style="display: flex; justify-content: center">
                                     <a href="{{ route('register', ['type' => 'publisher']) }}"
                                        id="js-register-link"
                                        class="guest-form__checkbox-text"
