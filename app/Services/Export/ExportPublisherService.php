@@ -11,32 +11,32 @@ class ExportPublisherService extends ExportService {
     private $places;
     protected $columnsAll = [
         1 => [
-            "isPlaceNumber" => "id",
-            "isPlaceTitle" => "name",
-            "isUrl" => "url",
-            "isImpressions" => "impressions",
-            "isClicks" => "clicks",
+            "isPlaceNumber" => null,
+            "isPlaceTitle" => null,
+            "isUrl" => null,
+            "isImpressions" => null,
+            "isClicks" => null,
             "isRatioClicksImpressions" => null,
             "isEarned" => null,
         ],
         2 => [
-            "isPlaceNumber" => "id",
-            "isYear" => "year",
-            "isMonth" => "month",
-            "isDay" => "day",
-            "isImpressions" => "impressions",
-            "isClicks" => "clicks",
-            "find-month2" => null,
-            "find-year2" => null,
+            "isPlaceNumber" => null,
+            "isYear" => null,
+            "isMonth" => null,
+            "isDay" => null,
+            "isImpressions" => null,
+            "isClicks" => null,
+            "find-month2" => 'required',
+            "find-year2" => 'required',
         ],
         3 => [
-            "isPlaceNumber" => 'id',
-            "isYear" => 'year',
-            "isMonth" => 'month',
-            "isImpressions" => 'impressions',
-            "isClicks" => 'clicks',
+            "isPlaceNumber" => null,
+            "isYear" => null,
+            "isMonth" => null,
+            "isImpressions" => null,
+            "isClicks" => null,
             "isRatioClicksImpressions" => null,
-            "find-year3" => null,
+            "find-year3" => 'required',
         ]
     ];
 
@@ -72,13 +72,18 @@ class ExportPublisherService extends ExportService {
             $clicks = array_values($this->pixelPlace->getStats([$place->id], 0));
             $impressions = !count($impressions) ?: $impressions[0]['count'];
             $clicks = !count($clicks) ?: $clicks[0]['count'];
+            try {
+                $ratioClicksImpressions = $clicks/$impressions;
+            } catch (\Exception $exception) {
+                $ratioClicksImpressions = 0;
+            }
             $item = [];
             !isset($columns['isPlaceNumber']) ?: $item['ID'] = $place->id;
             !isset($columns['isPlaceTitle']) ?: $item['Title'] = $place->name;
             !isset($columns['isUrl']) ?: $item['Url'] = $place->url;
             !isset($columns['isImpressions']) ?: $item['Impressions'] = $impressions;
             !isset($columns['isClicks']) ?: $item['Clicks'] = $clicks;
-            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicks/$impressions, 2);
+            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($ratioClicksImpressions, 2);
             $data[] = $item;
         }
         return $data;
@@ -97,13 +102,11 @@ class ExportPublisherService extends ExportService {
             for ($i=0;$i<(int)$endDayForMonth;$i++) {
                 $item = [];
                 !isset($columns['isPlaceNumber']) ?: $item['ID'] = $place->id;
-                !isset($columns['isUrl']) ?: $item['Url'] = $place->url;
                 !isset($columns['isYear']) ?: $item['Year'] = $columns['find-year2'];
                 !isset($columns['isMonth']) ?: $item['Month'] = $columns['find-month2'];
                 !isset($columns['isDay']) ?: $item['Day'] = $i+1;
 
                 if(isset($impressions[$i])) {
-
                     !isset($columns['isImpressions']) ?: $item['Impressions'] = $impressions[$i]['count'];
                 }
                 if(isset($clicks[$i])) {
@@ -129,8 +132,12 @@ class ExportPublisherService extends ExportService {
                 $item = [];
                 $clicksCount = $clicks[$dateArray[$i]]['count'];
                 $impressionsCount = $impressions[$dateArray[$i]]['count'];
+                try {
+                    $ratioClicksImpressions = $clicksCount / $impressionsCount;
+                } catch (\Exception $exception) {
+                    $ratioClicksImpressions = 0;
+                }
                 !isset($columns['isPlaceNumber']) ?: $item['ID'] = $place->id;
-                !isset($columns['isUrl']) ?: $item['Url'] = $place->url;
                 !isset($columns['isYear']) ?: $item['Year'] = $impressions[$dateArray[$i]]['year'];
                 !isset($columns['isMonth']) ?: $item['Month'] = $impressions[$dateArray[$i]]['month'];
 
@@ -140,7 +147,7 @@ class ExportPublisherService extends ExportService {
                 if(isset($clicks[$i])) {
                     !isset($columns['isClicks']) ?: $item['Clicks'] = $clicksCount;
                 }
-                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicksCount / $impressionsCount, 2);
+                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($ratioClicksImpressions, 2);
 
                 $data[] = $item;
             }

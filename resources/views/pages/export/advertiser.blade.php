@@ -12,11 +12,20 @@
                 {{--EXPORT--}}
                 <div class="export">
                     <div class="export__form">
-                        <form method="POST" action="{{$id != 0 ? route('publisher.export.id', ['id' => $id]): route('publisher.export.all')}}">
+                        <form method="POST" action="{{$id != 0 ? route('advertiser.export.id', ['id' => $id]): route('advertiser.export.all')}}">
                             {{csrf_field()}}
+                            @if(isset($errors) and count($errors->all()) > 0)
+                                <h4 class="alert-heading">Problem!</h4>
+                                <ul>
+                                    @foreach ($errors->all('<li style="color:red">:message</li>') as $message)
+                                        {!! $message !!}
+                                    @endforeach
+                                </ul>
+                                <br>
+                            @endif
                             <div class="export__form-select-wrap">
                                 <div class="form__select-holder">
-                                    <select name="type-stats" class="form__select" id="export-item-select">
+                                    <select name="typeStats" class="form__select" id="export-item-select">
                                         <option value="1">Overall Statistic</option>
                                         <option value="2">Day-by-day Statistic</option>
                                         <option value="3">Month-by-month Statistic</option>
@@ -161,7 +170,7 @@
                                         <div class="form__date-select">
                                             <label for="adv-exp-year1" class="form__date">Year:</label>
                                             <div class="form__input-holder">
-                                                <input id="adv-exp-year1" name="find - year3" type="text" class="form__input form__input_small">
+                                                <input id="adv-exp-year1" name="find-year3" type="text" class="form__input form__input_small">
                                             </div>
                                         </div>
                                     </div>

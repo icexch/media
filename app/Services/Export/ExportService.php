@@ -35,6 +35,17 @@ class ExportService {
     }
 
     public function getKeysColumns(int $type) {
-        return array_keys($this->columnsAll[(int)$type]);
+        return array_keys($this->columnsAll[$type]);
+    }
+
+    public function validateColumns(int $type) {
+        $columns = [];
+        foreach ($this->columnsAll[$type] as $column => $columnValue) {
+            if($columnValue != null) {
+                $columns[$column] = $columnValue;
+            }
+        }
+        return $columns;
+
     }
 }

@@ -4,3 +4,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .copy('resources/assets/vendor/css/main.css', 'public/css/main.css')
     .copy('resources/assets/vendor/js/app.min.js', 'public/js/main.min.js')
     .extract(['lodash']);
+
+mix.copy('resources/assets/js/area.min.js', 'public/js/area.js');

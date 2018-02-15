@@ -11,31 +11,31 @@ class ExportAdvertiserService extends ExportService {
     private $ads;
     protected $columnsAll = [
         1 => [
-            "isAdNumber" => 'id',
-            "isImpressions" => 'impressions',
-            "isClicks" => 'clicks',
+            "isAdNumber" => null,
+            "isImpressions" => null,
+            "isClicks" => null,
             "isRatioClicksImpressions" => null,
             "isUnusedImpression" => null,
             "isUnusedClicks" => null,
         ],
         2 => [
-            "isAdNumber" => 'id',
-            "isYear" => 'year',
-            "isMonth" => 'month',
-            "isDay" => 'day',
-            "isImpressions" => 'impressions',
-            "isClicks" => 'clicks',
-            "find-month2" => null,
-            "find-year2" => null,
+            "isAdNumber" => null,
+            "isYear" => null,
+            "isMonth" => null,
+            "isDay" => null,
+            "isImpressions" => null,
+            "isClicks" => null,
+            "find-month2" => 'required',
+            "find-year2" => 'required',
         ],
         3 => [
-            "isAdNumber" => 'id',
-            "isYear" => 'year',
-            "isMonth" => 'month',
-            "isImpressions" => 'impressions',
-            "isClicks" => 'clicks',
+            "isAdNumber" => null,
+            "isYear" => null,
+            "isMonth" => null,
+            "isImpressions" => null,
+            "isClicks" => null,
             "isRatioClicksImpressions" => null,
-            "find-year3" => null,
+            "find-year3" => 'required',
         ]
     ];
 
@@ -76,11 +76,16 @@ class ExportAdvertiserService extends ExportService {
             $unusedClicks = $ad->cpc_value - $clicks;
             $unusedImpression = $unusedImpression > 0 ? $unusedImpression : 0;
             $unusedClicks = $unusedClicks > 0 ? $unusedClicks: 0;
+            try {
+                $ratioClicksImpressions = $clicks/$impressions;
+            } catch (\Exception $exception) {
+                $ratioClicksImpressions = 0;
+            }
+
             !isset($columns['isAdNumber']) ?: $item['ID'] = $ad->id;
-            !isset($columns['isPlaceTitle']) ?: $item['Title'] = $ad->name;
             !isset($columns['isImpressions']) ?: $item['Impressions'] = $impressions;
             !isset($columns['isClicks']) ?: $item['Clicks'] = $clicks;
-            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicks/$impressions, 2);
+            !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($ratioClicksImpressions, 2);
             !isset($columns['isUnusedImpression']) ?: $item['UnusedImpression'] = $unusedImpression;
             !isset($columns['isUnusedClicks']) ?: $item['UnusedClicks'] = $unusedClicks;
             $data[] = $item;
@@ -132,8 +137,12 @@ class ExportAdvertiserService extends ExportService {
                 $item = [];
                 $clicksCount = $clicks[$dateArray[$i]]['count'];
                 $impressionsCount = $impressions[$dateArray[$i]]['count'];
-                !isset($columns['isPlaceNumber']) ?: $item['ID'] = $ad->id;
-                !isset($columns['isUrl']) ?: $item['Url'] = $ad->url;
+                try {
+                    $ratioClicksImpressions = $clicksCount / $impressionsCount;
+                } catch (\Exception $exception) {
+                    $ratioClicksImpressions = 0;
+                }
+                !isset($columns['isAdNumber']) ?: $item['ID'] = $ad->id;
                 !isset($columns['isYear']) ?: $item['Year'] = $impressions[$dateArray[$i]]['year'];
                 !isset($columns['isMonth']) ?: $item['Month'] = $impressions[$dateArray[$i]]['month'];
 
@@ -143,7 +152,7 @@ class ExportAdvertiserService extends ExportService {
                 if(isset($clicks[$i])) {
                     !isset($columns['isClicks']) ?: $item['Clicks'] = $clicksCount;
                 }
-                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($clicksCount / $impressionsCount, 2);
+                !isset($columns['isRatioClicksImpressions']) ?: $item['Ratio Clicks/Impressions'] = round($ratioClicksImpressions, 2);
 
                 $data[] = $item;
             }

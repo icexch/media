@@ -103,6 +103,15 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'find-month2' => [
+            'required' => 'The Month field is required.',
+        ],
+        'find-year2' => [
+            'required' => 'The Year field is required.',
+        ],
+        'find-year3' => [
+            'required' => 'The Year field is required.',
+        ],
     ],
 
     /*
@@ -116,6 +125,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+    ],
 
 ];
