@@ -13,7 +13,12 @@
                 <div class="top-block__description">
                     YourAdsMedia views each of our clients equally, regardless of the type of website and hosting you have. Whether your project is already promoted, or up-and-coming, we will generate additional income for you by displaying advertisements to our own clients, and will provide you with advertising traffic from the largest advertising exchanges.
                 </div>
-                <button type="button" class="top-block__get-started js-smooth-scroll" data-href="#screen_2">Get started</button>
+                <a type="button"
+                        class="top-block__get-started js-smooth-scroll"
+                        style="text-decoration: none"
+                        href="{{ route('register', ['type' => 'publisher']) }}">
+                    Get started
+                </a>
             </div>
         </div>
 
@@ -129,7 +134,7 @@
                     EFFECTIVELY UNCOVER, UNDERSTAND, AND UNLEASH OPPORTUNITY WITHIN EACH AD EFFORT.
                     EXCITING TIMES ARE AHEAD FOR ADVERTISERS.</h2>
                 <div class="cta__link-wrap">
-                    <a href="#" class="cta__link">start now</a>
+                    <a href="{{ route('register', ['type' => 'publisher']) }}" class="cta__link">start now</a>
                 </div>
             </div>
         </div>

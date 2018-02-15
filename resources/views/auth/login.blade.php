@@ -1,7 +1,7 @@
 @extends('layouts.home.other')
 
 @section('content')
-    <div class="guest-login" style="background-image: url(/img/contact-us-bg.jpg)">
+    <div class="guest-login" style="background-image: url(/img/contact-us-bg.jpg)" data-module="login">
         <div class="guest-login__container container">
             <p class="guest-login__title guest-login__title_response">Login</p>
             <div class="guest-login__content">
@@ -48,13 +48,29 @@
 
 
                             <div class="guest-form__line guest-form__line_checkbox">
-                                <label class="guest-form__checkbox-holder">
+                                <label class="guest-form__checkbox-holder" style="border-bottom: 2px solid white; padding-bottom: 25px">
                                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} class="checkbox-styled js-checkbox">
                                     <span class="guest-form__checkbox-text">Remember me</span>
                                 </label>
                             </div>
-
-
+                            <div class="guest-form__line guest-form__line_checkbox">
+                                <label class="guest-form__checkbox-holder">
+                                    <a href="{{ route('register', ['type' => 'publisher']) }}"
+                                       id="js-register-link"
+                                       class="guest-form__checkbox-text"
+                                       style="text-decoration: none"
+                                    >
+                                        Register as Publisher
+                                    </a>&nbsp;&nbsp;&nbsp;
+                                    <a href="{{ route('register', ['type' => 'advertiser']) }}"
+                                       id="js-register-link"
+                                       class="guest-form__checkbox-text"
+                                       style="text-decoration: none"
+                                    >
+                                        Register as Advertiser
+                                    </a>
+                                </label>
+                            </div>
                             <div class="guest-form__line guest-form__line_submit">
                                 <div class="guest-form__submit-holder">
                                     <button class="guest-form__submit" type="submit">submit</button>
