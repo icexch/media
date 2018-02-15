@@ -44,8 +44,10 @@ class GenerateRedisDataCommand extends Command
     public function handle()
     {
 
-        $adsIDs = AdMaterial::pluck('id')->toArray();
-        $placesIDs = Place::pluck('id')->toArray();
+        $ads = AdMaterial::with('advertiser')->get();
+        $places = Place::with('publisher')->get();
+        $adsIDs = $ads->pluck('id')->toArray();
+        $placesIDs = $places->pluck('id')->toArray();
 
         $years = 13;
         $months = 12;
@@ -53,7 +55,8 @@ class GenerateRedisDataCommand extends Command
 
         for ($iyear = 0;$iyear <= $years;$iyear++) {
 
-            echo "year - ".date('Y-m', $timestamp)."\n";
+            $this->info("year - ".date('Y-m', $timestamp));
+
             for ($imonth = 1;$imonth <= $months;$imonth++) {
                 $iter = rand(rand(150, 300), rand(478, 967));
 
@@ -77,6 +80,15 @@ class GenerateRedisDataCommand extends Command
                 }
                 $timestamp += 2629743;
             }
+        }
+
+        $this->info('users list');
+
+        foreach ($ads->unique('user_id') as $user) {
+            $this->info('Advertiser - '.$user->advertiser->email);
+        }
+        foreach ($places->unique('user_id') as $user) {
+            $this->info('Publisher - '.$user->publisher->email);
         }
 
 

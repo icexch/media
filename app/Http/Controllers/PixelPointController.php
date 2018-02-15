@@ -58,12 +58,17 @@ class PixelPointController extends Controller
     }
 
     public function showed(Request $request) {
-        $adsIDs = array_map('intval', explode(',', $request->get('adsIDs')));
-        $placesIDs = array_map('intval', explode(',', $request->get('placesIDs')));
+        if($request->get('adsIDs') > '') {
+            $adsIDs = array_map('intval', explode(',', $request->get('adsIDs')));
+        }
+        if($request->get('placesIDs') > '') {
+            $placesIDs = array_map('intval', explode(',', $request->get('placesIDs')));
+        }
 
         if(!isset($adsIDs) || !isset($placesIDs)) {
             return response()->json(["message" => "don't objects for saved", 'error' => false]);
         }
+
         $time = time();
         for($i=0;$i < count($adsIDs);$i++) {
             $this->pixelPointAd->addShow($adsIDs[$i], ["placeID" => $placesIDs[$i]], $time);

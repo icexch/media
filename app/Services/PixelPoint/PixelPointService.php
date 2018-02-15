@@ -25,13 +25,13 @@ class PixelPointService {
 
         if ($this->currentKey == 'ad') {
             $ad = AdMaterial::with('adType')->find($id);
-            $place = Place::with('adType')->find($data['placeID']);
+            $place = Place::find($data['placeID']);
         } elseif ($this->currentKey == 'place') {
             $ad = AdMaterial::with('adType')->find($data['adID']);
-            $place = Place::with('adType')->find($id);
+            $place = Place::find($id);
         }
 
-        $cpcPrice = $ad->cpc_value > 0 ?  $ad->cpc / $ad->cpc_value : 0;
+        $cpcPrice = $ad->adType->cpc_value > 0 ?  $ad->adType->cpc / $ad->adType->cpc_value : 0;
         $this->calculatings($ad->user_id, -$cpcPrice, ['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'click'], $time);
         $this->calculatings($place->user_id, $cpcPrice,['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'click'], $time);
 
@@ -70,13 +70,13 @@ class PixelPointService {
         $str = json_encode($data);
         if ($this->currentKey == 'ad') {
             $ad = AdMaterial::with('adType')->find($id);
-            $place = Place::with('adType')->find($data['placeID']);
+            $place = Place::find($data['placeID']);
         } elseif ($this->currentKey == 'place') {
             $ad = AdMaterial::with('adType')->find($data['adID']);
-            $place = Place::with('adType')->find($id);
+            $place = Place::find($id);
         }
 
-        $cpvPrice = $ad->cpv_value > 0 ? $ad->cpv / $ad->cpv_value : 0;
+        $cpvPrice = $ad->adType->cpv_value > 0 ? $ad->adType->cpv / $ad->adType->cpv_value : 0;
 
         $this->calculatings($ad->user_id, -$cpvPrice, ['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'show'], $time);
         $this->calculatings($place->user_id, $cpvPrice,['placeID' => $place->id, 'adID' => $ad->id, 'type' => 'show'], $time);

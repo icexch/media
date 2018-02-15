@@ -13,7 +13,7 @@ class PixelPointPlaceService extends PixelPointService
     // TODO add logs
     public function getAdsWithPlaceIds(string $url, array $placeIds)
     {
-        $places = Place::where('url', $url)->whereIn('id', $placeIds)->get();
+        $places = Place::with('adType')->where('url', $url)->whereIn('id', $placeIds)->get();
         $ads = [];
         //TODO optimise
         foreach ($places as $place) {
@@ -24,8 +24,12 @@ class PixelPointPlaceService extends PixelPointService
             $adsForAdType->orderByDesc('fullOptions');
             $adsForAdType->orderByDesc('orOptions');
 
-            $adsForAdType->whereHas('advertiser', function ($query) {
-                $query->where('balance', '>=', \DB::raw('(ad_types.cpc / ad_types.cpc_value)'));
+            $cpc = $place->adType->cpc;
+            $cpc_value = $place->adType->cpc_value;
+            $priceOne = $cpc_value > 0 ? $cpc / $cpc_value : $cpc;
+
+            $adsForAdType->whereHas('advertiser', function ($query) use ($cpc, $priceOne) {
+                $query->where('balance', '>=', $priceOne);
             })->get();
             $ad = $adsForAdType->first();
 
