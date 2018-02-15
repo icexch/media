@@ -10,6 +10,8 @@
                         {{ csrf_field() }}
                         {{ method_field('POST') }}
 
+                        @include('parts.errors')
+
                         <div class="form__input-container js-form-input-container">
                             <div class="form__input-text-wrap form__input-text-wrap_account">
                                 <label for="adv-new-title" class="form__input-text js-input-text">Title</label>

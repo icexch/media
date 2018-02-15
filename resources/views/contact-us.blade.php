@@ -10,6 +10,7 @@
                         {{ csrf_field() }}
                         {{ method_field('POST') }}
 
+                        @include('parts.errors')
                         <div class="guest-form__line">
                             <div class="guest-form__line-title-wrap">
                                 <label for="g-con-name" class="guest-form__line-title guest-form__line-title_required">Name</label>
