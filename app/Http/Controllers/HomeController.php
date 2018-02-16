@@ -6,13 +6,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $route = route('home');
+        $dashboardRoute = route('home');
+        $accountRoute = null;
 
         if(auth()->check()) {
-            $route = auth()->user()->isAdvertiser() ? route('advertiser.dashboard') : route('publisher.dashboard');
+            $dashboardRoute = auth()->user()->isAdvertiser() ? route('advertiser.dashboard') : route('publisher.dashboard');
+            $accountRoute = auth()->user()->isAdvertiser() ? route('advertiser.account.edit') : route('publisher.account.edit');
         }
 
-        return view('home.guest', compact('route'));
+        return view('home.guest', compact('dashboardRoute', 'accountRoute'));
     }
 
     public function indexAdvertiser() {
