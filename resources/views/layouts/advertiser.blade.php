@@ -9,6 +9,7 @@
     opacity: 0;
     }
     </style>
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
 </head>
 
 <body>
