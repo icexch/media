@@ -6,7 +6,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.guest');
+        $route = route('home');
+
+        if(auth()->check()) {
+            $route = auth()->user()->isAdvertiser() ? route('advertiser.dashboard') : route('publisher.dashboard');
+        }
+
+        return view('home.guest', compact('route'));
     }
 
     public function indexAdvertiser() {
