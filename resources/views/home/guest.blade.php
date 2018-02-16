@@ -45,7 +45,7 @@
                                 <div class="features__slider-item-icon features__slider-item-icon_marketing"></div>
                                 <p class="features__slider-item-title">INTEGRATED MARKETING SOLUTION</p>
                                 <div class="features__slider-item-divider"></div>
-                                <div class="features__slider-item-text">It is easy to start working with YourAdsMedia:
+                                <div class="features__slider-item-text">It is easy to start working with Icex Media:
                                     we register account for you in the system and help to tune it according to your
                                     tasks, you get codes for setting at the site, upload banners, and they start to be
                                     shown, and you see the statistics of them
@@ -61,7 +61,7 @@
                                     (CLOUD MODEL)
                                 </p>
                                 <div class="features__slider-item-divider"></div>
-                                <div class="features__slider-item-text">YourAdsMedia Sites is an online service,
+                                <div class="features__slider-item-text">Icex Media Sites is an online service,
                                     you do not have to install or tune anything
                                     at you servers, you just receive your login,
                                     password, and start work, using a
@@ -114,7 +114,7 @@
                                     OPTIMISATION OF THE RTB PURCHASES
                                 </p>
                                 <div class="features__slider-item-divider"></div>
-                                <div class="features__slider-item-text">YourAdsMedia SSP (Supply Side Platform)
+                                <div class="features__slider-item-text">Icex Media SSP (Supply Side Platform)
                                     automates sales traffic and make more money on those sales. You have complete
                                     control over the scope and priorities of the traffic offered for sale RTB-buyers
                                 </div>
@@ -127,7 +127,7 @@
                                     ANY ADVERTISING FORMATS
                                 </p>
                                 <div class="features__slider-item-divider"></div>
-                                <div class="features__slider-item-text">YourAdsMedia is fully compatible with other
+                                <div class="features__slider-item-text">Icex Media is fully compatible with other
                                     technologies of ads: you will not have problems with placing ads with external code
                                     or surveying pixel, and you can pass the residual traffic to any advertising network
                                 </div>
@@ -156,7 +156,7 @@
                                     <div class="text-slider__slider-item-divider"></div>
                                     <div class="text-slider__slider-item-text">
                                         <p class="text-slider__slider-item-text-p">
-                                            YourAdsMedia views each of our clients equally, regardless of the
+                                            Icex Media views each of our clients equally, regardless of the
                                             type of website and hosting you have. Whether your project is
                                             already promoted, or up-and-coming, we will generate additional
                                             income for you by displaying advertisements to our own clients,
@@ -177,7 +177,7 @@
                                     <div class="text-slider__slider-item-divider"></div>
                                     <div class="text-slider__slider-item-text">
                                         <p class="text-slider__slider-item-text-p">
-                                            YourAdsMedia provide a full cycle for your company. Since the creation of a
+                                            Icex Media provide a full cycle for your company. Since the creation of a
                                             small website, logo design and corporate identity and ending display
                                             promotional materials on all the sites in our network. Or in a particular
                                             region, country, city conducted your activity. We present a powerful system
