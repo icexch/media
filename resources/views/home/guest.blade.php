@@ -215,7 +215,7 @@
 
         <div class="text-block guest-home__image-block">
             <div class="text-block__container small-container">
-                <p class="text-block__subtitle">Your Ads Media DSP provides the technology & the people you need to run
+                <p class="text-block__subtitle">Icex Media Media DSP provides the technology & the people you need to run
                     programmatic ads & reach customized audiences in the moments that matter most</p>
                 <div class="text-block__text">
                     Now that everyone is acknowledging the enormous potential of Data, how many people actually know how

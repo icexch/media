@@ -3,7 +3,7 @@
 @section('content')
     <div class="std-adv js-page" style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="std-adv__container container">
-            <h1 class="std-adv__title">Your Ads</h1>
+            <h1 class="std-adv__title">Icex Media</h1>
             <div class="std-adv__content">
 
                 <div class="adv-table adv-table_campaigns-adv">
