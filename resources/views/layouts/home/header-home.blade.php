@@ -21,8 +21,9 @@
         @if(auth()->check())
             <nav class="header__nav">
                 <div class="header__nav-item header__nav-item_response js-header-item-dropdown">
-                    <div class="header__login-text header__nav-item-toggle js-header-item-toggle">
-                        {{ auth()->user()->name }}
+                    <div class="header__login-toggle js-header-item-toggle">
+                        <i class="header__login-icon"></i>
+                        <span class="header__login-text">{{ auth()->user()->name }}</span>
                     </div>
                     <div class="desktop-dropdown js-desktop-dropdown">
                         <div class="desktop-dropdown__link-wrap">

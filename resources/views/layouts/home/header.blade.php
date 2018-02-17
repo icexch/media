@@ -32,13 +32,34 @@
         </div>
 
         @if(auth()->check())
-            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                {{ csrf_field() }}
-                <i class="header__login-icon"></i>
-                <submit class="header__login-text" href="{{ action('Auth\LoginController@logout') }}">
-                    <Logout></Logout>
-                </submit>
-            </form>
+            <nav class="header__nav">
+                <div class="header__nav-item header__nav-item_response js-header-item-dropdown">
+                    <div class="header__login-toggle js-header-item-toggle">
+                        <i class="header__login-icon"></i>
+                        <span class="header__login-text">{{ auth()->user()->name }}</span>
+                    </div>
+                    <div class="desktop-dropdown js-desktop-dropdown">
+                        <div class="desktop-dropdown__link-wrap">
+                            <a href="{{ $dashboardRoute }}" class="desktop-dropdown__link">Dashboard</a>
+                        </div>
+                        <div class="desktop-dropdown__link-wrap">
+                            <a href="{{ $accountRoute }}" class="desktop-dropdown__link">Edit account</a>
+                        </div>
+                        <div class="desktop-dropdown__link-wrap">
+                            <a class="desktop-dropdown__link"
+                               href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();"
+                            >
+                                Log off
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         @else
             <nav class="header__nav">
                 <a class="header__login-text header__nav-item" href="{{ action('Auth\LoginController@showLoginForm') }}">
