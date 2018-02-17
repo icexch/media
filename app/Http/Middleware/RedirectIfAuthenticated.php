@@ -10,15 +10,19 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
+     *
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect()->route('home');
+        if (auth()->check()) {
+            $previousUrlPath = array_get(parse_url(url()->previous()), 'path');
+
+            if(!$previousUrlPath) {
+                return auth()->user()->isAdvertiser() ? redirect()->route('advertiser.dashboard') : redirect()->route('publisher.dashboard');
+            }
         }
 
         return $next($request);

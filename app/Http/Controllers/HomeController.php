@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
