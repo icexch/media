@@ -11,7 +11,9 @@
                 <a href="{{ route('home') }}" class="header__nav-logo"></a>
             </div>
 
-            <a href="{{ $dashboardRoute }}" class="header__nav-item">Home</a>
+            <a href="{{ $dashboardRoute }}" class="header__nav-item">
+                {{ auth()->check() ? 'Dashboard' : 'Home' }}
+            </a>
             <a href="{{ route('home.advertiser') }}" class="header__nav-item">Advertisers</a>
             <a href="{{ route('home.publisher') }}" class="header__nav-item">Publishers</a>
             {{--<a href="#" class="header__nav-item">Statistic</a>--}}
