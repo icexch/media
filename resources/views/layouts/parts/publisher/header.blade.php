@@ -25,7 +25,7 @@
                         <a href="#" class="header__nav-item-dropdown-link">Log Off</a>
                     </div>
                 </div>
-                <a href="{{ route('publisher.dashboard') }}" class="header__nav-item">Home</a>
+                <a href="{{ route('publisher.dashboard') }}" class="header__nav-item">Dashboard</a>
                 <div class="header__nav-item header__nav-item_response js-header-item-dropdown">
                     <div class="header__nav-item-toggle js-header-item-toggle">
                         Places
@@ -40,7 +40,6 @@
                     </div>
                 </div>
                 <a href="{{route('publisher.export')}}" class="header__nav-item">Export</a>
-                <a href="{{route('publisher.payments')}}" class="header__nav-item">Payments</a>
             </nav>
         </div>
         <div class="header__right-part">
