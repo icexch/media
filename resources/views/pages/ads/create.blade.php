@@ -6,7 +6,7 @@
             <h1 class="std-adv__title">Create a New Ad</h1>
             <div class="std-adv__content std-adv__content_center">
                 <div class="form">
-                    <form method="POST" action="{{ action('AdvertiserController@storeAd') }}">
+                    <form method="POST" action="{{ action('AdvertiserController@storeAd') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('POST') }}
 
@@ -55,6 +55,15 @@
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form__input-container js-form-input-container">
+                            <div class="form__input-text-wrap form__input-text-wrap_account">
+                                <label for="adv-new-title" class="form__input-text js-input-text">File</label>
+                                <p class="form__input-under-text">Of your ad material</p>
+                            </div>
+                            <div class="form__input-holder">
+                                <input id="adv-new-title" name="file" type="file">
                             </div>
                         </div>
                         <div class="form__submit-container">

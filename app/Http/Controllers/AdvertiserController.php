@@ -7,6 +7,7 @@ use App\Models\AdType;
 use App\Models\Category;
 use App\Models\Region;
 use App\Services\PixelPoint\PixelPointAdService;
+use Illuminate\Support\Facades\Storage;
 
 class AdvertiserController extends Controller
 {
@@ -39,11 +40,12 @@ class AdvertiserController extends Controller
      */
     public function storeAd(AdMaterialCreateRequest $request)
     {
-        $adMaterial = (new AdMaterial())->fill($request->all());
+        $adMaterial = (new AdMaterial())->fill($request->except(['file']));
         $adMaterial->user_id = $request->user()->id;
         $adMaterial->is_active = 0;
 
         $adMaterial->save();
+        $request->file->store('ad_materials');
 
         return redirect()->route('advertiser.ads');
     }

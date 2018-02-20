@@ -5,8 +5,6 @@ use SleepingOwl\Admin\Traits\OrderableModel;
 
 class AdMaterial extends BaseModel
 {
-    use OrderableModel;
-
     protected $casts = [
         'name'       => 'string',
         'user_id'    => 'int',
@@ -44,13 +42,5 @@ class AdMaterial extends BaseModel
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    /**
-     * @return string
-     */
-    public function getOrderField()
-    {
-        return 'is_active';
     }
 }
