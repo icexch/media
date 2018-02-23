@@ -40,12 +40,12 @@
                     </div>
                 </div>
                 <a href="{{route('publisher.export')}}" class="header__nav-item">Export</a>
+                <a href="#" class="header__add-new header__add-new_response">
+                    <i class="header__add-new-icon"></i>
+                    <span class="header__add-new-text">New Ad</span>
+                </a>
             </nav>
         </div>
-        <div class="header__right-part">
-            @include('layouts.parts.user-menu')
-        </div>
-
-
+        @include('layouts.parts.user-menu')
     </div>
 </div>
