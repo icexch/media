@@ -76,8 +76,8 @@
                                             <a href="{{route('publisher.chart.id', ['id' => $place->id])}}">
                                                 <i class="adv-table__icon adv-table__icon_graphic"></i>
                                             </a>&nbsp
-                                            <a href="#" class="areaScript-button">
-                                                @include('pages.places.parts.area-script')
+                                            <a href="#" class="adv-table__icon-link-wrap popup-link" data-place-id="{{ $place->id }}">
+                                                <i class="adv-table__icon adv-table__icon_tag"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -92,4 +92,5 @@
             </div>
         </div>
     </div>
+    @include('pages.places.parts.area-script')
 @stop
