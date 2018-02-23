@@ -9,7 +9,8 @@ class AdMaterial extends BaseModel
         'name'       => 'string',
         'user_id'    => 'int',
         'ad_type_id' => 'int',
-        'is_active'  => 'bool'
+        'is_active'  => 'bool',
+        'url'        => 'string'
     ];
 
     /**
@@ -42,5 +43,17 @@ class AdMaterial extends BaseModel
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        if (isset($this->attributes['url'])) {
+            return env('APP_URL') . '/' . $this->attributes['url'];
+        }
+
+        return null;
     }
 }
