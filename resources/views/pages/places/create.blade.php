@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    Create New Place
+@stop
 
 @section('content')
     <div class="publishers js-page">

@@ -1,4 +1,7 @@
 @extends('layouts.home.other')
+@section('title')
+    Contact us
+@stop
 
 @section('content')
     <div class="contact-us" style="background-image: url(/img/contact-us-bg.jpg)">
