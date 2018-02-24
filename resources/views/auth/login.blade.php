@@ -18,8 +18,13 @@
                                     <label for="g-log-user" class="guest-form__line-title">Email</label>
                                 </div>
                                 <div class="guest-form__input-holder">
-                                    <input id="email" type="email" class="guest-form__input" name="email"
-                                           value="{{ old('email') }}" required autofocus>
+                                    <input id="email"
+                                           type="email"
+                                           class="guest-form__input"
+                                           name="email"
+                                           value="{{ old('email') }}"
+                                           required
+                                           autofocus>
                                 </div>
                             </div>
                             <div class="guest-form__line">

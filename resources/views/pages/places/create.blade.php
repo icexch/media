@@ -20,7 +20,10 @@
                                             <p class="form__input-under-text">for your reference</p>
                                         </div>
                                         <div class="form__input-holder">
-                                            <input id="p-np-title" type="text" name="name"
+                                            <input id="p-np-title"
+                                                   type="text"
+                                                   name="name"
+                                                   value="{{ old('name') }}"
                                                    class="form__input js-form-input">
                                         </div>
                                     </label>
@@ -30,9 +33,8 @@
                                         </div>
                                         <div class="form__select-holder">
                                             <select id="p-np-type" name="region_id" class="form__select">
-                                                <option></option>
                                                 @foreach($regions as $region)
-                                                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                                    <option value="{{ $region->id }}" @selected($region->id === (int)old('region_id'))>{{ $region->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -44,7 +46,7 @@
                                         <div class="form__select-holder">
                                             <select id="p-np-type" name="category_id" class="form__select">
                                                 @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}" @selected($category->id === (int) old('category_id'))>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -54,7 +56,10 @@
                                             <label for="p-np-title" class="form__input-text js-input-text">Url</label>
                                         </div>
                                         <div class="form__input-holder">
-                                            <input id="p-np-title" name="url" type="text"
+                                            <input id="p-np-title"
+                                                   name="url"
+                                                   type="text"
+                                                   value="{{ old('url') }}"
                                                    class="form__input js-form-input">
                                         </div>
                                     </label>
@@ -65,7 +70,7 @@
                                         <div class="form__select-holder">
                                             <select id="p-np-type" name="ad_type_id" class="form__select">
                                                 @foreach($adTypes as $adType)
-                                                    <option value="{{ $adType->id }}">{{ $adType->name }}</option>
+                                                    <option value="{{ $adType->id }}" @selected($adType->id === (int) old('ad_type_id'))>{{ $adType->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

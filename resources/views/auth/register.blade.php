@@ -19,7 +19,11 @@
                                 <label for="g-reg-user" class="guest-form__line-title guest-form__line-title_required">Username</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-user" type="text" name="name" class="guest-form__input"
+                                <input id="g-reg-user"
+                                       type="text"
+                                       name="name"
+                                       class="guest-form__input"
+                                       value="{{ old('name') }}"
                                        placeholder="Username">
                             </div>
                         </div>
@@ -29,7 +33,10 @@
                                 <label for="g-reg-pass" class="guest-form__line-title guest-form__line-title_required">Password</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-pass" type="password" name="password" class="guest-form__input"
+                                <input id="g-reg-pass"
+                                       type="password"
+                                       name="password"
+                                       class="guest-form__input"
                                        placeholder="Password">
                             </div>
                         </div>
@@ -40,8 +47,11 @@
                                     confirmation</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-pass" type="password" name="password_confirmation"
-                                       class="guest-form__input" placeholder="Password">
+                                <input id="g-reg-pass"
+                                       type="password"
+                                       name="password_confirmation"
+                                       class="guest-form__input"
+                                       placeholder="Password">
                             </div>
                         </div>
 
@@ -50,7 +60,11 @@
                                 <label for="g-reg-email" class="guest-form__line-title guest-form__line-title_required">E-mail</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-email" type="text" name="email" class="guest-form__input"
+                                <input id="g-reg-email"
+                                       type="text"
+                                       name="email"
+                                       class="guest-form__input"
+                                       value="{{ old('email') }}"
                                        placeholder="E-mail">
                             </div>
                         </div>
@@ -60,8 +74,11 @@
                                 <label for="g-reg-comp-name" class="guest-form__line-title">Company Name</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-comp-name" name="profile[company_name]" type="text"
+                                <input id="g-reg-comp-name"
+                                       name="profile[company_name]"
+                                       type="text"
                                        class="guest-form__input"
+                                       value="{{ old('profile.company_name') }}"
                                        placeholder="Company Name">
                             </div>
                         </div>
@@ -71,7 +88,11 @@
                                 <label for="g-reg-city" class="guest-form__line-title">City</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-city" type="text" name="profile[city]" class="guest-form__input"
+                                <input id="g-reg-city"
+                                       type="text"
+                                       name="profile[city]"
+                                       class="guest-form__input"
+                                       value="{{ old('profile.city') }}"
                                        placeholder="City">
                             </div>
                         </div>
@@ -81,7 +102,11 @@
                                 <label for="g-reg-country" class="guest-form__line-title">Country</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-country" name="profile[country]" type="text" class="guest-form__input"
+                                <input id="g-reg-country"
+                                       name="profile[country]"
+                                       type="text"
+                                       class="guest-form__input"
+                                       value="{{ old('profile.country') }}"
                                        placeholder="Country">
                             </div>
                         </div>
@@ -91,14 +116,20 @@
                                 <label for="g-reg-phone" class="guest-form__line-title">Phone</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-reg-phone" name="profile[phone]" type="text" class="guest-form__input"
+                                <input id="g-reg-phone"
+                                       name="profile[phone]"
+                                       type="text"
+                                       class="guest-form__input"
+                                       value="{{ old('profile.phone') }}"
                                        placeholder="Phone">
                             </div>
                         </div>
 
                         <div class="guest-form__line guest-form__line_checkbox">
                             <label class="guest-form__checkbox-holder">
-                                <input type="checkbox" name="agreements" class="checkbox-styled js-checkbox">
+                                <input type="checkbox"
+                                       name="agreements"
+                                       class="checkbox-styled js-checkbox">
                                 <span class="guest-form__checkbox-text">
 									I have read and agree to
 									<a href="#" class="guest-form__checkbox-link">Rules</a>
