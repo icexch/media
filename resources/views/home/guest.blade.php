@@ -3,11 +3,11 @@
 @section('content')
     <div class="guest-home">
         <div class="top-block guest-home__top-block">
-            <div class="top-block__bg" style="background-image: url(img/top-block-img.jpg)">
+            <div class="top-block__bg" style="background-image: url(/img/top-block-img.jpg)">
             </div>
             <div class="top-block__container container">
                 <div class="top-block__logo">
-                    <img src="img/logo.svg" alt="ICEX" class="top-block__logo-img">
+                    <img src="/img/logo.svg" alt="ICEX" class="top-block__logo-img">
                 </div>
                 <div class="top-block__description">
                     A new ambitious project that connects advertisers and publishers worldwide. The same approach
@@ -144,7 +144,7 @@
 
         <div class="text-slider guest-home__text-slider">
             <div class="text-slider__image-part">
-                <div class="text-slider__image-inner" style="background-image: url(img/text-slider-img.png)"></div>
+                <div class="text-slider__image-inner" style="background-image: url(/img/text-slider-img.png)"></div>
             </div>
             <div class="text-slider__text-part">
                 <div class="text-slider__container">
@@ -202,7 +202,7 @@
         </div>
 
 
-        <div class="image-block guest-home" style="background-image: url(img/image-block-img.jpg)">
+        <div class="image-block guest-home" style="background-image: url(/img/image-block-img.jpg)">
             <div class="image-block__container container">
                 <div class="image-block__content">
                     <h2 class="image-block__title">MILLIONS OF IMPRESSIONS ARE BOUGHT &
@@ -228,7 +228,7 @@
         </div>
 
 
-        <div class="cta guest-home__cta" style="background-image: url(img/cta-bg.jpg)">
+        <div class="cta guest-home__cta" style="background-image: url(/img/cta-bg.jpg)">
             <div class="cta__container small-container">
                 <h2 class="cta__title">BILD YOUR IDEAL DSP PLATFORM (IN MINUTES)</h2>
                 <div class="cta__link-wrap">

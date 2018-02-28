@@ -4,11 +4,11 @@
     <div class="guest-publisher">
 
         <div class="top-block guest-publisher__top-block">
-            <div class="top-block__bg" style="background-image: url(img/top-block-img.jpg)">
+            <div class="top-block__bg" style="background-image: url(/img/top-block-img.jpg)">
             </div>
             <div class="top-block__container container">
                 <div class="top-block__logo">
-                    <img src="img/logo.svg" alt="ICEX" class="top-block__logo-img">
+                    <img src="/img/logo.svg" alt="ICEX" class="top-block__logo-img">
                 </div>
                 <div class="top-block__description">
                     Icex Media views each of our clients equally, regardless of the type of website and hosting you have. Whether your project is already promoted, or up-and-coming, we will generate additional income for you by displaying advertisements to our own clients, and will provide you with advertising traffic from the largest advertising exchanges.
@@ -40,7 +40,7 @@
 
         <div class="text-slider guest-publisher__text-slider">
             <div class="text-slider__image-part">
-                <div class="text-slider__image-inner" style="background-image: url(img/text-slider-img-2.jpg)"></div>
+                <div class="text-slider__image-inner" style="background-image: url(/img/text-slider-img-2.jpg)"></div>
             </div>
             <div class="text-slider__text-part">
                 <div class="text-slider__container">
@@ -67,7 +67,7 @@
 
 
 
-        <div class="image-block guest-publisher__image-block" style="background-image: url(img/image-block-img.jpg)">
+        <div class="image-block guest-publisher__image-block" style="background-image: url(/img/image-block-img.jpg)">
             <div class="image-block__container container">
                 <div class="image-block__content">
                     <h2 class="image-block__title">AUTOMATE THE SALE OF YOUR TRAFFIC
@@ -128,7 +128,7 @@
 
 
 
-        <div class="cta guest-publisher__cta" style="background-image: url(img/cta-bg.jpg)">
+        <div class="cta guest-publisher__cta" style="background-image: url(/img/cta-bg.jpg)">
             <div class="cta__container small-container">
                 <h2 class="cta__title">WHILE EVERY AD IS INFLUENCED BY A MYRIAD OF VARIABLES, REAL-TIME BIDDING WILL HELP ADVERTISERS MORE
                     EFFECTIVELY UNCOVER, UNDERSTAND, AND UNLEASH OPPORTUNITY WITHIN EACH AD EFFORT.

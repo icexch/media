@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="publishers js-page">
-        <div class="publishers__bg" style="background-image: url(img/publish_bg.jpg)">
+        <div class="publishers__bg" style="background-image: url(/img/publish_bg.jpg)">
             <div class="publishers__bg-darken">
                 <div class="publishers__inner container-publishers">
                     <div class="publishers__block">
@@ -79,33 +79,6 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publishers__block">
-                        <h2 class="publishers__title">Available Zones</h2>
-                        <div class="publishers__table">
-                            <div class="publishers__table-header">
-                                <div class="publishers__th">Title</div>
-                                <div class="publishers__th">Ad type</div>
-                                <div class="publishers__th">Payout</div>
-                            </div>
-                            <div class="publishers__table-body">
-                                <div class="publishers__table-body-inner">
-                                    <div class="publishers__table-row">
-                                        <p class="publishers__col publishers__col_1">Zone Banners 468x60 example</p>
-                                        <p class="publishers__col publishers__col_2">Banners Full Size 468x60</p>
-                                        <div class="publishers__col publishers__col_3">
-                                            <p class="publishers__col publishers__col_4">$0.60/10 clicks </p>
-                                            <p class="publishers__col publishers__col_5">$0.60/500 impressions</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table-scroller">
-                                    <div class="table-scroller__itself"></div>
-                                    <div class="table-scroller__arrow"></div>
-                                </div>
                             </div>
                         </div>
                     </div>

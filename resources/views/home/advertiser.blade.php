@@ -3,11 +3,11 @@
 @section('content')
     <div class="guest-advertises">
         <div class="top-block guest-advertises__top-block">
-            <div class="top-block__bg" style="background-image: url(img/top-block-img.jpg)">
+            <div class="top-block__bg" style="background-image: url(/img/top-block-img.jpg)">
             </div>
             <div class="top-block__container container">
                 <div class="top-block__logo">
-                    <img src="img/logo.svg" alt="ICEX" class="top-block__logo-img">
+                    <img src="/img/logo.svg" alt="ICEX" class="top-block__logo-img">
                 </div>
                 <div class="top-block__description">
                     Icex Media provide a full cycle for your company. Since the creation of a small website, logo design and corporate identity and ending display promotional materials on all the sites in our network. Or in a particular region, country, city conducted your activity. We present a powerful system of managing ads on sites, which is very easy to be used right from the start just now and which gives practically unlimited opportunities in future.
@@ -23,7 +23,7 @@
 
         <div class="text-slider guest-advertises__text-slider">
             <div class="text-slider__image-part">
-                <div class="text-slider__image-inner" style="background-image: url(img/text-slider-img-3.jpg)"></div>
+                <div class="text-slider__image-inner" style="background-image: url(/img/text-slider-img-3.jpg)"></div>
             </div>
             <div class="text-slider__text-part">
                 <div class="text-slider__container">
