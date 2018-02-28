@@ -15,7 +15,7 @@
                 </div>
                 <div class="header__nav-item header__nav-item_dropdown js-header-nav-item-parent">
                     <div class="header__nav-item-container js-header-nav-item-trigger">
-                        <a href="#" class="header__nav-item-text header__nav-item-text_login">{{Auth::user()->name}}</a>
+                        <a href="#" class="header__nav-item-text header__nav-item-text_login">{{ auth()->user()->name }}</a>
                         <i class="header__nav-item-icon"></i>
                     </div>
                     <div class="header__nav-item-dropdown js-header-nav-item-dropdown">
@@ -42,11 +42,6 @@
                 {{--<a href="{{route('advertiser.payments')}}" class="header__nav-item">Payments</a>--}}
             </nav>
         </div>
-
-        <div class="header__right-part">
-            @include('layouts.parts.user-menu')
-        </div>
-
-
+        @include('layouts.parts.user-menu')
     </div>
 </div>
