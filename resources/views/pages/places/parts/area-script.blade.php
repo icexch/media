@@ -13,7 +13,7 @@
         <div class="form__input-container form__input-container_pop-up-block">
             <div class="form__input-holder">
                 <textarea readonly cols="30" rows="10" class="form__textarea form__textarea_black area-js-text">
-{{ "<script async defer src=" . env('APP_URL') . "/js/area.js". "></script>" }}
+{{ "<script async defer src=\"" . env('APP_URL') . "/js/area.js\"". "></script>" }}
                 </textarea>
             </div>
         </div>

@@ -1,6 +1,6 @@
 (function() {
     var init, initAd, getAdInfo, createRequest, showed, clicked;
-    var HOST = "http://icexch.media/api/v1/";
+    var HOST = "https://icexch.media/api/v1/";
     init = function () {
         var url = "pixel-point/show";
         var data = [
