@@ -4,17 +4,55 @@ namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        return view('home.guest');
+        $routes = $this->getMenuRoutes();
+
+        return view('home.guest', $routes);
     }
 
-    public function indexAdvertiser() {
-        return view('home.advertiser');
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function indexAdvertiser()
+    {
+        $routes = $this->getMenuRoutes();
 
+        return view('home.advertiser', $routes);
     }
 
-    public function indexPublisher() {
-        return view('home.publisher');
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function indexPublisher()
+    {
+        $routes = $this->getMenuRoutes();
+
+        return view('home.publisher', $routes);
     }
+
+    /**
+     * @return array
+     */
+    protected function getMenuRoutes()
+    {
+        $dashboardRoute = route('home');
+        $accountRoute = null;
+
+        if (auth()->check()) {
+            $dashboardRoute = auth()->user()->isAdvertiser() ? route('advertiser.dashboard') : route('publisher.dashboard');
+            $accountRoute = auth()->user()->isAdvertiser() ? route('advertiser.account.edit') : route('publisher.account.edit');
+        }
+
+        return compact('dashboardRoute', 'accountRoute');
+    }
+
 }

@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    Profile
+@stop
 
 @section('content')
     <div class="std-adv js-page"  style="background-image: url(/img/contact-us-bg.jpg)">

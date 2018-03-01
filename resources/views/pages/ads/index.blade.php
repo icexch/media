@@ -1,9 +1,12 @@
 @extends('layouts.main')
+@section('title')
+    Ads
+@stop
 
 @section('content')
     <div class="std-adv js-page" style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="std-adv__container container">
-            <h1 class="std-adv__title">Your Ads</h1>
+            <h1 class="std-adv__title">Icex Media</h1>
             <div class="std-adv__content">
 
                 <div class="adv-table adv-table_campaigns-adv">
@@ -17,6 +20,9 @@
                             </div>
                             <div class="adv-table__column">
                                 <p class="adv-table__title">Ad type</p>
+                            </div>
+                            <div class="adv-table__column">
+                                <p class="adv-table__title">Url</p>
                             </div>
                             <div class="adv-table__column">
                                 <p class="adv-table__title">Ad approved</p>
@@ -44,6 +50,13 @@
                                         </div>
                                         <div class="adv-table__column">
                                             <p class="adv-table__text">{{ $adMaterial->adType->name }}</p>
+                                        </div>
+                                        <div class="adv-table__column">
+                                            <p class="adv-table__text">
+                                                @if($adMaterial->url)
+                                                    <a class="ad-material-path" href="{{ $adMaterial->url }}" target="_blank">URL</a>
+                                                @endif
+                                            </p>
                                         </div>
                                         <div class="adv-table__column">
                                             <p class="adv-table__text {{ $adMaterial->is_active ? '' : 'adv-table__text_red' }}">

@@ -1,9 +1,14 @@
+.areaScript-js {
+  display: none;
+}
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+.actions-container {
+  a {
+    text-decoration: none;
+  }
+}
 
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+.ad-material-path {
+  text-decoration: none;
+  color: #ffffff;
+}

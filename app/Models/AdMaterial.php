@@ -5,13 +5,12 @@ use SleepingOwl\Admin\Traits\OrderableModel;
 
 class AdMaterial extends BaseModel
 {
-    use OrderableModel;
-
     protected $casts = [
         'name'       => 'string',
         'user_id'    => 'int',
         'ad_type_id' => 'int',
-        'is_active'  => 'bool'
+        'is_active'  => 'bool',
+        'url'        => 'string'
     ];
 
     /**
@@ -49,8 +48,12 @@ class AdMaterial extends BaseModel
     /**
      * @return string
      */
-    public function getOrderField()
+    public function getUrlAttribute()
     {
-        return 'is_active';
+        if (isset($this->attributes['url'])) {
+            return env('APP_URL') . '/' . $this->attributes['url'];
+        }
+
+        return null;
     }
 }

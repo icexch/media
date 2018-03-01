@@ -7,6 +7,7 @@ use App\Models\AdType;
 use App\Models\Category;
 use App\Models\Region;
 use App\Services\PixelPoint\PixelPointAdService;
+use Illuminate\Support\Facades\Storage;
 
 class AdvertiserController extends Controller
 {
@@ -39,28 +40,32 @@ class AdvertiserController extends Controller
      */
     public function storeAd(AdMaterialCreateRequest $request)
     {
-        $adMaterial = (new AdMaterial())->fill($request->all());
+        $url = $request->file->store('public/ad_materials');
+        $url = str_replace('public', 'storage', $url);
+
+        $adMaterial = (new AdMaterial())->fill($request->except(['file']));
         $adMaterial->user_id = $request->user()->id;
         $adMaterial->is_active = 0;
-
+        $adMaterial->url = $url;
         $adMaterial->save();
 
         return redirect()->route('advertiser.ads');
     }
 
-    public function chart($id, PixelPointAdService $pixelPointService) {
+    public function chart($id, PixelPointAdService $pixelPointService)
+    {
         $ad = AdMaterial::select('id', 'name')->findOrFail($id);
 
         $impressions = $pixelPointService->getImpressions([$ad->id]);
-        $placesCount = $impressions->map(function($click) {
+        $placesCount = $impressions->map(function ($click) {
             return $click['placeID'];
         })->unique()->count();
 
-        $clicksTotal      = 0;
+        $clicksTotal = 0;
         $impressionsTotal = 0;
-        $clicksYear       = $pixelPointService->getStatsYears([$ad->id]);
-        $clicksMonth      = $pixelPointService->getStatsMonths([$ad->id]);
-        $impressionsYear  = $pixelPointService->getStatsYears([$ad->id], 1);
+        $clicksYear = $pixelPointService->getStatsYears([$ad->id]);
+        $clicksMonth = $pixelPointService->getStatsMonths([$ad->id]);
+        $impressionsYear = $pixelPointService->getStatsYears([$ad->id], 1);
         $impressionsMonth = $pixelPointService->getStatsMonths([$ad->id], 1);
 
         foreach ($clicksYear as $item) {

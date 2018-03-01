@@ -1,4 +1,7 @@
 @extends('layouts.home.other')
+@section('title')
+    Contact us
+@stop
 
 @section('content')
     <div class="contact-us" style="background-image: url(/img/contact-us-bg.jpg)">
@@ -16,7 +19,12 @@
                                 <label for="g-con-name" class="guest-form__line-title guest-form__line-title_required">Name</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-con-name" type="text" name="name" class="guest-form__input" placeholder="Name">
+                                <input id="g-con-name"
+                                       type="text"
+                                       name="name"
+                                       value="{{ old('name') }}"
+                                       class="guest-form__input"
+                                       placeholder="Name">
                             </div>
                         </div>
                         <div class="guest-form__line">
@@ -24,7 +32,12 @@
                                 <label for="g-con-email" class="guest-form__line-title guest-form__line-title_required">E-mail</label>
                             </div>
                             <div class="guest-form__input-holder">
-                                <input id="g-con-email" type="text" name="email" class="guest-form__input" placeholder="E-mail">
+                                <input id="g-con-email"
+                                       type="text"
+                                       name="email"
+                                       value="{{ old('email') }}"
+                                       class="guest-form__input"
+                                       placeholder="E-mail">
                             </div>
                         </div>
                         <div class="guest-form__line">
@@ -32,7 +45,12 @@
                                 <label for="g-con-message" class="guest-form__line-title guest-form__line-title_required">Message</label>
                             </div>
                             <div class="guest-form__textarea-holder">
-                                <textarea id="g-con-message" name="message" cols="30" rows="10" class="guest-form__textarea" placeholder="Your message"></textarea>
+                                <textarea id="g-con-message"
+                                          name="message"
+                                          cols="30"
+                                          rows="10"
+                                          class="guest-form__textarea"
+                                          placeholder="Your message">{{ old('message') }}</textarea>
                             </div>
                         </div>
                         <div class="guest-form__line guest-form__line_submit">

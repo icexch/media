@@ -4,14 +4,14 @@
     <div class="guest-publisher">
 
         <div class="top-block guest-publisher__top-block">
-            <div class="top-block__bg" style="background-image: url(img/top-block-img.jpg)">
+            <div class="top-block__bg" style="background-image: url(/img/top-block-img.jpg)">
             </div>
             <div class="top-block__container container">
                 <div class="top-block__logo">
-                    <img src="img/logo.svg" alt="ICEX" class="top-block__logo-img">
+                    <img src="/img/logo.svg" alt="ICEX" class="top-block__logo-img">
                 </div>
                 <div class="top-block__description">
-                    YourAdsMedia views each of our clients equally, regardless of the type of website and hosting you have. Whether your project is already promoted, or up-and-coming, we will generate additional income for you by displaying advertisements to our own clients, and will provide you with advertising traffic from the largest advertising exchanges.
+                    Icex Media views each of our clients equally, regardless of the type of website and hosting you have. Whether your project is already promoted, or up-and-coming, we will generate additional income for you by displaying advertisements to our own clients, and will provide you with advertising traffic from the largest advertising exchanges.
                 </div>
                 <a type="button"
                         class="top-block__get-started js-smooth-scroll"
@@ -26,7 +26,7 @@
 
         <div class="text-block guest-publisher__text-block" id="screen_2">
             <div class="text-block__container small-container">
-                <h2 class="text-block__title">YOURADSMEDIA GIVES A FULL FREEDOM ON ADS PLACEMENT</h2>
+                <h2 class="text-block__title">Icex Media GIVES A FULL FREEDOM ON ADS PLACEMENT</h2>
                 <div class="text-block__divider"></div>
                 <div class="text-block__text">
                     You can use any standard advertising formats with the help of pre-given types of banners or create your
@@ -40,11 +40,11 @@
 
         <div class="text-slider guest-publisher__text-slider">
             <div class="text-slider__image-part">
-                <div class="text-slider__image-inner" style="background-image: url(img/text-slider-img-2.jpg)"></div>
+                <div class="text-slider__image-inner" style="background-image: url(/img/text-slider-img-2.jpg)"></div>
             </div>
             <div class="text-slider__text-part">
                 <div class="text-slider__container">
-                    <h2 class="text-slider__slider-item-title">YOURADSMEDIA GIVES A FULL FREEDOM ON ADS
+                    <h2 class="text-slider__slider-item-title">Icex Media GIVES A FULL FREEDOM ON ADS
                         PLACEMENT</h2>
                     <div class="text-slider__slider-item-divider"></div>
                     <div class="text-slider__slider-item-text">
@@ -55,7 +55,7 @@
                             In any case you will get detailed statistic reports on a number of parameters to analyze what placement was the most successful.
                         </p>
                         <p class="text-slider__slider-item-text-p">
-                            YourAdsMedia lets organize exchange with partners of any formats of ads, including textual-graphical blocks, graphical banners of any formats, video.
+                            Icex Media lets organize exchange with partners of any formats of ads, including textual-graphical blocks, graphical banners of any formats, video.
                         </p>
                         <p class="text-slider__slider-item-text-p">
                             The exchange can be calculated by views or clicks, with specification of the organizer of the network's interest of fee.
@@ -67,7 +67,7 @@
 
 
 
-        <div class="image-block guest-publisher__image-block" style="background-image: url(img/image-block-img.jpg)">
+        <div class="image-block guest-publisher__image-block" style="background-image: url(/img/image-block-img.jpg)">
             <div class="image-block__container container">
                 <div class="image-block__content">
                     <h2 class="image-block__title">AUTOMATE THE SALE OF YOUR TRAFFIC
@@ -128,7 +128,7 @@
 
 
 
-        <div class="cta guest-publisher__cta" style="background-image: url(img/cta-bg.jpg)">
+        <div class="cta guest-publisher__cta" style="background-image: url(/img/cta-bg.jpg)">
             <div class="cta__container small-container">
                 <h2 class="cta__title">WHILE EVERY AD IS INFLUENCED BY A MYRIAD OF VARIABLES, REAL-TIME BIDDING WILL HELP ADVERTISERS MORE
                     EFFECTIVELY UNCOVER, UNDERSTAND, AND UNLEASH OPPORTUNITY WITHIN EACH AD EFFORT.

@@ -6,16 +6,16 @@
             <div class="header__burger-line"></div>
         </div>
         <div class="header__left-part">
-            <a href="{{ route('advertiser.dashboard') }}" class="header__logo">
+            <a href="{{ route('home') }}" class="header__logo">
                 <img src="/img/logo-mobile.svg" alt="" class="header__logo-img">
             </a>
             <nav class="header__nav" id="nav">
                 <div class="header__nav-logo-wrap">
-                    <a href="/" class="header__nav-logo"></a>
+                    <a href="{{ route('home') }}" class="header__nav-logo"></a>
                 </div>
                 <div class="header__nav-item header__nav-item_dropdown js-header-nav-item-parent">
                     <div class="header__nav-item-container js-header-nav-item-trigger">
-                        <a href="#" class="header__nav-item-text header__nav-item-text_login">{{Auth::user()->name}}</a>
+                        <a href="#" class="header__nav-item-text header__nav-item-text_login">{{ auth()->user()->name }}</a>
                         <i class="header__nav-item-icon"></i>
                     </div>
                     <div class="header__nav-item-dropdown js-header-nav-item-dropdown">
@@ -42,11 +42,6 @@
                 {{--<a href="{{route('advertiser.payments')}}" class="header__nav-item">Payments</a>--}}
             </nav>
         </div>
-
-        <div class="header__right-part">
-            @include('layouts.parts.user-menu')
-        </div>
-
-
+        @include('layouts.parts.user-menu')
     </div>
 </div>

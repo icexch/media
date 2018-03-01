@@ -9,7 +9,15 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact-us');
+        $dashboardRoute = route('home');
+        $accountRoute = null;
+
+        if(auth()->check()) {
+            $dashboardRoute = auth()->user()->isAdvertiser() ? route('advertiser.dashboard') : route('publisher.dashboard');
+            $accountRoute = auth()->user()->isAdvertiser() ? route('advertiser.account.edit') : route('publisher.account.edit');
+        }
+
+        return view('contact-us', compact('dashboardRoute', 'accountRoute'));
     }
 
     /**

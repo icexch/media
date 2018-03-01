@@ -1,7 +1,10 @@
 @extends('layouts.main')
+@section('title')
+    Places
+@stop
 
 @section('content')
-    <div class="std-adv js-page" style="background-image: url(/img/contact-us-bg.jpg)">
+    <div class="std-adv js-page" style="background-image: url(/img/contact-us-bg.jpg)" data-module="places">
         <div class="std-adv__container container">
             <h1 class="std-adv__title">Your places</h1>
             <div class="std-adv__content">
@@ -72,9 +75,12 @@
                                                 </a>
                                             </p>
                                         </div>
-                                        <div class="adv-table__column">
+                                        <div class="adv-table__column actions-container">
                                             <a href="{{route('publisher.chart.id', ['id' => $place->id])}}">
                                                 <i class="adv-table__icon adv-table__icon_graphic"></i>
+                                            </a>&nbsp
+                                            <a href="#" class="adv-table__icon-link-wrap popup-link" data-place-id="{{ $place->id }}">
+                                                <i class="adv-table__icon adv-table__icon_tag"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -89,4 +95,5 @@
             </div>
         </div>
     </div>
+    @include('pages.places.parts.area-script')
 @stop

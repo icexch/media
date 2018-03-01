@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="footer__right-part">
-            <p class="footer__your-ads-media">© icex.media.com 2018</p>
+            <p class="footer__your-ads-media">© icex.media 2018</p>
         </div>
     </div>
 </footer>
