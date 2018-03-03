@@ -26,10 +26,12 @@ class GatherRegions extends Command
     {
         $countriesList = $this->gateway->getCountries();
 
-        foreach ($countriesList['response'] as $item) {
+        foreach (array_get($countriesList, 'response.items') as $item) {
             Region::create([
                 'name' => $item['title']
             ]);
         }
+
+        $this->info('Success');
     }
 }

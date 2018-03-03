@@ -49,5 +49,7 @@ class GatherCategories extends Command
                 'name' => $category['name']
             ]);
         }
+
+        $this->info('Success');
     }
 }

@@ -5,6 +5,8 @@ class VKGateway extends ApiGateway
 {
     protected $baseUri = 'https://api.vk.com/method/';
 
+    protected $version = 5.73;
+
     /**
      * @return array
      */

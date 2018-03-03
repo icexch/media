@@ -6,6 +6,8 @@ abstract class ApiGateway
 {
     protected $baseUri = '';
 
+    protected $version;
+
     const AVAILABLE_HTTP_METHODS = [
         'POST',
         'GET'
@@ -67,6 +69,10 @@ abstract class ApiGateway
      */
     protected function transformQueryParams(array $params): array
     {
+        if($this->version) {
+            $params['v'] = $this->version;
+        }
+
         return [
             'query' => $params
         ];
