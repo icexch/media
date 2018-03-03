@@ -44,7 +44,7 @@ class GatherCategories extends Command
 
         $categoriesList = $this->gateway->getCategories($this->option('lang'));
 
-        foreach ($categoriesList['response'] as $category) {
+        foreach (array_get($categoriesList, 'response.v1') as $category) {
             Category::create([
                 'name' => $category['name']
             ]);
