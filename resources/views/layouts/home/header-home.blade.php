@@ -31,9 +31,11 @@
                         <div class="desktop-dropdown__link-wrap">
                             <a href="{{ $dashboardRoute }}" class="desktop-dropdown__link">Dashboard</a>
                         </div>
-                        <div class="desktop-dropdown__link-wrap">
-                            <a href="{{ $accountRoute }}" class="desktop-dropdown__link">Edit account</a>
-                        </div>
+                        @if(!auth()->user()->isModerator())
+                            <div class="desktop-dropdown__link-wrap">
+                                <a href="{{ $accountRoute }}" class="desktop-dropdown__link">Edit account</a>
+                            </div>
+                        @endif
                         <div class="desktop-dropdown__link-wrap">
                             <a class="desktop-dropdown__link"
                                href="{{ route('logout') }}"
