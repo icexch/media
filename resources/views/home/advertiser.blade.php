@@ -10,7 +10,7 @@
                     <img src="/img/logo.svg" alt="ICEX" class="top-block__logo-img">
                 </div>
                 <div class="top-block__description">
-                    Icex Media provide a full cycle for your company. Since the creation of a small website, logo design and corporate identity and ending display promotional materials on all the sites in our network. Or in a particular region, country, city conducted your activity. We present a powerful system of managing ads on sites, which is very easy to be used right from the start just now and which gives practically unlimited opportunities in future.
+                    ICEX Media provide a full cycle for your company. Since the creation of a small website, logo design and corporate identity and ending display promotional materials on all the sites in our network. Or in a particular region, country, city conducted your activity. We present a powerful system of managing ads on sites, which is very easy to be used right from the start just now and which gives practically unlimited opportunities in future.
                 </div>
                 <a type="button"
                    class="top-block__get-started js-smooth-scroll"
@@ -34,10 +34,10 @@
                             Use qualitative and quantitative methods of measuring, post-click and post-view analysis, KPI-reports (Key Performance Indicators): you have all the arsenal of evaluating ads in the internet at your disposal.
                         </p>
                         <p class="text-slider__slider-item-text-p">
-                            Segment audience by its interests and then build communication with each group separately, by using opportunities of retargeting, or manage announcements on your own site using Icex Media.
+                            Segment audience by its interests and then build communication with each group separately, by using opportunities of retargeting, or manage announcements on your own site using ICEX Media.
                         </p>
                         <p class="text-slider__slider-item-text-p">
-                            With Icex Media you can evaluate results of the advertising ad in complex, with determining effectiveness of various channels of communication, advertising spaces, creative; eliminate of wasted impressions.
+                            With ICEX Media you can evaluate results of the advertising ad in complex, with determining effectiveness of various channels of communication, advertising spaces, creative; eliminate of wasted impressions.
                         </p>
                     </div>
                 </div>
