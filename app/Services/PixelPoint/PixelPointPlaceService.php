@@ -37,7 +37,7 @@ class PixelPointPlaceService extends PixelPointService
                 array_push($ads, [
                     'id' => $ad->id,
                     'data' => $ad->content,
-                    'href' => 'https://pipec.online/minecraft-server-221/vote',
+                    'href' => $ad->url,
                     'placeID' => $place->id,
                 ]);
             }
