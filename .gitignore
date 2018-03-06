@@ -19,3 +19,4 @@ _ide_helper_models.php
 public/css/*
 public/js/*
 public/mix-manifest.json
+/public/js/area.js
