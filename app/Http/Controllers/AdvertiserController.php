@@ -46,7 +46,7 @@ class AdvertiserController extends Controller
         $adMaterial = (new AdMaterial())->fill($request->except(['file']));
         $adMaterial->user_id = $request->user()->id;
         $adMaterial->is_active = 0;
-        $adMaterial->url = $url;
+        $adMaterial->material_url = $url;
         $adMaterial->save();
 
         return redirect()->route('advertiser.ads');

@@ -48,10 +48,10 @@ class AdMaterial extends BaseModel
     /**
      * @return string
      */
-    public function getUrlAttribute()
+    public function getMaterialUrlAttribute()
     {
-        if (isset($this->attributes['url'])) {
-            return env('APP_URL') . '/' . $this->attributes['url'];
+        if (isset($this->attributes['material_url'])) {
+            return env('APP_URL') . '/' . $this->attributes['material_url'];
         }
 
         return null;

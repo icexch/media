@@ -66,6 +66,18 @@
                         </div>
                         <div class="form__input-container js-form-input-container">
                             <div class="form__input-text-wrap form__input-text-wrap_account">
+                                <label for="adv-new-title" class="form__input-text js-input-text">Advertise Url</label>
+                            </div>
+                            <div class="form__input-holder">
+                                <input id="adv-new-title"
+                                       name="ad_url"
+                                       type="text"
+                                       value="{{ old('ad_url') }}"
+                                       class="form__input js-form-input">
+                            </div>
+                        </div>
+                        <div class="form__input-container js-form-input-container">
+                            <div class="form__input-text-wrap form__input-text-wrap_account">
                                 <label for="adv-new-title" class="form__input-text js-input-text">File</label>
                                 <p class="form__input-under-text">Of your ad material</p>
                             </div>

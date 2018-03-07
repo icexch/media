@@ -40,7 +40,8 @@ class AdMaterial extends Section
                 AdminColumn::text('adType.name', 'Type'),
                 AdminColumn::relatedLink('region.name', 'Region'),
                 AdminColumn::relatedLink('category.name', 'Category'),
-                AdminColumn::url('url', 'Url'),
+                AdminColumn::url('material_url', 'Url'),
+                AdminColumn::url('ad_url', 'Url'),
                 AdminColumnEditable::checkbox('is_active', 'Active')
             ])->setApply([
                 function ($query) {
@@ -63,7 +64,8 @@ class AdMaterial extends Section
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name')->required(),
                 AdminFormElement::select('region_id', 'Region', Region::class)->setDisplay('name')->required(),
                 AdminFormElement::select('category_id', 'Category', Category::class)->setDisplay('name')->required(),
-                AdminFormElement::text('url', 'Url'),
+                AdminFormElement::text('material_url', 'Material Url'),
+                AdminFormElement::text('ad_url', 'Ad Url'),
                 AdminFormElement::textarea('content', 'Content'),
                 AdminFormElement::checkbox('is_active', 'Active')
             ]);

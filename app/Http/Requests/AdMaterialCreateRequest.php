@@ -22,7 +22,8 @@ class AdMaterialCreateRequest extends FormRequest
             'ad_type_id'  => 'required|exists:ad_types,id',
             'region_id'   => 'exists:regions,id',
             'category_id' => 'required|exists:categories,id',
-            'file'        => 'required|file|max:102400'
+            'file'        => 'required|file|max:102400',
+            'ad_url'      => 'url'
         ];
     }
 }

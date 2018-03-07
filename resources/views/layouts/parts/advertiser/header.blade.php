@@ -39,7 +39,6 @@
                     </div>
                 </div>
                 <a href="{{route('advertiser.export')}}" class="header__nav-item">Export</a>
-                {{--<a href="{{route('advertiser.payments')}}" class="header__nav-item">Payments</a>--}}
             </nav>
         </div>
         @include('layouts.parts.user-menu')

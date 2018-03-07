@@ -4,7 +4,6 @@
             <a href="{{ route('publisher.dashboard') }}" class="footer__link-item">Home</a>
             <a href="{{ route('publisher.places') }}" class="footer__link-item">Places</a>
             <a href="{{ route('publisher.places.create') }}" class="footer__link-item">New Place</a>
-            <a href="{{ route('publisher.payments') }}" class="footer__link-item">Payments</a>
             <a class="footer__link-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
