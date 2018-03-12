@@ -11,7 +11,8 @@ class AdMaterial extends BaseModel
         'ad_type_id' => 'int',
         'is_active'  => 'bool',
         'type'       => 'string',
-        'source'     => 'string'
+        'source'     => 'string',
+        'hash'     => 'string'
     ];
 
     const TYPE_IMG = 'IMG';

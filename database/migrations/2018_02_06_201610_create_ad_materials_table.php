@@ -26,6 +26,7 @@ class CreateAdMaterialsTable extends Migration
             $table->text('source');
             $table->string('ad_url', 255)->nullable();
             $table->boolean('is_active');
+            $table->string('hash')->nullable();
             $table->timestamps();
         });
     }

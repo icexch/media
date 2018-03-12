@@ -13,7 +13,7 @@ class PixelPointPlaceService extends PixelPointService
     // TODO add logs
     public function getAdsWithPlaceIds(string $url, array $placeIds)
     {
-        $places = Place::with('adType')->where('url', $url)->whereIn('id', $placeIds)->get();
+        $places = Place::with('adType')->where('url', $url)->whereIn('id', $placeIds)->where('is_active', 1)->get();
         $ads = [];
         //TODO optimise
         foreach ($places as $place) {
@@ -36,8 +36,9 @@ class PixelPointPlaceService extends PixelPointService
             if($ad) {
                 array_push($ads, [
                     'id' => $ad->id,
-                    'data' => $ad->content,
-                    'href' => $ad->url,
+                    'type' => $ad->type,
+                    'data' => $ad->source,
+                    'href' => $ad->ad_url,
                     'placeID' => $place->id,
                 ]);
             }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\AdCheckContentService;
 use App\Services\PixelPoint\PixelPointAdService;
 use App\Services\PixelPoint\PixelPointPlaceService;
 use Illuminate\Support\Facades\Blade;
@@ -42,5 +43,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(PixelPointPlaceService::class);
         $this->app->singleton(PixelPointAdService::class);
+        $this->app->singleton(AdCheckContentService::class);
     }
 }
