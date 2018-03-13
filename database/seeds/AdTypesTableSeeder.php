@@ -10,7 +10,7 @@ class AdTypesTableSeeder extends \Illuminate\Database\Seeder
         ['name' => 'Button 120x90'],
         ['name' => 'Button 88x31'],
         ['name' => 'Complete Page 800x600'],
-        ['name' => 'Facebook style ads'],
+        //['name' => 'Facebook style ads'],
         ['name' => 'Full Page Ad'],
         ['name' => 'Message Box'],
         ['name' => 'News Style'],
@@ -22,9 +22,9 @@ class AdTypesTableSeeder extends \Illuminate\Database\Seeder
         ['name' => 'Sticky Note'],
         ['name' => 'TakeOver'],
         ['name' => 'Text Ads (clean style)'],
-        ['name' => 'Text Ads (Google style ads)'],
+        //['name' => 'Text Ads (Google style ads)'],
         ['name' => 'Text Ads Bar'],
-        ['name' => 'Video'],
+        //['name' => 'Video'],
         ['name' => 'Virtual Pages 1'],
         ['name' => 'Virtual pages 2']
     ];
