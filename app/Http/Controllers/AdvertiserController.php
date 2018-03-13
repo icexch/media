@@ -91,6 +91,18 @@ class AdvertiserController extends Controller
     }
 
     /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showMaterialSource($id)
+    {
+        $material = AdMaterial::findOrFail($id);
+
+        return view('pages.ads.source', compact('material'));
+    }
+
+    /**
      * @param AdMaterial $adMaterial
      * @param            $file
      *

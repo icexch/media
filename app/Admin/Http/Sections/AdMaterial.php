@@ -41,15 +41,15 @@ class AdMaterial extends Section
                 AdminColumn::relatedLink('region.name', 'Region'),
                 AdminColumn::relatedLink('category.name', 'Category'),
                 AdminColumn::text('type', 'Type'),
-                AdminColumn::custom('source', function(\App\Models\AdMaterial $material) {
+                AdminColumn::custom('Source', function(\App\Models\AdMaterial $material) {
                     if($material->type === \App\Models\AdMaterial::TYPE_IMG) {
-                        return "<a href='/$material->source' target='_blank'>Image Source</a>";
+                        return "<a href='/$material->source' target='_blank'><i class='fa fa-arrow-circle-o-right'></i></a>";
                     }
 
-                    return htmlentities($material->source);
-                })->setWidth(200),
-                AdminColumn::url('ad_url', 'Url'),
-                AdminColumnEditable::checkbox('is_active', 'Active')
+                    return "<a href='". action('AdvertiserController@showMaterialSource', $material->id) ."' target='_blank'><i class='fa fa-arrow-circle-o-right'></i></a>";
+                })->setWidth(50),
+                AdminColumn::url('ad_url', 'Url')->setWidth(50),
+                AdminColumnEditable::checkbox('is_active', 'active', 'inactive', 'Activity')
             ])->setApply([
                 function ($query) {
                     $query->orderBy('is_active', 'asc');
