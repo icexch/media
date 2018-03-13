@@ -40,14 +40,12 @@ class AdvertiserController extends Controller
      */
     public function storeAd(AdMaterialCreateRequest $request)
     {
-        $url = $request->file->store('public/ad_materials');
-        $url = str_replace('public', 'storage', $url);
-
-        $adMaterial = (new AdMaterial())->fill($request->except(['file']));
+        $adMaterial = (new AdMaterial())->fill($request->except(['source']));
         $adMaterial->user_id = $request->user()->id;
         $adMaterial->is_active = 0;
-        $adMaterial->material_url = $url;
-        $adMaterial->save();
+
+        $request->input('type') === AdMaterial::TYPE_HTML ? $this->storeHtml($adMaterial, $request->input('source'))
+            : $this->storeImage($adMaterial, $request->file('source'));
 
         return redirect()->route('advertiser.ads');
     }
@@ -90,5 +88,35 @@ class AdvertiserController extends Controller
             'impressionsTotal',
             'placesCount'
         ));
+    }
+
+    /**
+     * @param AdMaterial $adMaterial
+     * @param            $file
+     *
+     * @return AdMaterial
+     */
+    protected function storeImage(AdMaterial $adMaterial, $file)
+    {
+        $url = $file->store('public/ad_materials');
+        $url = str_replace('public', 'storage', $url);
+        $adMaterial->source = $url;
+        $adMaterial->save();
+
+        return $adMaterial;
+    }
+
+    /**
+     * @param AdMaterial $adMaterial
+     * @param            $source
+     *
+     * @return AdMaterial
+     */
+    protected function storeHtml(AdMaterial $adMaterial, $source)
+    {
+        $adMaterial->source = $source;
+        $adMaterial->save();
+
+        return $adMaterial;
     }
 }

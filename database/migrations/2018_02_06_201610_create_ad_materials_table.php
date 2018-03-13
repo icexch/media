@@ -22,10 +22,11 @@ class CreateAdMaterialsTable extends Migration
             $table->unsignedInteger('ad_type_id');
             $table->unsignedInteger('region_id')->nullable();
             $table->unsignedInteger('category_id');
-            $table->text('content')->nullable();
-            $table->string('material_url', 255)->nullable();
+            $table->string('type');
+            $table->text('source');
             $table->string('ad_url', 255)->nullable();
             $table->boolean('is_active');
+            $table->string('hash')->nullable();
             $table->timestamps();
         });
     }

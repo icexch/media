@@ -1,5 +1,6 @@
 <?php namespace App\Http\Requests;
 
+use App\Models\AdMaterial;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdMaterialCreateRequest extends FormRequest
@@ -17,12 +18,15 @@ class AdMaterialCreateRequest extends FormRequest
      */
     public function rules()
     {
+        $sourceRule = $this->input('type') === AdMaterial::TYPE_IMG ? 'image|max:102400' : 'string';
+
         return [
             'name'        => 'required|string|max:50',
             'ad_type_id'  => 'required|exists:ad_types,id',
             'region_id'   => 'exists:regions,id',
             'category_id' => 'required|exists:categories,id',
-            'file'        => 'required|file|max:102400',
+            'source'      => 'required|' . $sourceRule,
+            'type'        => 'required|in:' . implode(',', [AdMaterial::TYPE_IMG, AdMaterial::TYPE_HTML]),
             'ad_url'      => 'url'
         ];
     }

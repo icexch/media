@@ -1,6 +1,8 @@
 (function() {
-    var init, initAd, getAdInfo, createRequest, showed, clicked;
-    var HOST = "//icex.media/api/v1/";
+    var init, initAd, getAdInfo, createRequest, showed, clicked,
+        HOST = "//icex.media/api/v1/",
+        types = ['IMG', 'HTML'];
+
     init = function () {
         var url = "pixel-point/show";
         var data = [
@@ -44,19 +46,34 @@
         var id = parameters.id || "",
             href = parameters.href || "",
             placeID = parameters.placeID || "",
+            typeAd = null,
             data = parameters.data || "";
 
+        if (types.indexOf(parameters.type) > -1) {
+            typeAd = parameters.type;
+        }
+
         var ads = document.querySelector("ins[data-area-ad-client='" + placeID + "']");
-        if (!ads) {
+        if (!ads || !typeAd) {
             return null;
         }
         ads.addEventListener('click', clicked, false);
         ads.setAttribute("data-area-ad-id", id);
         var a = document.createElement("a");
         a.href = href;
-        a.innerHTML = data;
-        ads.innerHTML = a.outerHTML;
 
+        switch (typeAd) {
+            case types[0]: // IMG
+                var img = document.createElement('img');
+                img.src = data;
+                a.appendChild(img);
+                ads.appendChild(a);
+                break;
+            case types[1]: // HTML
+                a.innerHTML = data;
+                ads.innerHTML = a.outerHTML;
+                break;
+        }
         return id;
     };
     getAdInfo = function (ads) {
@@ -120,6 +137,18 @@
             ["adID", this.getAttribute("data-area-ad-id")]
         ];
         createRequest({url: url, data: data});
+        var item = event.target.parentElement;
+
+        while(true) {
+            if(item.classList.contains('area-ad')) {
+                var openURL = item.childNodes[0].href,
+                    win = window.open(openURL, '_blank');
+                win.focus();
+                break;
+            } else {
+                item = item.parentElement;
+            }
+        }
     };
     init();
 }).call(this);

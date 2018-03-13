@@ -10,8 +10,13 @@ class AdMaterial extends BaseModel
         'user_id'    => 'int',
         'ad_type_id' => 'int',
         'is_active'  => 'bool',
-        'url'        => 'string'
+        'type'       => 'string',
+        'source'     => 'string',
+        'hash'     => 'string'
     ];
+
+    const TYPE_IMG = 'IMG';
+    const TYPE_HTML = 'HTML';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
