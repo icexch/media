@@ -40,6 +40,14 @@ class AdMaterial extends Section
                 AdminColumn::text('adType.name', 'Type'),
                 AdminColumn::relatedLink('region.name', 'Region'),
                 AdminColumn::relatedLink('category.name', 'Category'),
+                AdminColumn::text('type', 'Type'),
+                AdminColumn::custom('source', function(\App\Models\AdMaterial $material) {
+                    if($material->type === \App\Models\AdMaterial::TYPE_IMG) {
+                        return "<a href='/$material->source' target='_blank'>Image Source</a>";
+                    }
+
+                    return htmlentities($material->source);
+                })->setWidth(200),
                 AdminColumn::url('ad_url', 'Url'),
                 AdminColumnEditable::checkbox('is_active', 'Active')
             ])->setApply([
@@ -63,6 +71,10 @@ class AdMaterial extends Section
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name')->required(),
                 AdminFormElement::select('region_id', 'Region', Region::class)->setDisplay('name')->required(),
                 AdminFormElement::select('category_id', 'Category', Category::class)->setDisplay('name')->required(),
+                AdminFormElement::select('type', 'Type')
+                    ->setOptions(['HTML' => \App\Models\AdMaterial::TYPE_HTML, 'IMG' => \App\Models\AdMaterial::TYPE_IMG])
+                    ->required(),
+                AdminFormElement::text('source', 'Source'),
                 AdminFormElement::text('ad_url', 'Ad Url'),
                 AdminFormElement::checkbox('is_active', 'Active')
             ]);
