@@ -32,23 +32,23 @@ class AdMaterial extends Section
      */
     public function onDisplay()
     {
-        return AdminDisplay::table()
-            ->setHtmlAttribute('class', 'table-primary table-bordered')
+        return AdminDisplay::datatablesAsync()->setModelClass(\App\Models\AdMaterial::class)
             ->setColumns([
                 AdminColumn::link('name', 'Name'),
-                AdminColumn::relatedLink('advertiser.name', 'Advertiser'),
+                AdminColumn::relatedLink('advertiser.name', 'Advertiser')->setOrderable(true),
                 AdminColumn::text('adType.name', 'Type'),
-                AdminColumn::relatedLink('region.name', 'Region'),
-                AdminColumn::relatedLink('category.name', 'Category'),
+                AdminColumn::relatedLink('region.name', 'Region')->setOrderable(true),
+                AdminColumn::relatedLink('category.name', 'Category')->setOrderable(true),
                 AdminColumn::text('type', 'Type'),
-                AdminColumn::custom('Source', function(\App\Models\AdMaterial $material) {
-                    if($material->type === \App\Models\AdMaterial::TYPE_IMG) {
+                AdminColumn::custom('Source', function (\App\Models\AdMaterial $material) {
+                    if ($material->type === \App\Models\AdMaterial::TYPE_IMG) {
                         return "<a href='/$material->source' target='_blank'><i class='fa fa-arrow-circle-o-right'></i></a>";
                     }
 
-                    return "<a href='". action('AdvertiserController@showMaterialSource', $material->id) ."' target='_blank'><i class='fa fa-arrow-circle-o-right'></i></a>";
+                    return "<a href='" . action('AdvertiserController@showMaterialSource',
+                            $material->id) . "' target='_blank'><i class='fa fa-arrow-circle-o-right'></i></a>";
                 })->setWidth(50),
-                AdminColumn::url('ad_url', 'Url')->setWidth(50),
+                AdminColumn::url('ad_url', 'Url')->setOrderable(false)->setWidth(50),
                 AdminColumnEditable::checkbox('is_active', 'active', 'inactive', 'Activity')
             ])->setApply([
                 function ($query) {
@@ -72,7 +72,10 @@ class AdMaterial extends Section
                 AdminFormElement::select('region_id', 'Region', Region::class)->setDisplay('name')->required(),
                 AdminFormElement::select('category_id', 'Category', Category::class)->setDisplay('name')->required(),
                 AdminFormElement::select('type', 'Type')
-                    ->setOptions(['HTML' => \App\Models\AdMaterial::TYPE_HTML, 'IMG' => \App\Models\AdMaterial::TYPE_IMG])
+                    ->setOptions([
+                        'HTML' => \App\Models\AdMaterial::TYPE_HTML,
+                        'IMG'  => \App\Models\AdMaterial::TYPE_IMG
+                    ])
                     ->required(),
                 AdminFormElement::text('source', 'Source'),
                 AdminFormElement::text('ad_url', 'Ad Url'),

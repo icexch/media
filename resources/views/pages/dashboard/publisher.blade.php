@@ -1,5 +1,5 @@
 @extends('layouts.publisher')
-@section('title', $title.' - ICEX Media')
+@section('title', $breadcumTitle.' - ICEX Media')
 
 @section('content')
     <div class="publishers js-page">
@@ -7,7 +7,7 @@
             <div class="publishers__bg-darken">
                 <div class="publishers__inner container-publishers">
                     <div class="publishers__block">
-                        <h1 class="publishers__title">Welcome back !</h1>
+                        <h1 class="publishers__title">{{$title}}</h1>
 
                         <div class="std-adv__content">
 

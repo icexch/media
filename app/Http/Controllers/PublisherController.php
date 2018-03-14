@@ -70,7 +70,7 @@ class PublisherController extends Controller
             $impressionsTotal += $item['count'];
         }
 
-        $title = $place->name;
+        $breadcumTitle = $title = 'Stats - '.$place->name;
         $exportLink = route('publisher.export.one', ['id' => $place->id]);
 
 
@@ -78,6 +78,7 @@ class PublisherController extends Controller
         return view('pages.dashboard.publisher', compact(
             'exportLink',
             'title',
+            'breadcumTitle',
             'clicksYear',
             'clicksMonth',
             'impressionsYear',

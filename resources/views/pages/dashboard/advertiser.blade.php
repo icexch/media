@@ -1,9 +1,9 @@
 @extends('layouts.advertiser')
-@section('title', $title.' - ICEX Media')
+@section('title', $breadcumTitle.' - ICEX Media')
 @section('content')
     <div class="std-adv std-adv_home js-page"  style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="std-adv__container container">
-            <h1 class="std-adv__title">Welcome back !</h1>
+            <h1 class="std-adv__title">{{$title}}</h1>
             <div class="std-adv__content">
 
 

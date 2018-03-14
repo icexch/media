@@ -158,7 +158,7 @@ class PixelPointService {
            if($startDate) {
                $dateStart = $startDate;
            } else {
-               $firstRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$this->clicksKey, 0, 0);
+               $firstRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$keyName, 0, 0);
                if(!count($firstRecord)) {
                    continue;
                }
@@ -168,13 +168,12 @@ class PixelPointService {
            if ($endData) {
                $dateEnd = $endData;
            } else {
-               $lastRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$this->clicksKey, -1, -1);
+               $lastRecord = Redis::ZRANGE($this->currentKey.":".$IDs[$i].":".$keyName, -1, -1);
                $dateEnd = json_decode($lastRecord[0])->timestamp;
            }
             if(!$step) {
                 $step = $dateEnd;
             }
-
             while ($dateStart<=$dateEnd) {
                 $yearKey = (string)date($keyOutput, $dateStart);
                 if(is_int($step)) {
