@@ -31,8 +31,7 @@ class PixelPointPlaceService extends PixelPointService
             $adsForAdType->whereHas('advertiser', function ($query) use ($cpc, $priceOne) {
                 $query->where('balance', '>=', $priceOne);
             })->get();
-            $ad = $adsForAdType->first();
-
+            $ad = $adsForAdType->get()->shuffle()->sortByDesc('fullOptions')->sortByDesc('orOptions')->first();
             if($ad) {
                 $source = $ad->source;
                 if($ad->type == AdMaterial::TYPE_IMG) {

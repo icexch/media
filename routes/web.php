@@ -70,7 +70,9 @@ $this->group(['prefix' => 'publisher', 'middleware' => ['auth', 'role:publisher'
     $this->post('{id}/export', 'ExportController@exportPublisher')->name('publisher.export.id');
 });
 
-$this->get('ad/source/{ad_material}', 'AdvertiserController@showMaterialSource')/*->where('ad-material', '[0-9]+')*/;
+$this->get('ad/source/{ad_material}', 'AdvertiserController@showMaterialSource')
+    ->middleware('auth', 'role:moderator')
+    ->where('ad-material', '[0-9]+');
 
 $this->get('/', 'HomeController@index')->name('home');
 $this->get('advertiser', 'HomeController@indexAdvertiser')->name('home.advertiser');

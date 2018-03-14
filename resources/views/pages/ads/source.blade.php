@@ -1,3 +1,3 @@
-<code>
-    {{ $material->source }}
-</code>
+<div>
+    {!! $material->source !!}
+</div>
