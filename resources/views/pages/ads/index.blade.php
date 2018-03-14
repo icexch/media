@@ -22,9 +22,6 @@
                                 <p class="adv-table__title">Ad type</p>
                             </div>
                             <div class="adv-table__column">
-                                <p class="adv-table__title">Material Url</p>
-                            </div>
-                            <div class="adv-table__column">
                                 <p class="adv-table__title">Ad Url</p>
                             </div>
                             <div class="adv-table__column">
@@ -53,15 +50,6 @@
                                         </div>
                                         <div class="adv-table__column">
                                             <p class="adv-table__text">{{ $adMaterial->adType->name }}</p>
-                                        </div>
-                                        <div class="adv-table__column">
-                                            <p class="adv-table__text">
-                                                @if($adMaterial->material_url)
-                                                    <a class="ad-material-path" href="{{ $adMaterial->material_url }}" target="_blank">
-                                                        Material Url
-                                                    </a>
-                                                @endif
-                                            </p>
                                         </div>
                                         <div class="adv-table__column">
                                             <p class="adv-table__text">

@@ -49,16 +49,4 @@ class AdMaterial extends BaseModel
     {
         return $this->belongsTo(Category::class);
     }
-
-    /**
-     * @return string
-     */
-    public function getMaterialUrlAttribute()
-    {
-        if (isset($this->attributes['material_url'])) {
-            return env('APP_URL') . '/' . $this->attributes['material_url'];
-        }
-
-        return null;
-    }
 }

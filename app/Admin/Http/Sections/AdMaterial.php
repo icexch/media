@@ -40,8 +40,16 @@ class AdMaterial extends Section
                 AdminColumn::text('adType.name', 'Type'),
                 AdminColumn::relatedLink('region.name', 'Region'),
                 AdminColumn::relatedLink('category.name', 'Category'),
-                AdminColumn::url('ad_url', 'Url'),
-                AdminColumnEditable::checkbox('is_active', 'Active')
+                AdminColumn::text('type', 'Type'),
+                AdminColumn::custom('Source', function(\App\Models\AdMaterial $material) {
+                    if($material->type === \App\Models\AdMaterial::TYPE_IMG) {
+                        return "<a href='/$material->source' target='_blank'><i class='fa fa-arrow-circle-o-right'></i></a>";
+                    }
+
+                    return "<a href='". action('AdvertiserController@showMaterialSource', $material->id) ."' target='_blank'><i class='fa fa-arrow-circle-o-right'></i></a>";
+                })->setWidth(50),
+                AdminColumn::url('ad_url', 'Url')->setWidth(50),
+                AdminColumnEditable::checkbox('is_active', 'active', 'inactive', 'Activity')
             ])->setApply([
                 function ($query) {
                     $query->orderBy('is_active', 'asc');
@@ -63,6 +71,10 @@ class AdMaterial extends Section
                 AdminFormElement::select('ad_type_id', 'Ad Type', AdType::class)->setDisplay('name')->required(),
                 AdminFormElement::select('region_id', 'Region', Region::class)->setDisplay('name')->required(),
                 AdminFormElement::select('category_id', 'Category', Category::class)->setDisplay('name')->required(),
+                AdminFormElement::select('type', 'Type')
+                    ->setOptions(['HTML' => \App\Models\AdMaterial::TYPE_HTML, 'IMG' => \App\Models\AdMaterial::TYPE_IMG])
+                    ->required(),
+                AdminFormElement::text('source', 'Source'),
                 AdminFormElement::text('ad_url', 'Ad Url'),
                 AdminFormElement::checkbox('is_active', 'Active')
             ]);
