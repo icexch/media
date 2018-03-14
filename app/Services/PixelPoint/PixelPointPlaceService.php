@@ -34,10 +34,14 @@ class PixelPointPlaceService extends PixelPointService
             $ad = $adsForAdType->first();
 
             if($ad) {
+                $source = $ad->source;
+                if($ad->type == AdMaterial::TYPE_IMG) {
+                    $source = asset($ad->source);
+                }
                 array_push($ads, [
                     'id' => $ad->id,
                     'type' => $ad->type,
-                    'data' => $ad->source,
+                    'data' => $source,
                     'href' => $ad->ad_url,
                     'placeID' => $place->id,
                 ]);
