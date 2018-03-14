@@ -66,10 +66,10 @@
                                             </p>
                                         </div>
                                         <div class="adv-table__column">
-                                            <p class="adv-table__text">0</p>
+                                            <p class="adv-table__text">{{count($pixelPointService->getClicks([$adMaterial->id])) ?: 0}}</p>
                                         </div>
                                         <div class="adv-table__column">
-                                            <p class="adv-table__text">0</p>
+                                            <p class="adv-table__text">{{count($pixelPointService->getImpressions([$adMaterial->id])) ?: 0}}</p>
                                         </div>
                                         <div class="adv-table__column">
                                             <a href="{{route('advertiser.chart.id', ['id' => $adMaterial->id])}}">

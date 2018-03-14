@@ -32,11 +32,13 @@ class DashboardController extends Controller
             $impressionsTotal += $item['count'];
         }
 
-        $title = 'Advertisers Home';
+        $breadcumTitle = 'Advertisers Home';
+        $title = 'Total stats';
         $exportLink = route('advertiser.export');
         return view('pages.dashboard.advertiser', compact(
                 'exportLink',
                 'title',
+                'breadcumTitle',
                 'clicksYear',
                 'clicksMonth',
                 'impressionsYear',
@@ -71,11 +73,13 @@ class DashboardController extends Controller
             $impressionsTotal += $item['count'];
         }
 
-        $title = 'Publishers Home';
+        $title = 'Total stats';
+        $breadcumTitle = 'Publishers Home';
         $exportLink = route('publisher.export');
         return view('pages.dashboard.publisher', compact(
             'exportLink',
             'title',
+            'breadcumTitle',
             'clicksYear',
             'clicksMonth',
             'impressionsYear',

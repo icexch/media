@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Storage;
 class AdvertiserController extends Controller
 {
     /**
+     * @param PixelPointAdService $pixelPointService
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function ads()
+    public function ads(PixelPointAdService $pixelPointService)
     {
         $adMaterials = AdMaterial::where('user_id', auth()->user()->id)->get();
 
-        return view('pages.ads.index', compact('adMaterials'));
+        return view('pages.ads.index', compact('adMaterials', 'pixelPointService'));
     }
 
     /**
@@ -74,12 +75,13 @@ class AdvertiserController extends Controller
             $impressionsTotal += $item['count'];
         }
 
-        $title = $ad->name;
+        $breadcumTitle = $title = 'Stats - '.$ad->name;
         $exportLink = route('advertiser.export.one', ['id' => $ad->id]);
 
         return view('pages.dashboard.advertiser', compact(
             'exportLink',
             'title',
+            'breadcumTitle',
             'clicksYear',
             'clicksMonth',
             'impressionsYear',
