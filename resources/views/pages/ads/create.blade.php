@@ -29,18 +29,6 @@
                             </div>
                         </div>
 
-                        <div class="form__input-container js-form-input-container">
-                            <div class="form__input-text-wrap form__input-text-wrap_account">
-                                <label for="adv-new-title" class="form__input-text js-input-text">Type</label>
-                            </div>
-                            <div class="form__select-holder">
-                                <select class="form__select js-select-type" name="type">
-                                    <option value="{{ \App\Models\AdMaterial::TYPE_HTML }}">{{ \App\Models\AdMaterial::TYPE_HTML }}</option>
-                                    <option value="{{ \App\Models\AdMaterial::TYPE_IMG }}">{{ \App\Models\AdMaterial::TYPE_IMG }}</option>
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="form__input-container">
                             <div class="form__input-text-wrap form__input-text-wrap_account">
                                 <label for="adv-new-show" class="form__input-text js-input-text">Show another zone</label>
@@ -89,22 +77,58 @@
                                        class="form__input js-form-input">
                             </div>
                         </div>
-                        <div class="form__input-container js-form-input-container js-source-container">
-                            <div class="form__input-text-wrap form__input-text-wrap_account">
-                                <label for="adv-new-title" class="form__input-text js-input-text">Source</label>
-                                <p class="form__input-under-text">Of your ad material</p>
-                            </div>
-                            <div class="js-input-html">
-                                <div class="form__input-holder">
-                                    <textarea name="source" class="js-source guest-form__textarea" cols="73"></textarea>
+
+                        <div class="form__input-container">
+                            <div class="form__pad-right js-form-tab-parent">
+                                <div class="form__tab-container">
+                                    <div class="form__tab js-form-tab js-form-tab_file">
+                                        <div class="drop form__drop js-drop">
+                                            <div class="drop__content js-upload-button">
+                                                <div class="drop__content-before js-upload-before">
+                                                    <i class="drop__icon"></i>
+                                                    <p class="drop__title">
+                                                        Drop a file here or click to upload
+                                                    </p>
+                                                    <p class="drop__max-size">
+                                                        Maximum upload size: 100MB
+                                                    </p>
+                                                </div>
+                                                <div class="drop__content-after js-upload-after"></div>
+                                            </div>
+                                            <input type="file"
+                                                   class="form__upload js-upload-input"
+                                                   name="source">
+                                        </div>
+                                    </div>
+                                    <div class="form__tab js-form-tab js-form-tab_code">
+                                        <textarea class="form__textarea form__textarea_code"
+                                                  disabled
+                                                  name="source"
+                                                  placeholder="Paste code here"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="hidden js-input-img">
-                                <div class="form__input-holder">
-                                    <input type="file" class="js-source">
+                                <div class="form__tab-links">
+                                    <a href="#"
+                                       class="form__tab-link form__tab-link_active js-form-tab-link"
+                                       data-tab="file"
+                                       data-linked-input="#type"
+                                       data-linked-value="IMG">
+                                        File
+                                    </a>
+
+                                    <a href="#"
+                                       class="form__tab-link js-form-tab-link"
+                                       data-tab="code"
+                                       data-linked-input="#type"
+                                       data-linked-value="HTML">
+                                        Code
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
+                        <input type="hidden" name="type" value="IMG" id="type">
+
                         <div class="form__submit-container">
                             <div class="form__submit-holder form__submit-holder_account">
                                 <button class="form__submit btn">continue</button>
