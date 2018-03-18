@@ -4,23 +4,19 @@ export default class AdMaterialCreate {
     }
 
     initSelect() {
-        let types = {
-            html: $(`.js-input-html`),
-            img: $(`.js-input-img`)
+        let inputs = {
+            IMG : $('input[name=source]'),
+            HTML  : $('textarea[name=source]')
         };
 
-        $('.js-select-type').on('change', function () {
-            let type = _.lowerCase($(this).val()),
-                $container = types[type],
-                $previousContainer = type === 'html' ? types.img : types.html;
+        $('.js-form-tab-link').on('click', function() {
+            let type = $(this).data('linked-value');
 
-            console.log($container.children('.js-source'));
+            for(let input in inputs) {
+                inputs[input].prop("disabled", true);
+            }
 
-            $container.removeClass('hidden');
-            $container.find('.js-source').attr('name', 'source');
-
-            $previousContainer.addClass('hidden');
-            $previousContainer.find('.js-source').removeAttr('name');
+            inputs[type].prop("disabled", false);
         });
     }
 }
