@@ -43,10 +43,10 @@ class AdvertiserController extends Controller
     {
         $adMaterial = (new AdMaterial())->fill($request->except(['source']));
         $adMaterial->user_id = $request->user()->id;
-        $adMaterial->is_active = 0;
+        $adMaterial->is_active = false;
 
-        $request->input('type') === AdMaterial::TYPE_HTML ? $this->storeHtml($adMaterial, $request->input('source'))
-            : $this->storeImage($adMaterial, $request->file('source'));
+        $request->input('type') === AdMaterial::TYPE_HTML ? $this->storeAsHtml($adMaterial, $request->input('source'))
+            : $this->storeAsImage($adMaterial, $request->file('source'));
 
         return redirect()->route('advertiser.ads');
     }
@@ -110,7 +110,7 @@ class AdvertiserController extends Controller
      *
      * @return AdMaterial
      */
-    protected function storeImage(AdMaterial $adMaterial, $file)
+    protected function storeAsImage(AdMaterial $adMaterial, $file)
     {
         $url = $file->store('public/ad_materials');
         $url = str_replace('public', 'storage', $url);
@@ -126,7 +126,7 @@ class AdvertiserController extends Controller
      *
      * @return AdMaterial
      */
-    protected function storeHtml(AdMaterial $adMaterial, $source)
+    protected function storeAsHtml(AdMaterial $adMaterial, $source)
     {
         $adMaterial->source = $source;
         $adMaterial->save();
