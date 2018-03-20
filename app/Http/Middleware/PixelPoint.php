@@ -20,7 +20,7 @@ class PixelPoint
         $ids = array_map('intval', explode(',', $request->get("ids")));
 
         // TODO add redis array urls and check in redis
-        $place = Place::where('url', $refer)->whereIn('id', $ids)->where('is_active', 1)->count();
+        $place = Place::where('url', $refer)->whereIn('id', $ids)->where('is_active', true)->count();
         if ($place > 0) {
             return $next($request);
         } else {

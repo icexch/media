@@ -42,7 +42,7 @@ class CheckAdsContent extends Command
      */
     public function handle()
     {
-        $ads = AdMaterial::whereType(AdMaterial::TYPE_HTML)->where('is_active', 1)->select(['source', 'hash', 'id'])->get();
+        $ads = AdMaterial::whereType(AdMaterial::TYPE_HTML)->where('is_active', true)->select(['source', 'hash', 'id'])->get();
         foreach ($ads as $ad) {
             $hash = $this->adService->checkItem($ad->source);
             if($hash && $ad->hash !== $hash) {

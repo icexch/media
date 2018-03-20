@@ -20,7 +20,7 @@ class CreatePlacesTable extends Migration
             $table->unsignedInteger('ad_type_id');
             $table->unsignedInteger('region_id')->nullable();
             $table->unsignedInteger('category_id');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(false);
             $table->string('url');
             $table->timestamps();
         });
