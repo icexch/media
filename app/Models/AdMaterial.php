@@ -5,8 +5,6 @@ use SleepingOwl\Admin\Traits\OrderableModel;
 
 class AdMaterial extends BaseModel
 {
-    use OrderableModel;
-
     protected $casts = [
         'name'       => 'string',
         'user_id'    => 'int',
