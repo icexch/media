@@ -23,6 +23,8 @@ class RedirectIfAuthenticated
             if(!$previousUrlPath) {
                 return auth()->user()->isAdvertiser() ? redirect()->route('advertiser.dashboard') : redirect()->route('publisher.dashboard');
             }
+
+            return redirect()->route('home');
         }
 
         return $next($request);
