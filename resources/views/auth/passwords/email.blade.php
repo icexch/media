@@ -1,41 +1,36 @@
-@extends('layouts.app')
+@extends('layouts.home.other')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
+    <div class="guest-login" style="background-image: url(/img/contact-us-bg.jpg)">
+        <div class="guest-login__container container">
+            <div class="guest-login__content">
+                <div class="guest-form">
                     <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        @include('parts.errors')
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="guest-form__wrap">
+                            <div class="guest-form__line">
+                                <div class="guest-form__line-title-wrap">
+                                    <label for="g-log-user" class="guest-form__line-title">Email</label>
+                                </div>
+                                <div class="guest-form__input-holder">
+                                    <input id="email"
+                                           type="email"
+                                           class="guest-form__input"
+                                           name="email"
+                                           value="{{ old('email') }}"
+                                           required
+                                           autofocus>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
+                            <div class="guest-form__line guest-form__line_submit">
+                                <div class="guest-form__submit-holder">
+                                    <button class="guest-form__submit" type="submit">
+                                        Send Reset Password Link
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -43,5 +38,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

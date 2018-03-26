@@ -9,6 +9,7 @@ use App\Models\User\Publisher;
 use App\Models\User\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
