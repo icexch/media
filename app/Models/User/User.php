@@ -1,5 +1,6 @@
 <?php namespace App\Models\User;
 
+use App\Mail\ResetPasswordMail;
 use App\Models\AdMaterial;
 use App\Models\BaseModel;
 use App\Models\Place;
@@ -156,5 +157,13 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     public function isPublisher()
     {
         return $this->role === Publisher::ROLE;
+    }
+
+    /**
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordMail($token));
     }
 }
