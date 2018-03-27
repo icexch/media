@@ -16,8 +16,7 @@ $this->post('/contact/send', 'ContactController@send')->name('contact.send');
 // Authentication Routes...
 $this->get('auth', 'HomeController@index');
 
-$this->get('auth/login', 'Auth\LoginController@showLoginForm')
-    ->name('login');
+$this->get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('auth/login', 'Auth\LoginController@login');
 $this->post('auth/logout', 'Auth\LoginController@logout')->name('logout');
 
@@ -33,6 +32,9 @@ $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+// Email verification
+$this->get('/verifyemail/{token}', 'Auth\RegisterController@verify')->name('verifyemail');
 
 // Advertiser routes
 $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {

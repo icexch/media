@@ -44,9 +44,11 @@
                             <table style="border: 3px solid #44c8b6">
                                 <tr>
                                     <td style="text-align: center; padding: 50px 80px 30px 80px">
-                                        <p style="font-size: 26px; color: #021032; margin: 0; margin-bottom: 60px">You have successfully created an ICEX Media account. Please click on the link below to verify your email address and complete the registration.</p><a href="{{ url(config('app.url').route('password.reset', $token, false)) }}" style="font-size: 22px; color: #ffffff; background-color: #44c8b6; text-decoration: none; padding: 15px 30px; border-radius: 4px">Verify your email</a>
-                                        <p style="font-size: 13px; color: #667180; line-height: 22px; margin: 0; margin-top: 40px;">or copy and paste this link into your browser:</p><a href="https://my.icex.ch/confirm/297405000" style="font-size: 13px; color: #44c8b6; line-height: 22px;">{{ url(config('app.url').route('password.reset', $token, false)) }}</a>
-                                        <p style="font-size: 13px; color: #667180; line-height: 1.4; margin-top: 40px; margin-bottom: 0">Didn't create a ICEX Media account? It's likely someone just typed in your email address by accident. Feel free to ignore this email.</p>
+                                        <p style="font-size: 26px; color: #021032; margin: 0; margin-bottom: 60px">
+                                            Click the Link To Verify Your Email<br/>
+                                            Click the following link to verify your email
+                                        </p>
+                                        <a href="{{ route('verifyemail', [$email_token])}}">{{ route('verifyemail', [$email_token])}}</a>
                                     </td>
                                 </tr>
                             </table>
