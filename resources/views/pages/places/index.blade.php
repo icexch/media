@@ -38,7 +38,7 @@
                         </div>
                         <div class="adv-table__body">
                             <div class="adv-table__body-inner">
-                                @foreach($places as $place)
+                                @forelse($places as $place)
                                     <div class="adv-table__row">
                                         <div class="adv-table__column">
                                             <p class="adv-table__text">
@@ -84,7 +84,11 @@
                                             </a>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    <h3 style="color: white; text-align: center">
+                                        Places are not exists
+                                    </h3>
+                                @endforelse
                             </div>
                         </div>
                     </div>

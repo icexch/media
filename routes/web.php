@@ -45,6 +45,8 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
     $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
     $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
     $this->post('ads/add', 'AdvertiserController@storeAd')->name('advertiser.ads.store');
+    $this->get('ads/add/{id}', 'AdvertiserController@editAd')->name('advertiser.ads.edit');
+    $this->put('ads/add/{id}', 'AdvertiserController@updateAd')->name('advertiser.ads.update');
 
     $this->get('account', 'AccountController@edit')->name('advertiser.account.edit');
     $this->post('account', 'AccountController@update')->name('advertiser.account.update');
