@@ -1,5 +1,9 @@
 @extends('layouts.home.other')
 
+@section('title')
+    Password reset
+@stop
+
 @section('content')
     <div class="guest-login" style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="guest-login__container container">
