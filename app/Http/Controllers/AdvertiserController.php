@@ -2,6 +2,7 @@
 
 use App\Http\Requests\AdMaterialCreateRequest;
 use App\Http\Requests\AccountUpdateRequest;
+use App\Http\Requests\AdMaterialUpdateRequest;
 use App\Models\AdMaterial;
 use App\Models\AdType;
 use App\Models\Category;
@@ -49,6 +50,38 @@ class AdvertiserController extends Controller
             : $this->storeAsImage($adMaterial, $request->file('source'));
 
         return redirect()->route('advertiser.ads');
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function editAd($id)
+    {
+        $adMaterial = AdMaterial::findOrFail($id);
+
+        $adTypes = AdType::all();
+        $regions = Region::all();
+        $categories = Category::all();
+
+        return view('pages.ads.edit', compact('adMaterial', 'adTypes', 'regions', 'categories'));
+
+    }
+
+    /**
+     * @param int                     $id
+     * @param AdMaterialUpdateRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateAd($id, AdMaterialUpdateRequest $request)
+    {
+        $adMaterial = AdMaterial::findOrFail($id);
+
+        $adMaterial->fill(array_merge($request->all(), ['is_active' => false]))->save();
+
+        return back();
     }
 
     public function chart($id, PixelPointAdService $pixelPointService)

@@ -22,7 +22,7 @@
                                 <p class="adv-table__title">Ad type</p>
                             </div>
                             <div class="adv-table__column">
-                                <p class="adv-table__title">Ad Url</p>
+                                <p class="adv-table__title">Redirect Url</p>
                             </div>
                             <div class="adv-table__column">
                                 <p class="adv-table__title">Ad approved</p>
@@ -39,8 +39,8 @@
                         </div>
 
                         <div class="adv-table__body">
-                            <div class="adv-table__body-inner">
-                                @foreach($adMaterials as $adMaterial)
+                            <h3 class="adv-table__body-inner">
+                                @forelse($adMaterials as $adMaterial)
                                     <div class="adv-table__row">
                                         <div class="adv-table__column">
                                             <p class="adv-table__text">{{ $adMaterial->id }}</p>
@@ -74,14 +74,17 @@
                                         <div class="adv-table__column">
                                             <a href="{{route('advertiser.chart.id', ['id' => $adMaterial->id])}}">
                                                 <i class="adv-table__icon adv-table__icon_graphic"></i>
+                                            </a>&nbsp
+                                            <a href="{{ route('advertiser.ads.edit', [$adMaterial->id]) }}">
+                                                <i class="adv-table__icon adv-table__icon_edit"></i>
                                             </a>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
-                            <div class="table-scroller">
-                                <div class="table-scroller__itself"></div>
-                                <div class="table-scroller__arrow"></div>
+                                @empty
+                                    <h3 style="color: white; text-align: center">
+                                        Ad Materials are not exists
+                                    </h3>
+                                @endforelse
                             </div>
                         </div>
                     </div>

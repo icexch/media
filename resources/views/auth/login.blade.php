@@ -1,5 +1,9 @@
 @extends('layouts.home.other')
 
+@section('title')
+    Login
+@stop
+
 @section('content')
     <div class="guest-login" style="background-image: url(/img/contact-us-bg.jpg)" data-module="login">
         <div class="guest-login__container container">
@@ -59,6 +63,9 @@
                                 <label class="guest-form__checkbox-holder" style="border-bottom: 2px solid white; padding-bottom: 25px">
                                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} class="checkbox-styled js-checkbox">
                                     <span class="guest-form__checkbox-text">Remember me</span>
+                                    <span class="guest-form__checkbox-text forgot-password-link">
+                                        <a href="{{ route('password.request') }}">Forgot Your Password?</a>
+                                    </span>
                                 </label>
                             </div>
                             <div class="guest-form__line guest-form__line_checkbox">

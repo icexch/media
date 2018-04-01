@@ -1,5 +1,9 @@
 @extends('layouts.home.other')
 
+@section('title')
+    Register
+@stop
+
 @section('content')
     <div class="guest-reg" style="background-image: url(/img/contact-us-bg.jpg)">
         <div class="guest-reg__container container">

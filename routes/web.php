@@ -14,6 +14,8 @@ $this->get('/contact', 'ContactController@index')->name('contact.show');
 $this->post('/contact/send', 'ContactController@send')->name('contact.send');
 
 // Authentication Routes...
+$this->get('auth', 'HomeController@index');
+
 $this->get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('auth/login', 'Auth\LoginController@login');
 $this->post('auth/logout', 'Auth\LoginController@logout')->name('logout');
@@ -31,6 +33,9 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
+// Email verification
+$this->get('/verifyemail/{token}', 'Auth\RegisterController@verify')->name('verifyemail');
+
 // Advertiser routes
 $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertiser']], function() {
     $this->get('dashboard', 'DashboardController@indexAdvertiser')->name('advertiser.dashboard');
@@ -40,6 +45,8 @@ $this->group(['prefix' => 'advertiser', 'middleware' => ['auth', 'role:advertise
     $this->get('ads', 'AdvertiserController@ads')->name('advertiser.ads');
     $this->get('ads/add', 'AdvertiserController@createAd')->name('advertiser.ads.create');
     $this->post('ads/add', 'AdvertiserController@storeAd')->name('advertiser.ads.store');
+    $this->get('ads/add/{id}', 'AdvertiserController@editAd')->name('advertiser.ads.edit');
+    $this->put('ads/add/{id}', 'AdvertiserController@updateAd')->name('advertiser.ads.update');
 
     $this->get('account', 'AccountController@edit')->name('advertiser.account.edit');
     $this->post('account', 'AccountController@update')->name('advertiser.account.update');
