@@ -21,7 +21,14 @@ class AccountController extends Controller
     public function update(AccountUpdateRequest $request)
     {
         $user = auth()->user();
-        $user->update($request->only(['name', 'email']));
+
+        $userData = $request->only(['name', 'email']);
+
+        if($request->input('password')) {
+            $userData = array_merge($userData, $request->input('password'));
+        }
+
+        $user->update($userData);
         $user->profile()->update($request->get('profile'));
 
         return redirect()->back();

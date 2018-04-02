@@ -13,6 +13,8 @@
                         {{ csrf_field() }}
                         {{ method_field('POST') }}
 
+                        @include('parts.errors')
+
                         <div class="form__input-container js-form-input-container">
                             <div class="form__input-text-wrap form__input-text-wrap_account">
                                 <label for="adv-exp-name" class="form__input-text js-input-text form__input-text_required">Name</label>
@@ -37,15 +39,18 @@
                                        value="{{ auth()->user()->email }}">
                             </div>
                         </div>
-                        {{--<div class="form__input-container js-form-input-container">
+                        <div class="form__input-container js-form-input-container">
                             <div class="form__input-text-wrap form__input-text-wrap_account">
                                 <label for="adv-exp-pass" class="form__input-text js-input-text">Password</label>
                                 <p class="form__input-under-text">Keep it blank to use the current password</p>
                             </div>
                             <div class="form__input-holder">
-                                <input id="adv-exp-pass" type="password" class="form__input js-form-input">
+                                <input id="adv-exp-pass"
+                                       type="password"
+                                       name="password"
+                                       class="form__input js-form-input">
                             </div>
-                        </div>--}}
+                        </div>
                         <div class="form__input-container js-form-input-container">
                             <div class="form__input-text-wrap form__input-text-wrap_account">
                                 <label for="adv-exp-comp-name" class="form__input-text js-input-text">Company name</label>
