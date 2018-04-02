@@ -14,8 +14,6 @@ $this->get('/contact', 'ContactController@index')->name('contact.show');
 $this->post('/contact/send', 'ContactController@send')->name('contact.send');
 
 // Authentication Routes...
-$this->get('auth', 'HomeController@index');
-
 $this->get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('auth/login', 'Auth\LoginController@login');
 $this->post('auth/logout', 'Auth\LoginController@logout')->name('logout');
