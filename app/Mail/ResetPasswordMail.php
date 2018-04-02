@@ -41,6 +41,8 @@ class ResetPasswordMail extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->view('emails.reset-password', ['token' => $this->token]);
+        return (new MailMessage)
+            ->subject('ICEX media')
+            ->view('emails.reset-password', ['token' => $this->token]);
     }
 }
