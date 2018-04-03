@@ -20,6 +20,7 @@ class AccountUpdateRequest extends FormRequest
         return [
             'name'                 => 'required|string|max:255',
             'email'                => 'required|string|email|max:255|unique:users,email,' . $this->user()->id,
+            'password'             => 'nullable|string|min:6',
             'profile'              => 'array',
             'profile.company_name' => 'string',
             'profile.city'         => 'string',
