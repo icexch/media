@@ -80,7 +80,7 @@
 
                         <div class="form__submit-container">
                             <div class="form__submit-holder form__submit-holder_account">
-                                <button class="form__submit btn">continue</button>
+                                <button class="form__submit btn">save</button>
                             </div>
                         </div>
                     </form>

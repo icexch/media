@@ -2,6 +2,7 @@
 
 
 use App\Http\Requests\AccountUpdateRequest;
+use App\Models\User\User;
 
 class AccountController extends Controller
 {
@@ -20,15 +21,16 @@ class AccountController extends Controller
      */
     public function update(AccountUpdateRequest $request)
     {
+        /** @var User $user */
         $user = auth()->user();
 
-        $userData = $request->only(['name', 'email']);
+        $userData = $request->only(['name', 'email', 'password']);
 
-        if($request->input('password')) {
-            $userData = array_merge($userData, $request->input('password'));
+        if(!$request->input('password')) {
+            $userData = $request->except(['password']);
         }
 
-        $user->update($userData);
+        $user->fill($userData)->save();
         $user->profile()->update($request->get('profile'));
 
         return redirect()->back();
