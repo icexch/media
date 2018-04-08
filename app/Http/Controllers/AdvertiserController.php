@@ -81,7 +81,7 @@ class AdvertiserController extends Controller
 
         $adMaterial->fill(array_merge($request->all(), ['is_active' => false]))->save();
 
-        return back();
+        return redirect()->route('advertiser.ads');
     }
 
     public function chart($id, PixelPointAdService $pixelPointService)

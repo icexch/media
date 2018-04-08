@@ -22,10 +22,10 @@ class AccountUpdateRequest extends FormRequest
             'email'                => 'required|string|email|max:255|unique:users,email,' . $this->user()->id,
             'password'             => 'nullable|string|min:6',
             'profile'              => 'array',
-            'profile.company_name' => 'string',
-            'profile.city'         => 'string',
-            'profile.country'      => 'string',
-            'profile.phone'        => 'numeric'
+            'profile.company_name' => 'nullable|string',
+            'profile.city'         => 'nullable|string',
+            'profile.country'      => 'nullable|string',
+            'profile.phone'        => 'nullable|numeric'
         ];
     }
 }
