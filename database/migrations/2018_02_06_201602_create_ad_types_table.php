@@ -24,7 +24,7 @@ class CreateAdTypesTable extends Migration
             $table->timestamps();
         });
 
-        Artisan::call('db:seed', ['--class' => AdTypesTableSeeder::class, '--force' => true]);
+//        Artisan::call('db:seed', ['--class' => AdTypesTableSeeder::class, '--force' => true]);
     }
 
     /**

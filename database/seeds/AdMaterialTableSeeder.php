@@ -24,7 +24,7 @@ class AdMaterialTableSeeder extends Seeder
                     'region_id'   => rand(1, 2),
                     'category_id' => rand(1, 2),
                     'source'      => "<img src='$faker->imageUrl(468,60)'>",
-                    'ad_url'      => $faker->url,
+//                    'ad_url'      => $faker->url,
                     'type'        => \App\Models\AdMaterial::TYPE_HTML,
                     'is_active'   => true,
                 ]);
